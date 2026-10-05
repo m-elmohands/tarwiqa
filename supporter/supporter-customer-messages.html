@@ -1,0 +1,327 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>Customer Messages - Supporter Workspace</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./supporter-sidebar.css" />
+        <link rel="stylesheet" href="../super-admin/messages-inbox.css" />
+        <link rel="stylesheet" href="./supporter-customer-access.css" />
+    </head>
+    <body>
+        <main class="workspace-shell">
+            <aside
+                class="supporter-sidebar"
+                data-supporter-sidebar
+                data-active-section="customer-messages"
+            ></aside>
+            <section class="workspace-content">
+                <div class="page-shell">
+                    <header class="topbar">
+                        <div>
+                            <p class="eyebrow">Customer Messaging</p>
+                            <h1>Customer Messages</h1>
+                            <p class="subtitle" id="messageScopeText">
+                                Customer conversations within your assigned
+                                governorates.
+                            </p>
+                        </div>
+                        <div class="top-actions">
+                            <button
+                                class="action-btn primary"
+                                id="composeReplyBtn"
+                                type="button"
+                            >
+                                Compose Reply</button
+                            ><button
+                                class="action-btn ghost"
+                                id="openRulesBtn"
+                                type="button"
+                            >
+                                Open Message Rules
+                            </button>
+                        </div>
+                    </header>
+                    <main class="inbox-layout">
+                        <section class="summary-grid">
+                            <article class="metric-card">
+                                <span>Unread Messages</span
+                                ><strong id="unreadMetric">0</strong
+                                ><small>Within supporter scope</small>
+                            </article>
+                            <article class="metric-card">
+                                <span>Pending Replies</span
+                                ><strong id="pendingMetric">0</strong
+                                ><small>Need supporter response</small>
+                            </article>
+                            <article class="metric-card">
+                                <span>Starred Threads</span
+                                ><strong id="starredMetric">0</strong
+                                ><small>Priority conversations</small>
+                            </article>
+                            <article class="metric-card">
+                                <span>Junk Items</span
+                                ><strong id="junkMetric">0</strong
+                                ><small>Flagged conversations</small>
+                            </article>
+                        </section>
+                        <section class="inbox-card">
+                            <div class="inbox-head">
+                                <div>
+                                    <p class="eyebrow">Mailbox Filters</p>
+                                    <h2>Customer Inbox Control Center</h2>
+                                </div>
+                                <div class="selection-state">
+                                    <span id="selectionSummary">0 selected</span
+                                    ><button
+                                        class="clear-btn"
+                                        id="clearSelectionBtn"
+                                        type="button"
+                                        disabled
+                                    >
+                                        Clear Selection
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="supporter-filterbar">
+                                <input
+                                    id="messageSearch"
+                                    type="search"
+                                    placeholder="Search customer, user ID, or message"
+                                /><select id="messageCityFilter">
+                                    <option value="all">
+                                        All Assigned Governorates
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="filter-tabs" id="filterTabs">
+                                <button
+                                    class="filter-tab active"
+                                    data-filter="inbox"
+                                    type="button"
+                                >
+                                    Inbox All</button
+                                ><button
+                                    class="filter-tab"
+                                    data-filter="sent"
+                                    type="button"
+                                >
+                                    Sent All</button
+                                ><button
+                                    class="filter-tab"
+                                    data-filter="junk"
+                                    type="button"
+                                >
+                                    Junk</button
+                                ><button
+                                    class="filter-tab"
+                                    data-filter="starred"
+                                    type="button"
+                                >
+                                    Starred
+                                </button>
+                            </div>
+                            <div class="bulk-actions">
+                                <button
+                                    class="bulk-btn primary"
+                                    id="markReadBtn"
+                                    type="button"
+                                    disabled
+                                >
+                                    Mark as Read</button
+                                ><button
+                                    class="bulk-btn warning"
+                                    id="moveJunkBtn"
+                                    type="button"
+                                    disabled
+                                >
+                                    Move to Junk
+                                </button>
+                            </div>
+                            <div class="table-shell">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="checkbox-col">
+                                                <label class="checkbox-wrap"
+                                                    ><input
+                                                        id="selectAllCheckbox"
+                                                        type="checkbox"
+                                                    /><span>Select</span></label
+                                                >
+                                            </th>
+                                            <th>Customer Name</th>
+                                            <th>User ID</th>
+                                            <th>Governorate</th>
+                                            <th>Unread Count</th>
+                                            <th>Message Preview</th>
+                                            <th>Box</th>
+                                            <th>Status</th>
+                                            <th>Last Update</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="messagesTableBody"></tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </main>
+                </div>
+            </section>
+        </main>
+        <div class="modal-overlay hidden" id="messageDetailsModal">
+            <div class="modal-card">
+                <div class="modal-head">
+                    <div>
+                        <p class="eyebrow">Conversation View</p>
+                        <h2 id="messageModalTitle">Message Details</h2>
+                        <p class="modal-subtitle" id="messageModalSubtitle">
+                            Review the customer conversation and reply.
+                        </p>
+                    </div>
+                    <button
+                        class="icon-btn"
+                        id="closeMessageModalBtn"
+                        type="button"
+                    >
+                        x
+                    </button>
+                </div>
+                <div class="modal-content">
+                    <div class="message-profile-card">
+                        <div class="message-user-row">
+                            <div class="avatar-mini" id="messageAvatar">MK</div>
+                            <div>
+                                <button
+                                    class="customer-link"
+                                    id="messageCustomerName"
+                                    type="button"
+                                >
+                                    Customer
+                                </button>
+                                <p id="messageMetaLine">#USR-000000</p>
+                            </div>
+                        </div>
+                        <div class="message-meta-grid">
+                            <div class="meta-box">
+                                <span>Mailbox</span
+                                ><strong id="messageBoxValue">Inbox</strong>
+                            </div>
+                            <div class="meta-box">
+                                <span>Status</span
+                                ><strong id="messageStatusValue">Unread</strong>
+                            </div>
+                            <div class="meta-box">
+                                <span>Unread Count</span
+                                ><strong id="messageUnreadValue"
+                                    >0 unread</strong
+                                >
+                            </div>
+                            <div class="meta-box">
+                                <span>Last Update</span
+                                ><strong id="messageUpdatedValue">-</strong>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="message-preview-card">
+                        <p class="eyebrow">Message Preview</p>
+                        <p
+                            class="message-preview-copy"
+                            id="messagePreviewCopy"
+                        ></p>
+                        <label class="reply-field"
+                            ><span>Quick Reply</span
+                            ><textarea
+                                id="quickReplyInput"
+                                rows="5"
+                                placeholder="Write a quick reply to the customer..."
+                            ></textarea>
+                        </label>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button
+                        class="ghost-btn"
+                        id="closeMessageFooterBtn"
+                        type="button"
+                    >
+                        Close</button
+                    ><button
+                        class="ghost-btn"
+                        id="markSingleReadBtn"
+                        type="button"
+                    >
+                        Mark as Read</button
+                    ><button
+                        class="action-btn primary"
+                        id="sendReplyBtn"
+                        type="button"
+                    >
+                        Send Reply
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="modal-overlay hidden" id="messageRulesModal">
+            <div class="modal-card compact-card">
+                <div class="modal-head">
+                    <div>
+                        <p class="eyebrow">Message Rules</p>
+                        <h2>Inbox Rules & Moderation Notes</h2>
+                    </div>
+                    <button
+                        class="icon-btn"
+                        id="closeRulesModalBtn"
+                        type="button"
+                    >
+                        x
+                    </button>
+                </div>
+                <div class="rules-list">
+                    <article class="rule-item">
+                        <strong>Confirmation Priority</strong>
+                        <p>
+                            Prioritize customers whose orders still need
+                            confirmation, Partner assignment, or Maid
+                            assignment.
+                        </p>
+                    </article>
+                    <article class="rule-item">
+                        <strong>Payment Questions</strong>
+                        <p>
+                            Confirm the payment method and escalate wallet or
+                            bank-transfer issues when needed.
+                        </p>
+                    </article>
+                    <article class="rule-item">
+                        <strong>Junk Handling</strong>
+                        <p>
+                            Move invalid or repeated spam to Junk only after
+                            reviewing the customer profile.
+                        </p>
+                    </article>
+                </div>
+                <div class="modal-actions">
+                    <button
+                        class="ghost-btn"
+                        id="closeRulesFooterBtn"
+                        type="button"
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="toast hidden" id="inboxToast" role="status">
+            <strong>Inbox Updated</strong
+            ><span id="inboxToastMessage">Action completed successfully.</span>
+        </div>
+        <script src="./supporter-sidebar.js"></script>
+        <script src="./supporter-customer-messages.js"></script>
+    </body>
+</html>

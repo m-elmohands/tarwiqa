@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TARWIQA Admin Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./admin-dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Executive Overview</p>
+            <h2>TARWIQA Dashboard</h2>
+            <p class="subtitle">
+              A clean administration overview for users, orders, partners, revenue, campaigns, and operational performance.
+            </p>
+          </div>
+
+          <div class="top-actions">
+            <button class="action-btn primary" type="button">Export Dashboard</button>
+            <button class="action-btn ghost" id="refreshKpisBtn" type="button">Refresh KPIs</button>
+          </div>
+        </header>
+
+        <section class="hero-banner">
+          <div>
+            <p class="eyebrow">Live Operations</p>
+            <h3>Business Health Snapshot</h3>
+            <p>
+              Monitor workforce activity, orders, revenue, users, shares, inquiries, and the strongest performing supply and demand signals from one screen.
+            </p>
+          </div>
+          <div class="hero-tags">
+            <span class="hero-tag success">Employees Active: 18</span>
+            <span class="hero-tag">North Star Offer: Gold Access</span>
+            <span class="hero-tag">Cleaning Widget Orders: 1,284</span>
+          </div>
+        </section>
+
+        <section class="kpi-grid">
+          <article class="kpi-card"><span>Employees Active</span><strong>18</strong></article>
+          <article class="kpi-card"><span>Users Ordered The Service</span><strong>8,420</strong></article>
+          <article class="kpi-card"><span>All Users</span><strong>24,980</strong></article>
+          <article class="kpi-card"><span>Active Users</span><strong>17,645</strong></article>
+          <article class="kpi-card"><span>Female</span><strong>13,240</strong></article>
+          <article class="kpi-card"><span>Male</span><strong>11,740</strong></article>
+          <article class="kpi-card"><span>Android Platforms</span><strong>15,320</strong></article>
+          <article class="kpi-card"><span>iOS Platforms</span><strong>9,660</strong></article>
+          <article class="kpi-card"><span>Shares</span><strong>1,274</strong></article>
+          <article class="kpi-card"><span>Logs Inquires</span><strong>2,148</strong></article>
+          <article class="kpi-card"><span>Restricted Users</span><strong>41</strong></article>
+          <article class="kpi-card"><span>Banned Users</span><strong>12</strong></article>
+          <article class="kpi-card"><span>Cancelled Orders Today</span><strong>17</strong></article>
+          <article class="kpi-card"><span>Had Ordered Today</span><strong>284</strong></article>
+          <article class="kpi-card"><span>Num Ordered Last Month</span><strong>5,940</strong></article>
+          <article class="kpi-card"><span>Num Ordered In This Month</span><strong>6,418</strong></article>
+          <article class="kpi-card"><span>Done Orders</span><strong>14,205</strong></article>
+          <article class="kpi-card"><span>Under Review Order</span><strong>142</strong></article>
+          <article class="kpi-card"><span>Accepted Orders</span><strong>1,928</strong></article>
+          <article class="kpi-card"><span>All Cancelled Orders</span><strong>1,106</strong></article>
+          <article class="kpi-card"><span>Total Maids</span><strong>1,420</strong></article>
+          <article class="kpi-card"><span>Active Maids</span><strong>1,085</strong></article>
+          <article class="kpi-card partner-metric"><span>Active Partners</span><strong id="activePartnersMetric">26</strong><small id="activePartnersNote">Currently active across all work zones</small></article>
+          <article class="kpi-card accent"><span>Widget Order</span><strong>1,284</strong><small>Cleaning Widget</small></article>
+          <article class="kpi-card accent"><span>North Star Offer</span><strong>Gold Access</strong><small>Most requested offer</small></article>
+          <article class="kpi-card money"><span>Total Orders Amount</span><strong>EGP 3.48M</strong></article>
+          <article class="kpi-card money"><span>Total Orders Price</span><strong>EGP 3.92M</strong></article>
+          <article class="kpi-card money"><span>Total Maids Revenue</span><strong>EGP 1.86M</strong></article>
+          <article class="kpi-card money profit-metric"><span>Maid Profit</span><strong id="maidProfitMetric">EGP 1.02M</strong><small>Net profit for the current month</small></article>
+          <article class="kpi-card money profit-metric"><span>Partner Profit</span><strong id="partnerProfitMetric">EGP 612K</strong><small>Net partner profit for the current month</small></article>
+          <article class="kpi-card money"><span>Revenue</span><strong>EGP 2.41M</strong></article>
+          <article class="kpi-card money"><span>Total Discounts</span><strong>EGP 214K</strong></article>
+          <article class="kpi-card money"><span>Wallet</span><strong>EGP 842K</strong><small>Total customer wallets</small></article>
+        </section>
+
+        <section class="leaders-grid">
+          <article class="leader-card">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Ranking</p>
+                <h3>Top 10 Maids</h3>
+              </div>
+              <span class="section-note">By completed orders</span>
+            </div>
+            <div class="leader-list">
+              <div class="leader-item"><strong>1. Amina Mostafa</strong><span>248 orders</span></div>
+              <div class="leader-item"><strong>2. Hoda Ali</strong><span>231 orders</span></div>
+              <div class="leader-item"><strong>3. Salwa Nabil</strong><span>225 orders</span></div>
+              <div class="leader-item"><strong>4. Amal Fathy</strong><span>214 orders</span></div>
+              <div class="leader-item"><strong>5. Walaa Emad</strong><span>208 orders</span></div>
+              <div class="leader-item"><strong>6. Eman Yasser</strong><span>197 orders</span></div>
+              <div class="leader-item"><strong>7. Dina Kamal</strong><span>193 orders</span></div>
+              <div class="leader-item"><strong>8. Reham Ashraf</strong><span>189 orders</span></div>
+              <div class="leader-item"><strong>9. Nada Hisham</strong><span>182 orders</span></div>
+              <div class="leader-item"><strong>10. Aya Tarek</strong><span>176 orders</span></div>
+            </div>
+          </article>
+
+          <article class="leader-card">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Ranking</p>
+                <h3>Top 10 Extra</h3>
+              </div>
+              <span class="section-note">By most requested extras</span>
+            </div>
+            <div class="leader-list">
+              <div class="leader-item"><strong>1. Deep Cleaning Kit</strong><span>1,120 uses</span></div>
+              <div class="leader-item"><strong>2. Ironing</strong><span>1,044 uses</span></div>
+              <div class="leader-item"><strong>3. Window Cleaning</strong><span>986 uses</span></div>
+              <div class="leader-item"><strong>4. Kitchen Sanitizing</strong><span>931 uses</span></div>
+              <div class="leader-item"><strong>5. Carpet Refresh</strong><span>902 uses</span></div>
+              <div class="leader-item"><strong>6. Fridge Cleaning</strong><span>844 uses</span></div>
+              <div class="leader-item"><strong>7. Sofa Care</strong><span>801 uses</span></div>
+              <div class="leader-item"><strong>8. Bathroom Sterilization</strong><span>777 uses</span></div>
+              <div class="leader-item"><strong>9. Balcony Wash</strong><span>703 uses</span></div>
+              <div class="leader-item"><strong>10. Laundry Fold</strong><span>690 uses</span></div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+    <script src="./admin-dashboard.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

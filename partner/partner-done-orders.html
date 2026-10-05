@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Partner Done Orders</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./partner-done-orders.css" />
+    </head>
+    <body>
+        <main class="workspace-shell">
+            <aside class="partner-sidebar">
+                <div class="brand-block">
+                    <p class="eyebrow" data-i18n="partnerWorkspace">
+                        Partner Workspace
+                    </p>
+                    <h1>TARWIQA</h1>
+                    <span id="partnerRoleLabel">Partner Account</span>
+                    <button
+                        class="language-toggle"
+                        id="doneLanguageToggleBtn"
+                        type="button"
+                    >
+                        Arabic
+                    </button>
+                </div>
+                <nav
+                    class="workspace-nav"
+                    aria-label="Partner workspace navigation"
+                >
+                    <a
+                        href="./partner-dashboard.html#todaySection"
+                        data-i18n="navToday"
+                        >Today Schedule</a
+                    >
+                    <a
+                        href="./partner-dashboard.html#ordersSection"
+                        data-i18n="navOrders"
+                        >Orders</a
+                    >
+                    <a
+                        href="./partner-done-orders.html"
+                        class="active"
+                        data-i18n="navDoneOrders"
+                        >Done Orders</a
+                    >
+                    <a
+                        href="./partner-dashboard.html#maidsSection"
+                        data-i18n="navAvailability"
+                        >Availability</a
+                    >
+                    <div
+                        class="nav-group"
+                        aria-label="Partner messages navigation"
+                    >
+                        <span class="nav-group-title" data-i18n="navMessages"
+                            >Messages</span
+                        >
+                        <a
+                            class="nav-sub-link"
+                            href="./partner-dashboard.html?message=super-admin#messagesSection"
+                            data-i18n="navSuperAdminMessages"
+                            >Super Admin Messages</a
+                        >
+                        <a
+                            class="nav-sub-link"
+                            href="./partner-dashboard.html?message=supporter#messagesSection"
+                            data-i18n="navSupporterMessages"
+                            >Supporter Messages</a
+                        >
+                    </div>
+                    <a
+                        id="profileLink"
+                        href="./partner-profile.html"
+                        data-i18n="navProfile"
+                        >My Profile</a
+                    >
+                </nav>
+                <button
+                    class="logout-btn"
+                    id="logoutPartnerBtn"
+                    type="button"
+                    data-i18n="logout"
+                >
+                    Logout
+                </button>
+            </aside>
+
+            <section class="workspace-content">
+                <header class="topbar">
+                    <div>
+                        <p class="eyebrow" data-i18n="doneOrdersEyebrow">
+                            Completed Work
+                        </p>
+                        <h2 data-i18n="doneOrdersTitle">Done Orders</h2>
+                        <p class="subtitle" id="doneOrdersSubtitle">
+                            Only operational order data is visible here.
+                            Customer details are limited to name only.
+                        </p>
+                    </div>
+                    <div class="session-card">
+                        <span data-i18n="currentPartner">Current Partner</span
+                        ><strong id="partnerName">Partner</strong
+                        ><small id="partnerScope">-</small>
+                    </div>
+                </header>
+
+                <section class="metrics-grid" aria-label="Done orders metrics">
+                    <article class="metric-card">
+                        <span data-i18n="doneOrders">Done Orders</span
+                        ><strong id="doneCountMetric">0</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span data-i18n="totalCost">Total Cost</span
+                        ><strong id="doneCostMetric">EGP 0</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span data-i18n="cashOrders">Cash Orders</span
+                        ><strong id="cashCountMetric">0</strong>
+                    </article>
+                </section>
+
+                <section class="workspace-card">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow" data-i18n="doneOrders">
+                                Done Orders
+                            </p>
+                            <h3 data-i18n="readOnlyData">
+                                Read-only order data
+                            </h3>
+                        </div>
+                        <div class="toolbar">
+                            <input
+                                id="doneSearchInput"
+                                type="search"
+                                placeholder="Search order or maid"
+                                data-i18n-placeholder="searchDone"
+                            />
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-i18n="orderNumber">
+                                        Order Number
+                                    </th>
+                                    <th data-i18n="customerName">
+                                        Customer Name
+                                    </th>
+                                    <th data-i18n="workZone">Work Zone</th>
+                                    <th data-i18n="sentMaid">Sent Maid</th>
+                                    <th data-i18n="orderCost">Order Cost</th>
+                                    <th data-i18n="executionDate">
+                                        Execution Date
+                                    </th>
+                                    <th data-i18n="startHour">Start Hour</th>
+                                    <th data-i18n="paymentMethod">
+                                        Payment Method
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="doneOrdersTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </main>
+        <script src="./partner-done-orders.js"></script>
+    </body>
+</html>

@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TARWIQA Supporter Login</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./supporter-login.css" />
+    </head>
+    <body>
+        <main class="login-shell">
+            <section class="brand-panel" aria-label="TARWIQA supporter access">
+                <div class="brand-card">
+                    <p class="eyebrow">Supporter Portal</p>
+                    <h1>TARWIQA</h1>
+                    <p>
+                        Controlled access for support team members to review
+                        scoped orders, partners, customer follow-ups, and
+                        governorate activity according to admin permissions.
+                    </p>
+                    <div
+                        class="security-pills"
+                        aria-label="Supporter access features"
+                    >
+                        <span>Supporter Account</span>
+                        <span>Governorate Scope</span>
+                        <span>View / Edit Permissions</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="login-panel" aria-labelledby="supporterLoginTitle">
+                <form class="login-card" id="supporterLoginForm" novalidate>
+                    <div class="form-head">
+                        <p class="eyebrow">Website Support</p>
+                        <h2 id="supporterLoginTitle">Supporter Login</h2>
+                        <p>
+                            Login to open your supporter workspace and assigned
+                            dashboard scope.
+                        </p>
+                    </div>
+
+                    <label class="field-group" for="supporterEmail">
+                        <span>Username Or Email</span>
+                        <input
+                            id="supporterEmail"
+                            name="supporterEmail"
+                            type="text"
+                            autocomplete="username"
+                            placeholder="support.hassan"
+                            required
+                        />
+                    </label>
+
+                    <label class="field-group" for="supporterPassword">
+                        <span>Password</span>
+                        <div class="password-wrap">
+                            <input
+                                id="supporterPassword"
+                                name="supporterPassword"
+                                type="password"
+                                autocomplete="current-password"
+                                placeholder="Enter password"
+                                required
+                                minlength="8"
+                            />
+                            <button
+                                class="show-password-btn"
+                                id="toggleSupporterPasswordBtn"
+                                type="button"
+                            >
+                                Show
+                            </button>
+                        </div> </label
+                    >`r`n
+                    <div class="form-row">
+                        <label class="remember-check">
+                            <input id="rememberSupporter" type="checkbox" />
+                            <span>Remember me</span>
+                        </label>
+                        <a href="mailto:support-admin@tarwiqa.com"
+                            >Need supporter access?</a
+                        >
+                    </div>
+
+                    <p
+                        class="form-message"
+                        id="supporterLoginMessage"
+                        aria-live="polite"
+                    ></p>
+
+                    <button
+                        class="login-btn"
+                        id="supporterLoginSubmitBtn"
+                        type="submit"
+                    >
+                        Login To Supporter Workspace
+                    </button>
+                </form>
+            </section>
+        </main>
+
+        <script src="./supporter-login.js"></script>
+    </body>
+</html>

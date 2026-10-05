@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TARWIQA Super Admin Login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./super-admin-login.css" />
+  </head>
+  <body>
+    <main class="login-shell">
+      <section class="brand-panel" aria-label="TARWIQA super admin access">
+        <div class="brand-card">
+          <p class="eyebrow">Super Admin Portal</p>
+          <h1>TARWIQA</h1>
+          <p>
+            Secure access for the main dashboard, partners, supporters, maids,
+            orders, campaigns, and financial controls.
+          </p>
+          <div class="security-pills" aria-label="Login protections">
+            <span>Role: Super Admin</span>
+            <span>Session Protected</span>
+            <span>Dashboard Control</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="login-panel" aria-labelledby="loginTitle">
+        <form class="login-card" id="superAdminLoginForm" novalidate>
+          <div class="form-head">
+            <p class="eyebrow">Welcome Back</p>
+            <h2 id="loginTitle">Super Admin Login</h2>
+            <p>Enter your credentials to continue to TARWIQA Dashboard.</p>
+          </div>
+
+          <label class="field-group" for="adminEmail">
+            <span>Email Address</span>
+            <input
+              id="adminEmail"
+              name="adminEmail"
+              type="email"
+              autocomplete="username"
+              placeholder="superadmin@tarwiqa.com"
+              required
+            />
+          </label>
+
+          <label class="field-group" for="adminPassword">
+            <span>Password</span>
+            <div class="password-wrap">
+              <input
+                id="adminPassword"
+                name="adminPassword"
+                type="password"
+                autocomplete="current-password"
+                placeholder="Enter password"
+                required
+                minlength="8"
+              />
+              <button class="show-password-btn" id="togglePasswordBtn" type="button">
+                Show
+              </button>
+            </div>
+          </label>
+
+          <div class="form-row">
+            <label class="remember-check">
+              <input id="rememberAdmin" type="checkbox" />
+              <span>Remember me</span>
+            </label>
+            <a href="mailto:security@tarwiqa.com">Need access?</a>
+          </div>
+
+          <p class="form-message" id="loginMessage" aria-live="polite"></p>
+
+          <button class="login-btn" id="loginSubmitBtn" type="submit">
+            Login To Dashboard
+          </button>
+        </form>
+      </section>
+    </main>
+
+    <script src="./super-admin-login.js"></script>
+  </body>
+</html>

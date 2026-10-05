@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Done Orders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./accepted-orders.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+
+      <main class="main-content">
+        <div class="page-shell">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Orders Archive</p>
+              <h2>Done Orders</h2>
+              <p class="subtitle">
+                Review the completed orders archive with finished jobs, final prices, assigned maids, and completion timing across the service operation.
+              </p>
+            </div>
+
+            <div class="top-actions">
+              <button class="action-btn primary" id="exportDoneOrdersBtn" type="button">Export Done Orders</button>
+              <a class="action-btn ghost" id="backToAcceptedLink" href="./accepted-orders.html">Back To Accepted</a>
+            </div>
+          </header>
+
+          <main class="orders-layout">
+            <section class="summary-grid">
+              <article class="metric-card">
+                <span>Done Orders</span>
+                <strong id="doneCountMetric">142</strong>
+                <small>Completed successfully this week</small>
+              </article>
+              <article class="metric-card">
+                <span>Total Revenue</span>
+                <strong id="doneRevenueMetric">EGP 214K</strong>
+                <small>Final paid value from done orders</small>
+              </article>
+              <article class="metric-card">
+                <span>Top City</span>
+                <strong id="doneTopCityMetric">Cairo</strong>
+                <small>Highest completed volume</small>
+              </article>
+              <article class="metric-card">
+                <span>Avg Completion Time</span>
+                <strong id="doneAvgTimeMetric">2h 18m</strong>
+                <small>From arrival to closure</small>
+              </article>
+            </section>
+
+            <section class="orders-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Completed Queue</p>
+                  <h3>Finished Orders List</h3>
+                </div>
+                <div class="filter-grid">
+                  <label class="filter-field">
+                    <span>Search By</span>
+                    <select id="doneSearchTypeSelect">
+                      <option value="orderId">Order ID</option>
+                      <option value="userName">User Name</option>
+                      <option value="city">City</option>
+                    </select>
+                  </label>
+
+                  <label class="filter-field search-field">
+                    <span>Search Value</span>
+                    <input id="doneSearchInput" type="text" placeholder="Search done orders" />
+                  </label>
+
+                  <label class="filter-field">
+                    <span>Sort Orders</span>
+                    <select id="doneSortSelect">
+                      <option value="dateDesc">Done Date (Latest)</option>
+                      <option value="priceDesc">Highest Price</option>
+                      <option value="cityAsc">City A-Z</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <div class="table-shell">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name User</th>
+                      <th>City</th>
+                      <th>Widget</th>
+                      <th>Category</th>
+                      <th>Package</th>
+                      <th>Final Price</th>
+                      <th>Assigned Maid</th>
+                      <th>Order Date</th>
+                      <th>Done Date</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="doneOrdersTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </main>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-overlay hidden" id="doneOrderModal">
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="doneOrderTitle">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">Done Order Details</p>
+            <h3 id="doneOrderTitle">Order Details</h3>
+            <p class="modal-subtitle">Review the finished order details, final payment value, and execution notes.</p>
+          </div>
+          <button class="close-btn" id="closeDoneOrderModalBtn" type="button">Close</button>
+        </div>
+
+        <div class="modal-grid" id="doneOrderModalContent"></div>
+
+        <div class="modal-actions">
+          <button class="action-btn ghost" id="closeDoneOrderFooterBtn" type="button">Close</button>
+        </div>
+      </section>
+    </div>
+    <script src="./done-orders.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

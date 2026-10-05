@@ -1,0 +1,462 @@
+﻿<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Supporter Workspace</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./supporter-sidebar.css" />
+        <link rel="stylesheet" href="./supporter-dashboard.css" />
+    </head>
+    <body>
+        <main class="workspace-shell">
+            <aside
+                class="supporter-sidebar"
+                data-supporter-sidebar
+                data-dashboard-local="true"
+                data-active-section="orders"
+            ></aside>
+            <section class="workspace-content">
+                <header class="topbar">
+                    <div>
+                        <p class="eyebrow">Logged In Supporter</p>
+                        <h2 id="supporterName">Supporter Name</h2>
+                        <p class="subtitle" id="supporterScope">
+                            Assigned governorates and permissions are loading.
+                        </p>
+                    </div>
+                    <div class="session-card">
+                        <span>Current Session</span
+                        ><strong id="sessionStatus">Online Now</strong
+                        ><small id="sessionStarted">-</small>
+                    </div>
+                </header>
+                <section
+                    class="metrics-grid"
+                    aria-label="Supporter workspace metrics"
+                >
+                    <article class="metric-card">
+                        <span>Scoped Orders</span
+                        ><strong id="scopedOrdersMetric">0</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Scoped Partners</span
+                        ><strong id="scopedPartnersMetric">0</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Open Follow Ups</span
+                        ><strong id="followUpsMetric">0</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Unread Messages</span
+                        ><strong id="unreadMessagesMetric">0</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span>Permission</span
+                        ><strong id="permissionMetric">Viewer</strong>
+                    </article>
+                </section>
+                <section class="workspace-card" id="ordersSection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Orders</p>
+                            <h3>Orders In My Governorates</h3>
+                        </div>
+                        <div class="toolbar">
+                            <input
+                                id="orderSearch"
+                                type="search"
+                                placeholder="Search order or user"
+                            /><select id="orderStatusFilter">
+                                <option value="all">All Statuses</option>
+                                <option>Under Review</option>
+                                <option>Waiting List</option>
+                                <option>Accepted</option>
+                                <option>In Progress</option>
+                                <option>Done</option>
+                                <option>Cancelled</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>User</th>
+                                    <th>Governorate</th>
+                                    <th>Address</th>
+                                    <th>Arrival</th>
+                                    <th>Status</th>
+                                    <th>Partner</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="workspace-card" id="partnersSection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Partners</p>
+                            <h3>Partners In My Scope</h3>
+                        </div>
+                        <input
+                            id="partnerSearch"
+                            type="search"
+                            placeholder="Search partner or zone"
+                        />
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Partner</th>
+                                    <th>Status</th>
+                                    <th>Governorate</th>
+                                    <th>Work Zone</th>
+                                    <th>Managed Maids</th>
+                                    <th>Done Orders</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="partnersTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="workspace-card" id="messagesSection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Messages</p>
+                            <h3>Supporter Message Center</h3>
+                        </div>
+                        <div class="toolbar">
+                            <select id="messageAudienceFilter">
+                                <option value="all">All Messages</option>
+                                <option value="super-admin">Super Admin</option>
+                                <option value="partner">
+                                    Partners
+                                </option></select
+                            ><button
+                                class="action-btn"
+                                id="markMessagesReadBtn"
+                                type="button"
+                            >
+                                Mark All Read
+                            </button>
+                        </div>
+                    </div>
+                    <div class="message-thread" id="messageThread"></div>
+                    <form class="reply-form" id="supporterReplyForm">
+                        <input
+                            id="supporterReplyInput"
+                            type="text"
+                            placeholder="Write a reply or update"
+                        /><button class="action-btn" type="submit">Send</button>
+                    </form>
+                </section>
+                <section class="workspace-card" id="historySection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Activity</p>
+                            <h3>My Action History</h3>
+                        </div>
+                        <button
+                            class="action-btn"
+                            id="clearHistorySearchBtn"
+                            type="button"
+                        >
+                            Clear Search
+                        </button>
+                    </div>
+                    <input
+                        class="history-search"
+                        id="historySearch"
+                        type="search"
+                        placeholder="Search action history"
+                    />
+                    <div class="history-list" id="historyList"></div>
+                </section>
+            </section>
+        </main>
+        <div class="modal-overlay hidden" id="statusModal" aria-hidden="true">
+            <div
+                class="modal-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="statusTitle"
+            >
+                <button
+                    class="modal-close"
+                    id="closeStatusModal"
+                    type="button"
+                    aria-label="Close status update"
+                >
+                    x
+                </button>
+                <p class="eyebrow">Supporter Action</p>
+                <h2 id="statusTitle">Update Order Status</h2>
+                <form class="status-form" id="statusForm">
+                    <input id="statusOrderId" type="hidden" />
+                    <div class="status-summary" id="statusSummary"></div>
+                    <label
+                        ><span>New Status</span
+                        ><select id="statusSelect">
+                            <option>Under Review</option>
+                            <option>Waiting List</option>
+                            <option>Accepted</option>
+                            <option>In Progress</option>
+                            <option>Done</option>
+                            <option>Cancelled</option>
+                        </select></label
+                    ><label
+                        ><span>Support Note</span
+                        ><textarea
+                            id="statusNote"
+                            rows="4"
+                            placeholder="Write why this status changed"
+                            required
+                        ></textarea>
+                    </label>
+                    <div class="modal-actions">
+                        <button
+                            class="action-btn ghost"
+                            id="cancelStatusBtn"
+                            type="button"
+                        >
+                            Cancel</button
+                        ><button class="action-btn" type="submit">
+                            Save Status
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-overlay hidden" id="detailsModal" aria-hidden="true">
+            <div
+                class="modal-card order-details-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="detailsTitle"
+            >
+                <button
+                    class="modal-close"
+                    id="closeDetailsModal"
+                    type="button"
+                    aria-label="Close details"
+                >
+                    x
+                </button>
+                <p class="eyebrow" id="detailsEyebrow">Details</p>
+                <h2 id="detailsTitle">Details</h2>
+                <div class="details-grid" id="detailsContent"></div>
+            </div>
+        </div>
+        <div
+            class="modal-overlay hidden"
+            id="orderDetailsModal"
+            aria-hidden="true"
+        >
+            <div
+                class="modal-card order-editor-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="orderDetailsTitle"
+            >
+                <button
+                    class="modal-close"
+                    id="closeOrderDetailsModal"
+                    type="button"
+                    aria-label="Close order details"
+                >
+                    x
+                </button>
+                <p class="eyebrow" id="orderDetailsEyebrow">Scoped Order</p>
+                <h2 id="orderDetailsTitle">Order Details</h2>
+                <p class="modal-note" id="orderDetailsNote">
+                    Same order data shown in Super Admin order view. Editable
+                    fields depend on supporter permissions.
+                </p>
+                <form class="supporter-order-form" id="orderDetailsForm">
+                    <div class="supporter-order-grid">
+                        <label class="detail-control readonly-field"
+                            ><span>Order ID</span
+                            ><input
+                                id="supporterOrderId"
+                                type="text"
+                                readonly /></label
+                        ><label class="detail-control readonly-field"
+                            ><span>Account User Name</span
+                            ><input
+                                id="supporterOrderUser"
+                                type="text"
+                                readonly /></label
+                        ><label class="detail-control readonly-field"
+                            ><span>City</span
+                            ><input
+                                id="supporterOrderCity"
+                                type="text"
+                                readonly /></label
+                        ><label class="detail-control wide-field"
+                            ><span>Customer Address</span
+                            ><select id="supporterOrderAddress"></select
+                            ><small
+                                >Selected by the customer. Choose another saved
+                                address only when needed.</small
+                            ></label
+                        ><label class="detail-control readonly-field"
+                            ><span>Created Date</span
+                            ><input
+                                id="supporterOrderCreated"
+                                type="text"
+                                readonly /></label
+                        ><label class="detail-control readonly-field"
+                            ><span>Offer Name</span
+                            ><button
+                                class="offer-link order-offer-trigger"
+                                id="supporterOrderOffer"
+                                type="button"
+                            >
+                                Offer Name
+                            </button></label
+                        ><label class="detail-control"
+                            ><span>Total Price</span
+                            ><input
+                                id="supporterOrderTotal"
+                                type="number"
+                                min="0"
+                                step="0.01" /></label
+                        ><label class="detail-control"
+                            ><span>Wallet</span
+                            ><input
+                                id="supporterOrderWallet"
+                                type="number"
+                                min="0"
+                                step="0.01" /></label
+                        ><label class="detail-control"
+                            ><span>Deposit</span
+                            ><input
+                                id="supporterOrderDeposit"
+                                type="number"
+                                min="0"
+                                step="0.01" /></label
+                        ><label class="detail-control"
+                            ><span>Discount</span
+                            ><input
+                                id="supporterOrderDiscount"
+                                type="number"
+                                min="0"
+                                step="0.01" /></label
+                        ><label class="detail-control readonly-field"
+                            ><span>Final Price</span
+                            ><input
+                                id="supporterOrderFinal"
+                                type="text"
+                                readonly /></label
+                        ><label class="detail-control"
+                            ><span>Status</span
+                            ><select id="supporterOrderStatus">
+                                <option>Under Review</option>
+                                <option>Waiting List</option>
+                                <option>Accepted</option>
+                                <option>In Progress</option>
+                                <option>Done</option>
+                                <option>Cancelled</option>
+                            </select></label
+                        ><label class="detail-control"
+                            ><span>Payment Method</span
+                            ><select id="supporterOrderPayment">
+                                <option>Cash</option>
+                                <option>E-Wallet</option>
+                                <option>Bank Transfer</option>
+                            </select></label
+                        ><label class="detail-control"
+                            ><span>Order Date</span
+                            ><input
+                                id="supporterOrderDate"
+                                type="date" /></label
+                        ><label class="detail-control"
+                            ><span>Arrival Time</span
+                            ><input
+                                id="supporterOrderArrival"
+                                type="time" /></label
+                        ><label class="detail-control wide-field"
+                            ><span>Add Maids</span
+                            ><select
+                                id="supporterOrderMaids"
+                                multiple
+                            ></select></label
+                        ><label class="detail-control wide-field"
+                            ><span>Assigned Partner</span
+                            ><select id="supporterOrderPartner"></select></label
+                        ><label class="detail-control wide-field"
+                            ><span>Extra</span
+                            ><select id="supporterOrderExtras" multiple></select
+                            ><small
+                                >Use Ctrl or Cmd to choose more than one active
+                                extra.</small
+                            ></label
+                        >
+                    </div>
+                    <div class="summary-strip">
+                        <article>
+                            <span>Price Breakdown</span
+                            ><strong id="supporterOrderBreakdown">-</strong>
+                        </article>
+                        <article>
+                            <span>Selected Address</span
+                            ><strong id="supporterOrderAddressValue">-</strong>
+                        </article>
+                        <article>
+                            <span>Assigned Maid</span
+                            ><strong id="supporterOrderMaidValue"
+                                >Not Assigned</strong
+                            >
+                        </article>
+                        <article>
+                            <span>Assigned Partner</span
+                            ><strong id="supporterOrderPartnerValue"
+                                >Not Assigned</strong
+                            >
+                        </article>
+                        <article>
+                            <span>Selected Extras</span
+                            ><strong id="supporterOrderExtrasValue"
+                                >No Extras</strong
+                            >
+                        </article>
+                    </div>
+                    <div class="modal-actions">
+                        <button
+                            class="action-btn ghost"
+                            id="cancelOrderDetailsBtn"
+                            type="button"
+                        >
+                            Close</button
+                        ><button
+                            class="action-btn"
+                            id="saveOrderDetailsBtn"
+                            type="submit"
+                        >
+                            Save Changes
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div
+            class="toast hidden"
+            id="workspaceToast"
+            role="status"
+            aria-live="polite"
+        ></div>
+        <script src="./supporter-sidebar.js"></script>
+        <script src="./supporter-dashboard.js"></script>
+    </body>
+</html>

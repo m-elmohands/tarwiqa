@@ -1,0 +1,264 @@
+:root {
+  --surface: rgba(255, 250, 243, 0.82);
+  --surface-strong: #fffaf2;
+  --surface-dark: #132a24;
+  --card-border: rgba(19, 42, 36, 0.08);
+  --text: #15231f;
+  --muted: #5f6f69;
+  --accent: #0f766e;
+  --accent-strong: #0a5c55;
+  --shadow: 0 20px 50px rgba(21, 35, 31, 0.08);
+  --radius-xl: 28px;
+  --radius-lg: 22px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: "Manrope", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(15, 118, 110, 0.18), transparent 28%),
+    radial-gradient(circle at right, rgba(212, 160, 23, 0.14), transparent 22%),
+    linear-gradient(180deg, #f7f1e8 0%, #efe5d7 100%);
+}
+
+button {
+  font: inherit;
+}
+
+.page-shell {
+  position: relative;
+  padding: 32px;
+  overflow: hidden;
+}
+
+.ambient {
+  position: absolute;
+  width: 360px;
+  height: 360px;
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+.ambient-left {
+  top: -110px;
+  left: -90px;
+  background: rgba(15, 118, 110, 0.18);
+}
+
+.ambient-right {
+  right: -100px;
+  bottom: 120px;
+  background: rgba(212, 160, 23, 0.18);
+}
+
+.topbar,
+.summary-grid,
+.shares-card {
+  position: relative;
+  z-index: 1;
+}
+
+.topbar {
+  max-width: 1380px;
+  margin: 0 auto 24px;
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: flex-start;
+}
+
+.eyebrow {
+  margin: 0 0 8px;
+  font-size: 0.82rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+h1,
+h2 {
+  margin: 0;
+  font-family: "Space Grotesk", sans-serif;
+  letter-spacing: -0.03em;
+}
+
+h1 {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+}
+
+.subtitle,
+.table-note,
+.customer-cell span,
+th {
+  color: var(--muted);
+}
+
+.subtitle {
+  max-width: 760px;
+  margin: 12px 0 0;
+}
+
+.top-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  border: 0;
+  cursor: pointer;
+  padding: 14px 20px;
+  border-radius: 999px;
+  font-weight: 800;
+  box-shadow: var(--shadow);
+  transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease;
+}
+
+.action-btn:hover {
+  transform: translateY(-1px);
+}
+
+.action-btn.primary {
+  background: var(--surface-dark);
+  color: white;
+}
+
+.action-btn.ghost {
+  background: rgba(255, 250, 242, 0.85);
+  color: var(--text);
+}
+
+.shares-layout {
+  max-width: 1380px;
+  margin: 0 auto;
+  display: grid;
+  gap: 24px;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.metric-card,
+.shares-card {
+  background: var(--surface);
+  backdrop-filter: blur(18px);
+  border: 1px solid var(--card-border);
+  box-shadow: var(--shadow);
+  border-radius: var(--radius-xl);
+}
+
+.metric-card {
+  padding: 20px;
+}
+
+.metric-card span,
+.metric-card small {
+  color: var(--muted);
+}
+
+.metric-card strong {
+  display: block;
+  margin: 10px 0 6px;
+  font-size: 1.7rem;
+}
+
+.shares-card {
+  padding: 24px;
+}
+
+.card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.table-shell {
+  margin-top: 20px;
+  overflow: auto;
+  border-radius: 22px;
+  border: 1px solid rgba(19, 42, 36, 0.08);
+  background: rgba(255, 255, 255, 0.78);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #f6f2e9;
+}
+
+th,
+td {
+  padding: 18px;
+  text-align: left;
+}
+
+th {
+  font-size: 0.84rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+tbody tr + tr td {
+  border-top: 1px solid rgba(19, 42, 36, 0.08);
+}
+
+tbody tr:hover {
+  background: rgba(15, 118, 110, 0.03);
+}
+
+.customer-cell {
+  display: grid;
+  gap: 6px;
+}
+
+.customer-cell strong,
+.count-pill {
+  font-weight: 800;
+}
+
+.count-pill {
+  display: inline-flex;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(15, 118, 110, 0.1);
+  color: var(--accent-strong);
+}
+
+@media (max-width: 1050px) {
+  .summary-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 720px) {
+  .page-shell {
+    padding: 18px;
+  }
+
+  .topbar,
+  .card-head {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .summary-grid {
+    grid-template-columns: 1fr;
+  }
+}

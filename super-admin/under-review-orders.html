@@ -1,0 +1,244 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Under Review Orders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./under-review-orders.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+
+      <main class="main-content">
+        <div class="page-shell">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Orders Queue</p>
+              <h2>Under Review Orders</h2>
+              <p class="subtitle">
+                Review all booking requests submitted from the application before final confirmation, with searchable
+                customer records, timing details, category context, and quick edit or delete actions.
+              </p>
+            </div>
+
+            <div class="top-actions">
+              <button class="action-btn accent" id="openAddOrderBtn" type="button">Add Order</button>
+              <button class="action-btn primary" type="button">Export Queue</button>
+              <button class="action-btn ghost" id="clearFiltersBtn" type="button">Clear Filters</button>
+            </div>
+          </header>
+
+          <main class="orders-layout">
+            <section class="summary-grid">
+              <article class="metric-card">
+                <span>Orders In Review</span>
+                <strong id="reviewCount">18</strong>
+                <small>Currently waiting for processing</small>
+              </article>
+              <article class="metric-card">
+                <span>Highest Price</span>
+                <strong id="highestPriceMetric">EGP 2,400</strong>
+                <small>Premium package in queue</small>
+              </article>
+              <article class="metric-card">
+                <span>Today Requests</span>
+                <strong id="todayRequestsMetric">7</strong>
+                <small>Submitted on current date</small>
+              </article>
+              <article class="metric-card">
+                <span>Earliest Arrival</span>
+                <strong id="earliestArrivalMetric">08:00 AM</strong>
+                <small>Needs schedule confirmation</small>
+              </article>
+            </section>
+
+            <section class="orders-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Search & Sort</p>
+                  <h3>Booking Requests Under Review</h3>
+                </div>
+                <div class="filter-grid">
+                  <label class="filter-field">
+                    <span>Search By</span>
+                    <select id="searchTypeSelect">
+                      <option value="orderId">Order ID</option>
+                      <option value="orderDate">Order Date</option>
+                      <option value="userName">Account Name</option>
+                    </select>
+                  </label>
+
+                  <label class="filter-field search-field">
+                    <span>Search Value</span>
+                    <input id="searchInput" type="text" placeholder="Search current queue" />
+                  </label>
+
+                  <label class="filter-field date-field hidden" id="dateSearchField">
+                    <span>Order Date</span>
+                    <input id="dateSearchInput" type="date" />
+                  </label>
+
+                  <label class="filter-field">
+                    <span>Sort Orders</span>
+                    <select id="sortSelect">
+                      <option value="priceDesc">Highest Price</option>
+                      <option value="queueAsc">Booking Priority</option>
+                      <option value="dateAsc">Order Date (Earliest)</option>
+                      <option value="dateDesc">Order Date (Latest)</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <div class="table-shell">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name User</th>
+                      <th>City</th>
+                      <th>Widget</th>
+                      <th>Category</th>
+                      <th>Package</th>
+                      <th>Price</th>
+                      <th>Addresses</th>
+                      <th>Created Date</th>
+                      <th>Order Date</th>
+                      <th>Arrival Time</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="ordersTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </main>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-overlay hidden" id="editOrderModal">
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="editOrderTitle">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">Order Control</p>
+            <h3 id="editOrderTitle">Edit Order</h3>
+            <p class="modal-subtitle">Update booking details, pricing breakdown, assignment, and operational status.</p>
+          </div>
+          <button class="close-btn" id="closeEditModalBtn" type="button">Close</button>
+        </div>
+
+        <form class="modal-form" id="editOrderForm">
+          <div class="modal-grid">
+            <label class="field readonly-field"><span>Order ID</span><input id="modalOrderId" type="text" readonly /></label>
+            <label class="field readonly-field"><span>Account User Name</span><input id="modalUserName" type="text" readonly /></label>
+            <label class="field readonly-field"><span>City</span><input id="modalCity" type="text" readonly /></label>
+            <label class="field wide-field"><span>Customer Address</span><select id="modalAddressSelect"></select><small class="field-hint">Selected by the customer. Choose another saved address only when needed.</small></label>
+            <label class="field readonly-field"><span>Created Date</span><input id="modalCreatedDate" type="text" readonly /></label>
+            <label class="field"><span>Total Price</span><input id="modalTotalPrice" type="number" min="0" step="0.01" /></label>
+            <label class="field"><span>Wallet</span><input id="modalWallet" type="number" min="0" step="0.01" /></label>
+            <label class="field"><span>Deposit</span><input id="modalDeposit" type="number" min="0" step="0.01" /></label>
+            <label class="field"><span>Discount</span><input id="modalDiscount" type="number" min="0" step="0.01" /></label>
+            <label class="field final-price-field"><span>Final Price</span><input id="modalFinalPrice" type="text" readonly /></label>
+            <label class="field"><span>Status</span><select id="modalStatus"><option>Under Review</option><option>Accepted Orders</option><option>Done Orders</option><option>Cancelled Order</option></select></label>
+            <label class="field"><span>Payment Method</span><select id="modalPaymentMethod"><option>Cash</option><option>E-Wallet</option><option>Bank Transfer</option></select></label>
+            <label class="field"><span>Order Date</span><input id="modalOrderDate" type="date" /></label>
+            <label class="field"><span>Arrival Time</span><input id="modalArrivalTime" type="time" /></label>
+            <label class="field wide-field"><span>Add Maids</span><select id="modalMaidSelect" multiple></select></label>
+            <label class="field wide-field"><span>Assigned Partner</span><select id="modalPartnerSelect"></select></label>
+            <label class="field wide-field"><span>Extra</span><select id="modalExtrasSelect" multiple></select><small class="field-hint">Use Ctrl or Cmd to choose more than one active extra.</small></label>
+          </div>
+
+          <div class="summary-strip">
+            <article><span>Price Breakdown</span><strong id="modalBreakdownValue">EGP 0.00</strong></article>
+            <article><span>Selected Address</span><strong id="modalSelectedAddressValue">-</strong></article>
+            <article><span>Assigned Maids</span><strong id="modalAssignedMaidValue">Not Assigned</strong></article>
+            <article><span>Assigned Partner</span><strong id="modalAssignedPartnerValue">Not Assigned</strong></article>
+            <article><span>Selected Extras</span><strong id="modalExtrasValue">No Extras</strong></article>
+          </div>
+
+          <div class="modal-actions">
+            <button class="action-btn ghost" id="cancelEditBtn" type="button">Cancel</button>
+            <button class="action-btn primary" type="submit">Save Changes</button>
+          </div>
+        </form>
+      </section>
+    </div>
+
+    <div class="modal-overlay hidden" id="addOrderModal">
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="addOrderTitle">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">New Booking</p>
+            <h3 id="addOrderTitle">Add Order</h3>
+            <p class="modal-subtitle">Search for a customer, select the service path, then set pricing, assignment, and schedule details.</p>
+          </div>
+          <button class="close-btn" id="closeAddModalBtn" type="button">Close</button>
+        </div>
+
+        <form class="modal-form" id="addOrderForm">
+          <div class="modal-grid">
+            <label class="field readonly-field"><span>Order ID</span><input id="addOrderId" type="text" readonly /></label>
+            <label class="field"><span>Search Customer By</span><select id="customerSearchType"><option value="phone">Primary Mobile</option><option value="userId">User ID</option></select></label>
+            <label class="field wide-field"><span>Customer Search</span><input id="customerSearchInput" type="text" placeholder="Enter phone or user ID" /></label>
+            <label class="field readonly-field wide-field"><span>Account User Name</span><input id="addUserName" type="text" readonly /></label>
+            <label class="field"><span>City</span><select id="addCitySelect"></select></label>
+            <label class="field"><span>Widget</span><select id="addWidgetSelect"></select></label>
+            <label class="field"><span>Category</span><select id="addCategorySelect"></select></label>
+            <label class="field"><span>Package</span><select id="addPackageSelect"></select></label>
+            <label class="field"><span>Addresses</span><input id="addAddressInput" type="text" placeholder="Service address" /></label>
+            <label class="field readonly-field"><span>Created Date</span><input id="addCreatedDate" type="text" readonly /></label>
+            <label class="field"><span>Total Price</span><input id="addTotalPrice" type="number" min="0" step="0.01" /></label>
+            <label class="field"><span>Wallet</span><input id="addWallet" type="number" min="0" step="0.01" /></label>
+            <label class="field"><span>Deposit</span><input id="addDeposit" type="number" min="0" step="0.01" /></label>
+            <label class="field"><span>Discount</span><input id="addDiscount" type="number" min="0" step="0.01" /></label>
+            <label class="field final-price-field"><span>Final Price</span><input id="addFinalPrice" type="text" readonly /></label>
+            <label class="field"><span>Status</span><select id="addStatus"><option>Under Review</option><option>Accepted Orders</option><option>Done Orders</option><option>Cancelled Order</option></select></label>
+            <label class="field"><span>Payment Method</span><select id="addPaymentMethod"><option>Cash</option><option>E-Wallet</option><option>Bank Transfer</option></select></label>
+            <label class="field"><span>Order Date</span><input id="addOrderDate" type="date" /></label>
+            <label class="field"><span>Arrival Time</span><input id="addArrivalTime" type="time" /></label>
+            <label class="field wide-field"><span>Add Maids</span><select id="addMaidSelect" multiple></select></label>
+            <label class="field wide-field"><span>Assigned Partner</span><select id="addPartnerSelect"></select></label>
+            <label class="field wide-field"><span>Extra</span><select id="addExtrasSelect" multiple></select><small class="field-hint">Use Ctrl or Cmd to choose more than one active extra.</small></label>
+          </div>
+
+          <div class="summary-strip">
+            <article><span>Price Breakdown</span><strong id="addBreakdownValue">EGP 0.00</strong></article>
+            <article><span>Assigned Maids</span><strong id="addAssignedMaidValue">Not Assigned</strong></article>
+            <article><span>Assigned Partner</span><strong id="addAssignedPartnerValue">Not Assigned</strong></article>
+            <article><span>Selected Extras</span><strong id="addExtrasValue">No Extras</strong></article>
+          </div>
+
+          <div class="modal-actions">
+            <button class="action-btn ghost" id="cancelAddBtn" type="button">Cancel</button>
+            <button class="action-btn primary" type="submit">Create Order</button>
+          </div>
+        </form>
+      </section>
+    </div>
+    <script src="./under-review-orders.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

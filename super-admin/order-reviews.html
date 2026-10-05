@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Order Reviews</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./order-reviews.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Voice Of Customer</p>
+          <h1>Order Reviews</h1>
+          <p class="subtitle">
+            A full review feed for every completed order, showing who submitted the review, when the order was executed, and separate ratings for the service provider and customer service.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn primary" type="button">Export Reviews</button>
+          <button class="action-btn ghost" id="openAnalyticsBtn" type="button">Open Analytics</button>
+        </div>
+      </header>
+
+      <main class="reviews-layout">
+        <section class="summary-grid">
+          <article class="metric-card">
+            <span>Total Reviews</span>
+            <strong>3,482</strong>
+            <small>Last 30 days</small>
+          </article>
+          <article class="metric-card">
+            <span>Provider Rating</span>
+            <strong>4.7 / 5</strong>
+            <small>Average across all reviewed orders</small>
+          </article>
+          <article class="metric-card">
+            <span>Customer Service Rating</span>
+            <strong>4.5 / 5</strong>
+            <small>Support experience average</small>
+          </article>
+          <article class="metric-card">
+            <span>Low Rating Alerts</span>
+            <strong>28</strong>
+            <small>Orders under 3 stars today</small>
+          </article>
+        </section>
+
+        <section class="filter-card">
+          <div class="filter-head">
+            <div>
+              <p class="eyebrow">Review Feed</p>
+              <h2>Customer Reviews By Order</h2>
+            </div>
+            <div class="filter-pills">
+              <button class="pill-btn active" type="button">All Reviews</button>
+              <button class="pill-btn" type="button">5 Stars</button>
+              <button class="pill-btn" type="button">Needs Attention</button>
+            </div>
+          </div>
+
+          <div class="review-feed">
+            <article class="review-card">
+              <div class="review-head">
+                <div class="customer-block">
+                  <div class="avatar">MK</div>
+                  <div>
+                    <h3><a class="user-profile-link" href="./index.html?userId=%23USR-102938">Mariam Kamal</a></h3>
+                    <p>Order #ORD-7841</p>
+                  </div>
+                </div>
+                <div class="meta-block">
+                  <span>Execution Date</span>
+                  <strong>22 Apr 2026</strong>
+                </div>
+              </div>
+
+              <div class="ratings-grid">
+                <div class="rating-box">
+                  <span>Service Provider</span>
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <small>5/5 - Fast arrival and professional handling.</small>
+                </div>
+                <div class="rating-box">
+                  <span>Customer Service</span>
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                  <small>4/5 - Support was responsive and helpful.</small>
+                </div>
+              </div>
+
+              <div class="review-note">
+                <span>Customer Comment</span>
+                <p>The technician arrived on time, finished the request smoothly, and support followed up after completion.</p>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-head">
+                <div class="customer-block">
+                  <div class="avatar">YA</div>
+                  <div>
+                    <h3><a class="user-profile-link" href="./index.html?userId=%23USR-102954">Youssef Adel</a></h3>
+                    <p>Order #ORD-7829</p>
+                  </div>
+                </div>
+                <div class="meta-block">
+                  <span>Execution Date</span>
+                  <strong>20 Apr 2026</strong>
+                </div>
+              </div>
+
+              <div class="ratings-grid">
+                <div class="rating-box">
+                  <span>Service Provider</span>
+                  <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+                  <small>3/5 - Job completed, but later than expected.</small>
+                </div>
+                <div class="rating-box">
+                  <span>Customer Service</span>
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <small>5/5 - Excellent complaint follow-up and compensation.</small>
+                </div>
+              </div>
+
+              <div class="review-note">
+                <span>Customer Comment</span>
+                <p>The service was okay overall, but customer support handled the delay very professionally and made things right.</p>
+              </div>
+            </article>
+
+            <article class="review-card attention">
+              <div class="review-head">
+                <div class="customer-block">
+                  <div class="avatar">NH</div>
+                  <div>
+                    <h3><a class="user-profile-link" href="./index.html?userId=%23USR-103004">Nour Hassan</a></h3>
+                    <p>Order #ORD-7794</p>
+                  </div>
+                </div>
+                <div class="meta-block">
+                  <span>Execution Date</span>
+                  <strong>18 Apr 2026</strong>
+                </div>
+              </div>
+
+              <div class="ratings-grid">
+                <div class="rating-box">
+                  <span>Service Provider</span>
+                  <div class="stars low">&#9733;&#9733;&#9734;&#9734;&#9734;</div>
+                  <small>2/5 - Delay and incomplete execution on first visit.</small>
+                </div>
+                <div class="rating-box">
+                  <span>Customer Service</span>
+                  <div class="stars">&#9733;&#9733;&#9733;&#9734;&#9734;</div>
+                  <small>3/5 - Support responded, but resolution took too long.</small>
+                </div>
+              </div>
+
+              <div class="review-note">
+                <span>Customer Comment</span>
+                <p>The order needed escalation. The worker had to revisit, and support should have solved it faster.</p>
+              </div>
+            </article>
+
+            <article class="review-card">
+              <div class="review-head">
+                <div class="customer-block">
+                  <div class="avatar">SE</div>
+                  <div>
+                    <h3><a class="user-profile-link" href="./index.html?userId=%23USR-442300">Salma Emad</a></h3>
+                    <p>Order #ORD-7751</p>
+                  </div>
+                </div>
+                <div class="meta-block">
+                  <span>Execution Date</span>
+                  <strong>16 Apr 2026</strong>
+                </div>
+              </div>
+
+              <div class="ratings-grid">
+                <div class="rating-box">
+                  <span>Service Provider</span>
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <small>5/5 - Clean, quick, and highly professional service.</small>
+                </div>
+                <div class="rating-box">
+                  <span>Customer Service</span>
+                  <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                  <small>5/5 - Smooth communication from booking to completion.</small>
+                </div>
+              </div>
+
+              <div class="review-note">
+                <span>Customer Comment</span>
+                <p>Excellent experience from beginning to end. I would definitely use the service again.</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+
+      <div class="analytics-overlay hidden" id="analyticsOverlay">
+        <section class="analytics-panel" role="dialog" aria-modal="true" aria-labelledby="analyticsTitle">
+          <div class="analytics-head">
+            <div>
+              <p class="eyebrow">Review Intelligence</p>
+              <h2 id="analyticsTitle">Customer Review Analytics</h2>
+              <p class="analytics-subtitle">
+                A focused view of service quality trends, support performance, and the orders that need action first.
+              </p>
+            </div>
+            <button class="close-btn" id="closeAnalyticsBtn" type="button">Close</button>
+          </div>
+
+          <div class="analytics-grid">
+            <article class="insight-card highlight">
+              <span>Strongest Signal</span>
+              <strong>Provider quality is outperforming support by 0.2 stars</strong>
+              <p>Field execution remains strong, but post-order support speed is pulling the total experience down on escalated cases.</p>
+            </article>
+
+            <article class="insight-card">
+              <span>Recovery Opportunity</span>
+              <strong>62% of low provider ratings were later saved by customer support</strong>
+              <p>Support is mitigating service issues, which means the next gain should come from operational speed and first-visit completion.</p>
+            </article>
+
+            <article class="chart-card wide">
+              <div class="card-head">
+                <h3>Rating Distribution</h3>
+                <small>Last 30 days</small>
+              </div>
+              <div class="distribution-list">
+                <div class="distribution-row">
+                  <span>5 Stars</span>
+                  <div class="bar-track"><div class="bar-fill fill-5"></div></div>
+                  <strong>58%</strong>
+                </div>
+                <div class="distribution-row">
+                  <span>4 Stars</span>
+                  <div class="bar-track"><div class="bar-fill fill-4"></div></div>
+                  <strong>24%</strong>
+                </div>
+                <div class="distribution-row">
+                  <span>3 Stars</span>
+                  <div class="bar-track"><div class="bar-fill fill-3"></div></div>
+                  <strong>11%</strong>
+                </div>
+                <div class="distribution-row">
+                  <span>1-2 Stars</span>
+                  <div class="bar-track danger"><div class="bar-fill fill-2"></div></div>
+                  <strong>7%</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="chart-card">
+              <div class="card-head">
+                <h3>Top Complaint Drivers</h3>
+                <small>Most repeated review themes</small>
+              </div>
+              <div class="tag-cloud">
+                <span class="issue-tag high">Late Arrival</span>
+                <span class="issue-tag">Slow Resolution</span>
+                <span class="issue-tag">Second Visit Needed</span>
+                <span class="issue-tag low">Billing Clarity</span>
+                <span class="issue-tag">Technician Delay</span>
+                <span class="issue-tag low">Follow-up Quality</span>
+              </div>
+            </article>
+
+            <article class="chart-card">
+              <div class="card-head">
+                <h3>Orders Requiring Follow-up</h3>
+                <small>Priority queue</small>
+              </div>
+              <div class="priority-list">
+                <div class="priority-item">
+                  <strong>#ORD-7794</strong>
+                  <p>Provider 2/5, support 3/5. Escalate to operations supervisor.</p>
+                </div>
+                <div class="priority-item">
+                  <strong>#ORD-7718</strong>
+                  <p>Repeated delay complaint. Trigger callback and service recovery offer.</p>
+                </div>
+                <div class="priority-item">
+                  <strong>#ORD-7691</strong>
+                  <p>Excellent support but weak field delivery. Review provider assignment.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="chart-card wide">
+              <div class="card-head">
+                <h3>Recommended Actions</h3>
+                <small>Generated from current review patterns</small>
+              </div>
+              <div class="action-lanes">
+                <div class="lane-card">
+                  <span>Operations</span>
+                  <strong>Improve on-time arrival in high-volume districts</strong>
+                  <p>Focus on dispatch windows where 1-2 star provider reviews spike after noon.</p>
+                </div>
+                <div class="lane-card">
+                  <span>Customer Care</span>
+                  <strong>Reduce closure time on escalations</strong>
+                  <p>Support performs well, but cases that exceed 24 hours still drag the final sentiment score.</p>
+                </div>
+                <div class="lane-card">
+                  <span>Quality Team</span>
+                  <strong>Audit repeat complaints by provider cluster</strong>
+                  <p>Same-provider low ratings show concentration, which makes retraining more effective than broad intervention.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+      </main>
+    </div>
+    <script src="./order-reviews.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+

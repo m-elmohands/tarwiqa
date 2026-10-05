@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+        <title>Users - Supporter Workspace</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./supporter-sidebar.css" />
+        <link rel="stylesheet" href="../super-admin/user-list.css" />
+        <link rel="stylesheet" href="./supporter-customer-access.css" />
+    </head>
+    <body>
+        <main class="workspace-shell">
+            <aside
+                class="supporter-sidebar"
+                data-supporter-sidebar
+                data-active-section="users"
+            ></aside>
+            <section class="workspace-content">
+                <div class="page-shell">
+                    <header class="topbar">
+                        <div>
+                            <p class="eyebrow">Customer Management</p>
+                            <h1>Users</h1>
+                            <p class="subtitle" id="usersScopeText">
+                                Customers within your assigned governorates with
+                                Super Admin user-management actions.
+                            </p>
+                        </div>
+                        <div class="header-badges">
+                            <button
+                                class="add-user-link"
+                                id="addUserBtn"
+                                type="button"
+                            >
+                                Add User</button
+                            ><a
+                                class="add-user-link"
+                                href="./supporter-customer-messages.html"
+                                >Customer Messages</a
+                            ><span class="header-pill" id="visibleUsersMetric"
+                                >0 scoped users</span
+                            >
+                        </div>
+                    </header>
+                    <main class="layout">
+                        <section class="summary-card">
+                            <article class="metric-card">
+                                <span>Active Users</span
+                                ><strong id="activeUsersMetric">0</strong
+                                ><small>Within supporter scope</small>
+                            </article>
+                            <article class="metric-card">
+                                <span>Restricted Accounts</span
+                                ><strong id="restrictedUsersMetric">0</strong
+                                ><small>Need communication review</small>
+                            </article>
+                            <article class="metric-card">
+                                <span>Banned Accounts</span
+                                ><strong id="bannedUsersMetric">0</strong
+                                ><small>Temporary and permanent bans</small>
+                            </article>
+                            <article class="metric-card">
+                                <span>Total Wallet Value</span
+                                ><strong id="walletUsersMetric">EGP 0</strong
+                                ><small>Across visible users</small>
+                            </article>
+                        </section>
+                        <section class="list-card">
+                            <div class="list-head">
+                                <div>
+                                    <p class="eyebrow">User Operations</p>
+                                    <h2>User Management Queue</h2>
+                                </div>
+                                <div class="selection-state">
+                                    <span id="selectionSummary"
+                                        >0 users selected</span
+                                    ><button
+                                        class="clear-btn"
+                                        id="clearSelectionBtn"
+                                        type="button"
+                                        disabled
+                                    >
+                                        Clear Selection
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="supporter-filterbar">
+                                <input
+                                    id="userSearch"
+                                    type="search"
+                                    placeholder="Search ID, name, phone, or email"
+                                /><select id="userCityFilter">
+                                    <option value="all">
+                                        All Assigned Governorates
+                                    </option>
+                                </select>
+                            </div>
+                            <div class="bulk-actions">
+                                <button
+                                    class="bulk-btn primary"
+                                    data-bulk-action="push"
+                                    disabled
+                                >
+                                    Send Push (0)</button
+                                ><button
+                                    class="bulk-btn"
+                                    data-bulk-action="email"
+                                    disabled
+                                >
+                                    Send Email (0)</button
+                                ><button
+                                    class="bulk-btn success"
+                                    data-bulk-action="whatsapp"
+                                    disabled
+                                >
+                                    WhatsApp (0)
+                                </button>
+                            </div>
+                            <div class="table-shell">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th class="checkbox-col">
+                                                <label class="checkbox-wrap"
+                                                    ><input
+                                                        id="selectAllCheckbox"
+                                                        type="checkbox"
+                                                    /><span
+                                                        >Select All</span
+                                                    ></label
+                                                >
+                                            </th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Phone</th>
+                                            <th>City</th>
+                                            <th>Platform</th>
+                                            <th>Active Status</th>
+                                            <th>Ban</th>
+                                            <th>Restricted</th>
+                                            <th>Created Date</th>
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="userTableBody"></tbody>
+                                </table>
+                            </div>
+                        </section>
+                    </main>
+                </div>
+            </section>
+        </main>
+        <div class="modal-overlay hidden" id="userListModal">
+            <div class="modal-card supporter-user-modal">
+                <div class="modal-head">
+                    <div>
+                        <p class="eyebrow">User Action</p>
+                        <h2 id="userListModalTitle">Action Details</h2>
+                        <p class="modal-subtitle" id="userListModalSubtitle">
+                            Review the selected customer action.
+                        </p>
+                    </div>
+                    <button
+                        class="icon-btn"
+                        id="closeUserListModalBtn"
+                        type="button"
+                    >
+                        x
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="info-panel" id="userListModalContent"></div>
+                </div>
+                <div class="modal-actions">
+                    <button
+                        class="clear-btn"
+                        id="closeUserListModalFooterBtn"
+                        type="button"
+                    >
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="toast hidden" id="userListToast" role="status">
+            <strong>Users Updated</strong
+            ><span id="userListToastMessage"
+                >Action completed successfully.</span
+            >
+        </div>
+        <script src="./supporter-sidebar.js"></script>
+        <script src="./supporter-users.js"></script>
+    </body>
+</html>

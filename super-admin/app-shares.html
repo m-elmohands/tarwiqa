@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>App Shares</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./app-shares.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Referral Activity</p>
+          <h1>App Shares</h1>
+          <p class="subtitle">
+            Track customers who shared the application, when they shared it, and how many times each customer contributed to app sharing activity.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn primary" type="button">Export Report</button>
+          <button class="action-btn ghost" type="button">View Referrals</button>
+        </div>
+      </header>
+
+      <main class="shares-layout">
+        <section class="summary-grid">
+          <article class="metric-card">
+            <span>Total Shares</span>
+            <strong>1,274</strong>
+            <small>Across active customers</small>
+          </article>
+          <article class="metric-card">
+            <span>Customers Shared</span>
+            <strong>348</strong>
+            <small>Unique customers this month</small>
+          </article>
+          <article class="metric-card">
+            <span>Top Sharer</span>
+            <strong>16 Shares</strong>
+            <small>Highest customer share count</small>
+          </article>
+          <article class="metric-card">
+            <span>Latest Share</span>
+            <strong>23 Apr 2026</strong>
+            <small>Most recent tracked activity</small>
+          </article>
+        </section>
+
+        <section class="shares-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Sharing Activity</p>
+              <h2>Customers Who Shared The App</h2>
+            </div>
+            <div class="table-note">Showing recent app-sharing activity from customers</div>
+          </div>
+
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Share Date</th>
+                  <th>Share Count</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="customer-cell">
+                      <a class="customer-profile-link" href="./index.html?userId=%23USR-102938">Mariam Kamal</a>
+                      <span>Highly active advocate</span>
+                    </div>
+                  </td>
+                  <td>23 Apr 2026, 10:20 AM</td>
+                  <td><span class="count-pill">12 Shares</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="customer-cell">
+                      <a class="customer-profile-link" href="./index.html?userId=%23USR-102954">Youssef Adel</a>
+                      <span>Shared through referral flow</span>
+                    </div>
+                  </td>
+                  <td>22 Apr 2026, 06:45 PM</td>
+                  <td><span class="count-pill">5 Shares</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="customer-cell">
+                      <a class="customer-profile-link" href="./index.html?userId=%23USR-103004">Nour Hassan</a>
+                      <span>Recurring social share activity</span>
+                    </div>
+                  </td>
+                  <td>22 Apr 2026, 01:10 PM</td>
+                  <td><span class="count-pill">9 Shares</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="customer-cell">
+                      <a class="customer-profile-link" href="./index.html?userId=%23USR-103121">Karim Emad</a>
+                      <span>Referral campaign participant</span>
+                    </div>
+                  </td>
+                  <td>21 Apr 2026, 08:35 PM</td>
+                  <td><span class="count-pill">3 Shares</span></td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="customer-cell">
+                      <a class="customer-profile-link" href="./index.html?userId=%23USR-103177">Salma Hany</a>
+                      <span>Organic app-sharing behavior</span>
+                    </div>
+                  </td>
+                  <td>20 Apr 2026, 11:05 AM</td>
+                  <td><span class="count-pill">16 Shares</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+      </main>
+    </div>
+    <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+

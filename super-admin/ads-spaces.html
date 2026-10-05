@@ -1,0 +1,215 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ads Spaces Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./ads-spaces.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Campaign Control</p>
+          <h1>Ads Spaces</h1>
+          <p class="subtitle">
+            Manage advertising slots across the dashboard with a polished visual preview for each ad, including image, description, and destination link.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn primary" id="createAdSlotBtn" type="button">Create Ad Slot</button>
+          <button class="action-btn ghost" id="showHistoryBtn" type="button">Show History</button>
+        </div>
+      </header>
+
+      <main class="ads-layout">
+        <section class="summary-grid">
+          <article class="metric-card">
+            <span>Active Ads</span>
+            <strong>12</strong>
+            <small>Currently visible across the app</small>
+          </article>
+          <article class="metric-card">
+            <span>Scheduled Ads</span>
+            <strong>5</strong>
+            <small>Upcoming campaign placements</small>
+          </article>
+          <article class="metric-card">
+            <span>Top Performing Slot</span>
+            <strong>Home Hero</strong>
+            <small>Highest CTR this week</small>
+          </article>
+          <article class="metric-card">
+            <span>Total Clicks</span>
+            <strong>18.4K</strong>
+            <small>Across all ad spaces</small>
+          </article>
+        </section>
+
+        <section class="ads-grid" id="adsGrid">
+          <article class="ad-card featured" data-ad-id="hero-cleaning">
+            <div class="ad-visual hero-creative">
+              <div class="creative-copy">
+                <span class="creative-badge">Home Hero Banner</span>
+                <h2>Refresh Your Home With TARWIQA</h2>
+                <p>Exclusive cleaning offers with faster arrival and premium care for high-demand users.</p>
+              </div>
+              <div class="creative-chip">Spring Campaign</div>
+            </div>
+
+            <div class="ad-content">
+              <div class="ad-head">
+                <div>
+                  <p class="eyebrow">Ad Space</p>
+                  <h3>Hero Cleaning Campaign</h3>
+                </div>
+                <span class="status-pill live">Live</span>
+              </div>
+
+              <div class="ad-meta">
+                <div>
+                  <span>Description</span>
+                  <p>Primary homepage banner promoting premium cleaning packages and direct request conversion.</p>
+                </div>
+                <div>
+                  <span>Link</span>
+                  <a href="#">tarwiqa.app/offers/cleaning-gold</a>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="mini-btn primary" type="button" data-ad-action="edit">Edit</button>
+                <button class="mini-btn" type="button" data-ad-action="pause">Pause</button>
+                <button class="mini-btn" type="button" data-ad-action="preview">Preview</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="ad-card" data-ad-id="referral-push">
+            <div class="ad-visual side-creative">
+              <div class="stacked-tag">Sidebar Slot</div>
+              <h3>Invite Friends & Save More</h3>
+              <p>Drive more app shares with a focused referral message.</p>
+            </div>
+
+            <div class="ad-content">
+              <div class="ad-head">
+                <div>
+                  <p class="eyebrow">Ad Space</p>
+                  <h3>Referral Push Banner</h3>
+                </div>
+                <span class="status-pill scheduled">Scheduled</span>
+              </div>
+
+              <div class="ad-meta">
+                <div>
+                  <span>Description</span>
+                  <p>Promotes customer referral activity and opens the shares campaign landing page.</p>
+                </div>
+                <div>
+                  <span>Link</span>
+                  <a href="#">tarwiqa.app/referrals/spring</a>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="mini-btn primary" type="button" data-ad-action="edit">Edit</button>
+                <button class="mini-btn" type="button" data-ad-action="pause">Pause</button>
+                <button class="mini-btn" type="button" data-ad-action="preview">Preview</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="ad-card" data-ad-id="gold-access">
+            <div class="ad-visual offer-creative">
+              <span class="creative-badge subtle">Offer Card</span>
+              <h3>North Star Offer</h3>
+              <p>Gold Access for high-value customers with priority booking.</p>
+            </div>
+
+            <div class="ad-content">
+              <div class="ad-head">
+                <div>
+                  <p class="eyebrow">Ad Space</p>
+                  <h3>Gold Access Promo</h3>
+                </div>
+                <span class="status-pill live">Live</span>
+              </div>
+
+              <div class="ad-meta">
+                <div>
+                  <span>Description</span>
+                  <p>Highlights the most requested premium offer inside offers and widget discovery sections.</p>
+                </div>
+                <div>
+                  <span>Link</span>
+                  <a href="#">tarwiqa.app/offers/gold-access</a>
+                </div>
+              </div>
+
+              <div class="card-actions">
+                <button class="mini-btn primary" type="button" data-ad-action="edit">Edit</button>
+                <button class="mini-btn" type="button" data-ad-action="pause">Pause</button>
+                <button class="mini-btn" type="button" data-ad-action="preview">Preview</button>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+      </main>
+    </div>
+        <div class="modal-overlay hidden" id="adsModal">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">Ads Action</p>
+            <h2 id="adsModalTitle">Action Details</h2>
+            <p class="modal-subtitle" id="adsModalSubtitle">Review the selected ad action.</p>
+          </div>
+          <button class="icon-btn" id="closeAdsModalBtn" type="button" aria-label="Close ads modal">x</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="info-panel" id="adsModalContent"></div>
+        </div>
+
+        <div class="modal-actions">
+          <button class="action-btn ghost" id="closeAdsModalFooterBtn" type="button">Close</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="toast hidden" id="adsToast" role="status" aria-live="polite">
+      <strong>Ads Updated</strong>
+      <span id="adsToastText">Action completed successfully.</span>
+    </div>
+
+    <script src="./ads-spaces.js"></script>
+    <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

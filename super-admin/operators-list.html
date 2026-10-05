@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partners List</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./operators-list.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Access Control</p>
+              <h1>Partners List</h1>
+              <p class="subtitle">
+                Track dashboard partners, their working zone, active status, managed maids, completed orders, and open a direct chat with each partner.
+              </p>
+            </div>
+            <div class="top-actions">
+              <button class="action-btn ghost" id="addPartnerBtn" type="button">Add Partner</button>
+              <button class="action-btn primary" id="exportPartnersBtn" type="button">Export Partners</button>
+            </div>
+          </header>
+
+          <section class="metrics-grid" aria-label="Partners metrics">
+            <article class="metric-card">
+              <span>Total Partners</span>
+              <strong id="totalPartners">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Active Partners</span>
+              <strong id="activePartners">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Managed Maids</span>
+              <strong id="managedMaids">0</strong>
+            </article>
+            <article class="metric-card">
+              <span>Completed Orders</span>
+              <strong id="completedOrders">0</strong>
+            </article>
+          </section>
+
+          <section class="operators-card">
+            <div class="table-toolbar">
+              <label class="search-field">
+                <span>Search</span>
+                <input id="operatorSearch" type="search" placeholder="Search by name, governorate, zone, or status" />
+              </label>
+              <label class="filter-field">
+                <span>Status</span>
+                <select id="statusFilter">
+                  <option value="all">All Statuses</option>
+                  <option value="Active">Active</option>
+                  <option value="Paused">Paused</option>
+                  <option value="Offline">Offline</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Partner Name</th>
+                    <th>Status</th>
+                    <th>Governorate</th>
+                    <th>Work Zone</th>
+                    <th>Managed Maids</th>
+                    <th>Completed Orders</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="operatorsTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-overlay hidden" id="operatorDetailsModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="operatorDetailsTitle">
+        <button class="modal-close" id="operatorDetailsClose" type="button" aria-label="Close partner details">x</button>
+        <p class="eyebrow">Partner Profile</p>
+        <h2 id="operatorDetailsTitle">Partner Details</h2>
+        <div class="operator-details-grid" id="operatorDetailsContent"></div>
+      </div>
+    </div>
+    <div class="modal-overlay hidden" id="chatModal" aria-hidden="true">
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="chatModalTitle">
+        <button class="modal-close" id="chatModalClose" type="button" aria-label="Close chat">x</button>
+        <p class="eyebrow">Partner Chat</p>
+        <h2 id="chatModalTitle">Chat</h2>
+        <div class="operator-profile" id="chatPartnerProfile"></div>
+        <div class="chat-thread" id="chatThread"></div>
+        <form class="chat-form" id="chatForm">
+          <input id="chatInput" type="text" placeholder="Write a message to this partner" />
+          <button class="action-btn primary" type="submit">Send</button>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast hidden" id="operatorsToast" role="status" aria-live="polite"></div>
+
+    <script src="./operators-list.js"></script>
+    <script src="./sidebar.js"></script>
+  </body>
+</html>
+
+
+
+

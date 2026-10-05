@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>TARWIQA Partner Login</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./partner-login.css" />
+    </head>
+    <body>
+        <main class="login-shell">
+            <section class="brand-panel" aria-label="TARWIQA partner access">
+                <div class="brand-card">
+                    <p class="eyebrow" data-i18n="partnerPortal">
+                        Partner Portal
+                    </p>
+                    <h1>TARWIQA</h1>
+                    <p>
+                        Access your assigned work zone, managed maids, accepted
+                        orders, completed jobs, and direct dashboard messages
+                        from one partner account.
+                    </p>
+                    <div
+                        class="security-pills"
+                        aria-label="Partner access features"
+                    >
+                        <span data-i18n="partnerAccount">Partner Account</span>
+                        <span data-i18n="workZoneAccess">Work Zone Access</span>
+                        <span data-i18n="ordersMaids">Orders & Maids</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="login-panel" aria-labelledby="partnerLoginTitle">
+                <form class="login-card" id="partnerLoginForm" novalidate>
+                    <button
+                        class="language-toggle"
+                        id="partnerLanguageToggleBtn"
+                        type="button"
+                    >
+                        Arabic
+                    </button>
+                    <div class="form-head">
+                        <p class="eyebrow" data-i18n="welcomePartner">
+                            Welcome Partner
+                        </p>
+                        <h2 id="partnerLoginTitle" data-i18n="partnerLogin">
+                            Partner Login
+                        </h2>
+                        <p data-i18n="loginCopy">
+                            Login to open your partner profile and daily
+                            operations.
+                        </p>
+                    </div>
+
+                    <label class="field-group" for="partnerEmail">
+                        <span data-i18n="emailAddress">Email Address</span>
+                        <input
+                            id="partnerEmail"
+                            name="partnerEmail"
+                            type="email"
+                            autocomplete="username"
+                            placeholder="partner@tarwiqa.com"
+                            required
+                        />
+                    </label>
+
+                    <label class="field-group" for="partnerPassword">
+                        <span data-i18n="password">Password</span>
+                        <div class="password-wrap">
+                            <input
+                                id="partnerPassword"
+                                name="partnerPassword"
+                                type="password"
+                                autocomplete="current-password"
+                                placeholder="Enter password"
+                                data-i18n-placeholder="enterPassword"
+                                required
+                                minlength="8"
+                            />
+                            <button
+                                class="show-password-btn"
+                                id="togglePartnerPasswordBtn"
+                                type="button"
+                            >
+                                Show
+                            </button>
+                        </div>
+                    </label>
+
+                    <label class="field-group" for="partnerGovernorate">
+                        <span data-i18n="assignedGovernorate"
+                            >Assigned Governorate</span
+                        >
+                        <select
+                            id="partnerGovernorate"
+                            name="partnerGovernorate"
+                            required
+                        >
+                            <option value="" data-i18n="selectGovernorate">
+                                Select assigned governorate
+                            </option>
+                            <option value="Cairo">Cairo</option>
+                            <option value="Giza">Giza</option>
+                            <option value="Alexandria">Alexandria</option>
+                            <option value="Qalyubia">Qalyubia</option>
+                            <option value="Dakahlia">Dakahlia</option>
+                            <option value="Sharqia">Sharqia</option>
+                        </select>
+                    </label>
+
+                    <label class="field-group" for="partnerZone">
+                        <span data-i18n="workZone">Work Zone</span>
+                        <select id="partnerZone" name="partnerZone" required>
+                            <option value="" data-i18n="selectWorkZone">
+                                Select assigned work zone
+                            </option>
+                            <option value="New Cairo">New Cairo</option>
+                            <option value="Nasr City">Nasr City</option>
+                            <option value="Maadi">Maadi</option>
+                            <option value="Heliopolis">Heliopolis</option>
+                            <option value="6th October">6th October</option>
+                        </select>
+                    </label>
+
+                    <div class="form-row">
+                        <label class="remember-check">
+                            <input id="rememberPartner" type="checkbox" />
+                            <span data-i18n="rememberMe">Remember me</span>
+                        </label>
+                        <a
+                            href="mailto:partners@tarwiqa.com"
+                            data-i18n="needAccess"
+                            >Need partner access?</a
+                        >
+                    </div>
+
+                    <div
+                        class="field-group two-factor-panel hidden"
+                        id="partnerTwoFactorPanel"
+                    >
+                        <label for="partnerOtp"
+                            >Two-Factor Verification Code</label
+                        >
+                        <input
+                            id="partnerOtp"
+                            type="text"
+                            inputmode="numeric"
+                            maxlength="6"
+                            placeholder="6-digit code"
+                        />
+                        <small id="partnerOtpHint"></small>
+                    </div>
+
+                    <p
+                        class="form-message"
+                        id="partnerLoginMessage"
+                        aria-live="polite"
+                    ></p>
+
+                    <button
+                        class="login-btn"
+                        id="partnerLoginSubmitBtn"
+                        type="submit"
+                    >
+                        <span data-i18n="loginButton"
+                            >Login To Partner Profile</span
+                        >
+                    </button>
+                </form>
+            </section>
+        </main>
+
+        <script src="./partner-login.js"></script>
+    </body>
+</html>

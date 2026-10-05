@@ -1,0 +1,382 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add User</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./add-user.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Customer Intelligence</p>
+          <h1>Add User</h1>
+          <p class="subtitle">
+            Create a new customer profile with identity details, access controls, wallet setup, and onboarding
+            defaults.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn ghost" type="button" id="resetFormBtn">Reset</button>
+          <button class="action-btn warning" type="button">Save Draft</button>
+          <button class="action-btn primary" type="button">Create User</button>
+        </div>
+      </header>
+
+      <main class="profile-layout">
+        <section class="hero-card">
+          <div class="hero-main">
+            <div class="identity-block">
+              <div class="avatar" id="avatarPreview">NU</div>
+              <div>
+                <div class="status-row">
+                  <span class="pill online">New Profile</span>
+                  <span class="pill subtle">Pending Activation</span>
+                </div>
+                <h2 id="userDisplayName">New User</h2>
+                <p class="hero-meta">
+                  <span id="cityPreview">Cairo, Egypt</span>
+                  <span class="dot"></span>
+                  <span id="typePreview">Retail Customer</span>
+                  <span class="dot"></span>
+                  <span id="platformPreview">Mobile App</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="hero-stats">
+              <article class="stat-card">
+                <span>Profile Completion</span>
+                <strong id="completionScore">38%</strong>
+                <small>Required identity fields still missing</small>
+              </article>
+              <article class="stat-card">
+                <span>Starting Wallet</span>
+                <strong id="walletPreview">EGP 0.00</strong>
+                <small>Can be edited before creation</small>
+              </article>
+              <article class="stat-card">
+                <span>Access State</span>
+                <strong id="statusPreview">Enabled</strong>
+                <small>Default rules are currently open</small>
+              </article>
+            </div>
+          </div>
+
+          <aside class="side-panel">
+            <div class="panel-header">
+              <p>Account Setup</p>
+              <span>Pre-launch controls</span>
+            </div>
+
+            <div class="state-grid">
+              <label class="select-field">
+                <span>Active</span>
+                <select id="activeState">
+                  <option selected>Enabled</option>
+                  <option>Disabled</option>
+                </select>
+              </label>
+
+              <label class="select-field">
+                <span>Verification</span>
+                <select>
+                  <option selected>Pending Verification</option>
+                  <option>Verified</option>
+                  <option>Manual Review</option>
+                </select>
+              </label>
+
+              <label class="select-field">
+                <span>Restricted</span>
+                <select>
+                  <option selected>Open Access</option>
+                  <option>Orders Only</option>
+                  <option>Wallet Blocked</option>
+                  <option>Messaging Blocked</option>
+                </select>
+              </label>
+
+              <div class="permission-field">
+                <div class="permission-copy">
+                  <span>Screenshot Permission</span>
+                  <small>Choose whether the new account can capture screenshots inside the application.</small>
+                </div>
+                <button
+                  class="permission-toggle allowed"
+                  id="screenshotPermissionToggle"
+                  type="button"
+                  aria-pressed="true"
+                >
+                  Screenshot Allowed
+                </button>
+              </div>
+            </div>
+
+            <div class="quick-links">
+              <button class="mini-link active" data-tab-target="orders-tab" type="button">Order Defaults</button>
+              <button class="mini-link" data-tab-target="wallet-tab" type="button">Wallet Setup</button>
+              <button class="mini-link" data-tab-target="logs-tab" type="button">Activity Rules</button>
+            </div>
+          </aside>
+        </section>
+
+        <section class="details-card">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Profile Details</p>
+              <h3>Identity & Contact Information</h3>
+            </div>
+            <button class="save-btn" type="button">Create Profile</button>
+          </div>
+
+          <form class="details-grid" id="addUserForm">
+            <label class="field readonly">
+              <span>ID Preview</span>
+              <input type="text" value="#USR-NEXT-1042" readonly />
+            </label>
+
+            <label class="field readonly">
+              <span>Created Date</span>
+              <input type="text" value="23 Apr 2026 02:00 PM" readonly />
+            </label>
+
+            <label class="field">
+              <span>Name</span>
+              <input id="nameInput" type="text" value="" placeholder="Enter full name" />
+            </label>
+
+            <label class="field">
+              <span>Phone</span>
+              <input type="text" data-required="true" placeholder="+20 10x xxx xxxx" />
+            </label>
+
+            <label class="field">
+              <span>Additional Number</span>
+              <input type="text" placeholder="+20 12x xxx xxxx" />
+            </label>
+
+            <label class="field">
+              <span>Email</span>
+              <input type="email" data-required="true" placeholder="name@example.com" />
+            </label>
+
+            <label class="field">
+              <span>Type</span>
+              <select id="typeInput">
+                <option selected>Retail Customer</option>
+                <option>Wholesale Customer</option>
+                <option>Corporate Account</option>
+                <option>Partner Account</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>Platform</span>
+              <select id="platformInput">
+                <option selected>Mobile App</option>
+                <option>Website</option>
+                <option>Call Center</option>
+                <option>Sales Agent</option>
+              </select>
+            </label>
+
+            <label class="field">
+              <span>City</span>
+              <input id="cityInput" type="text" data-required="true" value="Cairo" />
+            </label>
+
+            <label class="field wide">
+              <span>Address</span>
+              <input type="text" placeholder="Street, district, city, country" />
+            </label>
+
+            <label class="field">
+              <span>Wallet</span>
+              <input id="walletInput" type="text" value="EGP 0.00" />
+            </label>
+
+            <label class="field">
+              <span>National ID</span>
+              <input type="text" data-required="true" placeholder="14-digit ID" />
+            </label>
+
+            <label class="field wide">
+              <span>Notes</span>
+              <input type="text" placeholder="Internal onboarding notes for support and operations" />
+            </label>
+          </form>
+        </section>
+
+        <section class="tabs-card">
+          <div class="tabs-header">
+            <button class="tab-btn active" data-tab="orders-tab" type="button">Order Defaults</button>
+            <button class="tab-btn" data-tab="wallet-tab" type="button">Wallet Setup</button>
+            <button class="tab-btn" data-tab="logs-tab" type="button">Activity Rules</button>
+            <button class="tab-btn" data-tab="messages-tab" type="button">Welcome Message</button>
+          </div>
+
+          <div class="tab-panel active" id="orders-tab">
+            <div class="panel-topline">
+              <div>
+                <p class="eyebrow">Order Defaults</p>
+                <h3>Initial commerce settings</h3>
+              </div>
+              <button class="inline-btn" type="button">Apply Template</button>
+            </div>
+
+            <div class="table-shell">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Policy</th>
+                    <th>Default</th>
+                    <th>Scope</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Cash on Delivery</td>
+                    <td>Allowed</td>
+                    <td>All orders</td>
+                    <td><span class="badge green">Ready</span></td>
+                  </tr>
+                  <tr>
+                    <td>Order Limit</td>
+                    <td>EGP 7,500</td>
+                    <td>Per order</td>
+                    <td><span class="badge blue">Default</span></td>
+                  </tr>
+                  <tr>
+                    <td>Manual Review</td>
+                    <td>Above EGP 5,000</td>
+                    <td>Risk policy</td>
+                    <td><span class="badge amber">Conditional</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="wallet-tab">
+            <div class="panel-topline">
+              <div>
+                <p class="eyebrow">Wallet Setup</p>
+                <h3>Balance and payment readiness</h3>
+              </div>
+              <button class="inline-btn" type="button">Set Funding Rule</button>
+            </div>
+
+            <div class="timeline">
+              <article class="timeline-item">
+                <span class="timeline-dot success"></span>
+                <div>
+                  <strong>Wallet initialized</strong>
+                  <p>Starting balance is prepared and ready for first transaction.</p>
+                </div>
+                <time>Instant</time>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-dot neutral"></span>
+                <div>
+                  <strong>KYC payment checks</strong>
+                  <p>Run verification before enabling card top-up and wallet transfer features.</p>
+                </div>
+                <time>After creation</time>
+              </article>
+              <article class="timeline-item">
+                <span class="timeline-dot alert"></span>
+                <div>
+                  <strong>Limit review</strong>
+                  <p>Escalate if the opening wallet amount exceeds the standard onboarding threshold.</p>
+                </div>
+                <time>Conditional</time>
+              </article>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="logs-tab">
+            <div class="panel-topline">
+              <div>
+                <p class="eyebrow">Activity Rules</p>
+                <h3>Operational logging and visibility</h3>
+              </div>
+              <button class="inline-btn" type="button">Edit Rules</button>
+            </div>
+
+            <div class="log-list">
+              <article class="log-item">
+                <strong>Sign-in logging enabled</strong>
+                <p>Every session, IP change, and device switch will be recorded from the first login.</p>
+                <span>Security baseline</span>
+              </article>
+              <article class="log-item">
+                <strong>Message audit active</strong>
+                <p>Outbound and inbound support interactions remain visible for admins and QA.</p>
+                <span>Support operations</span>
+              </article>
+              <article class="log-item">
+                <strong>Flag on unusual wallet activity</strong>
+                <p>Large balance movement in the first 24 hours will trigger manual review.</p>
+                <span>Risk policy</span>
+              </article>
+            </div>
+          </div>
+
+          <div class="tab-panel" id="messages-tab">
+            <div class="panel-topline">
+              <div>
+                <p class="eyebrow">Welcome Message</p>
+                <h3>Launch communication preview</h3>
+              </div>
+              <button class="inline-btn" type="button">Send Test</button>
+            </div>
+
+            <div class="message-stack">
+              <article class="message-item outgoing">
+                <div class="message-head">
+                  <strong>Activation SMS</strong>
+                  <span>Auto-send on create</span>
+                </div>
+                <p>Hello <span id="messageNamePreview">there</span>, your account has been created successfully.</p>
+              </article>
+              <article class="message-item incoming">
+                <div class="message-head">
+                  <strong>Support Follow-up</strong>
+                  <span>Optional</span>
+                </div>
+                <p>Operations team can reach out if verification or onboarding support is still required.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+      </main>
+    </div>
+    <script src="./add-user.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+

@@ -1,0 +1,240 @@
+﻿<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Supporter Profile</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./supporter-sidebar.css" />
+        <link rel="stylesheet" href="./supporters.css" />
+        <link rel="stylesheet" href="./supporter-profile.css" />
+    </head>
+    <body>
+        <main class="workspace-shell">
+            <aside
+                class="supporter-sidebar"
+                data-supporter-sidebar
+                data-active-section="profile"
+            ></aside>
+            <section class="workspace-content">
+                <div class="page-shell">
+                    <header class="topbar">
+                        <div>
+                            <p class="eyebrow">Website Support Team</p>
+                            <h1 id="profileTitle">Supporter Profile</h1>
+                            <p class="subtitle" id="profileSubtitle">
+                                Complete account, governorate scope, and
+                                permissions.
+                            </p>
+                        </div>
+                        <div class="top-actions">
+                            <a
+                                class="action-btn ghost"
+                                href="./supporter-dashboard.html"
+                                >Back To Workspace</a
+                            >
+                        </div>
+                    </header>
+
+                    <section class="supporter-hero">
+                        <div class="profile-identity">
+                            <div class="profile-avatar" id="profileAvatar">
+                                SU
+                            </div>
+                            <div>
+                                <div class="profile-title-row">
+                                    <h2 id="profileName">Supporter Name</h2>
+                                    <span class="status-pill" id="profileStatus"
+                                        >Active</span
+                                    >
+                                </div>
+                                <p id="profileMeta">SUP-0000 / username</p>
+                            </div>
+                        </div>
+                        <div class="profile-metrics">
+                            <article>
+                                <span>Role</span
+                                ><strong id="roleMetric">Viewer</strong>
+                            </article>
+                            <article>
+                                <span>Governorates</span
+                                ><strong id="governoratesMetric">0</strong>
+                            </article>
+                            <article>
+                                <span>Scoped Orders</span
+                                ><strong id="ordersMetric">0</strong>
+                            </article>
+                            <article>
+                                <span>Scoped Partners</span
+                                ><strong id="partnersMetric">0</strong>
+                            </article>
+                        </div>
+                    </section>
+
+                    <section class="live-activity-card">
+                        <div class="section-head">
+                            <div>
+                                <p class="eyebrow">Live Activity</p>
+                                <h2>Current Session & Attendance</h2>
+                            </div>
+                            <span class="live-state" id="liveState"
+                                ><i></i
+                                ><b id="liveStateText">Checking...</b></span
+                            >
+                        </div>
+                        <div class="activity-metrics">
+                            <article>
+                                <span>Dashboard Status</span
+                                ><strong id="dashboardStatusMetric">-</strong>
+                            </article>
+                            <article>
+                                <span>Last Seen</span
+                                ><strong id="lastSeenMetric">-</strong>
+                            </article>
+                            <article>
+                                <span>Hours Worked Today</span
+                                ><strong id="hoursTodayMetric">0h</strong>
+                            </article>
+                            <article>
+                                <span>Working Days This Month</span
+                                ><strong id="daysMonthMetric">0 days</strong>
+                            </article>
+                        </div>
+                    </section>
+                    <div class="profile-layout">
+                        <section class="profile-panel">
+                            <div class="section-head">
+                                <div>
+                                    <p class="eyebrow">Account</p>
+                                    <h2>Supporter Information</h2>
+                                </div>
+                            </div>
+                            <div
+                                class="profile-details"
+                                id="supporterAccountDetails"
+                            ></div>
+                        </section>
+                        <section class="profile-panel">
+                            <div class="section-head">
+                                <div>
+                                    <p class="eyebrow">Security</p>
+                                    <h2>Password & Access</h2>
+                                </div>
+                            </div>
+                            <div class="security-box">
+                                <label class="field"
+                                    ><span>Saved Password</span>
+                                    <div class="password-field">
+                                        <input
+                                            id="profilePassword"
+                                            type="password"
+                                            readonly
+                                            aria-readonly="true"
+                                            autocomplete="off"
+                                        /><button
+                                            class="password-toggle-btn"
+                                            id="toggleProfilePassword"
+                                            type="button"
+                                            aria-pressed="false"
+                                        >
+                                            Show
+                                        </button>
+                                    </div></label
+                                >
+                                <div
+                                    class="access-summary"
+                                    id="accessSummary"
+                                ></div>
+                            </div>
+                        </section>
+                    </div>
+
+                    <section class="profile-panel section-spacing">
+                        <div class="section-head">
+                            <div>
+                                <p class="eyebrow">Governorate Scope</p>
+                                <h2>Accessible Orders & Partners</h2>
+                            </div>
+                        </div>
+                        <div class="scope-table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Governorate</th>
+                                        <th>Orders</th>
+                                        <th>Partners</th>
+                                        <th>Orders Access</th>
+                                        <th>Partners Access</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="governorateScopeTable"></tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="profile-panel section-spacing">
+                        <div class="section-head">
+                            <div>
+                                <p class="eyebrow">Detailed Permissions</p>
+                                <h2>View & Edit Access</h2>
+                            </div>
+                            <div class="permission-counts">
+                                <b
+                                    ><span id="viewPermissionMetric">0</span>
+                                    View</b
+                                ><b
+                                    ><span id="editPermissionMetric">0</span>
+                                    Edit</b
+                                >
+                            </div>
+                        </div>
+                        <div
+                            class="profile-permissions"
+                            id="profilePermissions"
+                        ></div>
+                    </section>
+                    <section class="profile-panel section-spacing">
+                        <div class="section-head">
+                            <div>
+                                <p class="eyebrow">Action History</p>
+                                <h2>Supporter Activity Log</h2>
+                                <p class="section-note">
+                                    Every recorded dashboard action for this
+                                    supporter.
+                                </p>
+                            </div>
+                            <label class="history-search"
+                                ><span>Search History</span
+                                ><input
+                                    id="historySearch"
+                                    type="search"
+                                    placeholder="Search action, module, or details"
+                            /></label>
+                        </div>
+                        <div class="history-table-wrap">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Date & Time</th>
+                                        <th>Action</th>
+                                        <th>Module</th>
+                                        <th>Details</th>
+                                        <th>Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="actionHistoryTable"></tbody>
+                            </table>
+                        </div>
+                    </section>
+                </div>
+            </section>
+        </main>
+        <script src="./supporter-sidebar.js"></script>
+        <script src="./supporter-profile.js"></script>
+    </body>
+</html>

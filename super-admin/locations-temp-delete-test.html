@@ -1,0 +1,4 @@
+<!doctype html><meta charset="utf-8"><div id="result">RUNNING</div><iframe id="app" src="locations-management.html"></iframe><script>
+const out=document.getElementById('result'), frame=document.getElementById('app');
+frame.onload=()=>setTimeout(()=>{try{const d=frame.contentDocument; const first=d.querySelector('[data-area-action="delete"]'); const area=first.dataset.area; first.click(); setTimeout(()=>{const restore=d.querySelector(`[data-area="${area}"][data-area-action="restore"]`); const options=[...d.querySelectorAll('#appLocationSelect option')].map(o=>o.textContent); const stored=JSON.parse(frame.contentWindow.localStorage.getItem('temporarilyDeletedAreas')||'{}'); const ok=!!restore&&!options.includes(area)&&(stored.Cairo||[]).includes(area); out.textContent=ok?'PASS: temporary delete, app exclusion, persistence, and restore are working.':'FAIL'; restore?.click();},250);}catch(e){out.textContent='FAIL: '+e.message;}},900);
+</script>

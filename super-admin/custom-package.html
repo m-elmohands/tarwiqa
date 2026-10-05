@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Custom Package Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./custom-package.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Package Builder</p>
+            <h2>Custom Package Management</h2>
+            <p class="subtitle">
+              Configure custom packages for each governorate with fixed governorate selection, widget and category dropdowns, custom services, and X/C/Y values in one operations workspace.
+            </p>
+          </div>
+
+          <div class="top-actions">
+            <button class="action-btn primary" type="button">Save Packages</button>
+            <button class="action-btn ghost" type="button">Export Setup</button>
+          </div>
+        </header>
+
+        <section class="hero-banner">
+          <div>
+            <p class="eyebrow">Operations Flow</p>
+            <h3>Six Governorate Custom Packages</h3>
+            <p>
+              Build and review custom package content for Alexandria, North Coast, Beheira, Cairo, New Cairo, and Giza. Each package card keeps the governorate read only and lets the admin control widget, category, services, and values.
+            </p>
+          </div>
+
+          <div class="hero-tags">
+            <span class="hero-tag success">6 Active Packages</span>
+            <span class="hero-tag">Read Only Governorates</span>
+            <span class="hero-tag">Editable Services + X / C / Y</span>
+          </div>
+        </section>
+
+        <section class="summary-grid">
+          <article class="summary-card">
+            <span>Total Packages</span>
+            <strong>6</strong>
+            <small>Governorate-specific setups</small>
+          </article>
+          <article class="summary-card">
+            <span>Widget Sources</span>
+            <strong>Dropdown</strong>
+            <small>Controlled widget mapping</small>
+          </article>
+          <article class="summary-card">
+            <span>Category Source</span>
+            <strong>Dropdown</strong>
+            <small>Package category assignment</small>
+          </article>
+          <article class="summary-card">
+            <span>Service Control</span>
+            <strong>Custom</strong>
+            <small>Add new services under each table</small>
+          </article>
+        </section>
+
+        <section class="packages-grid" id="packagesGrid"></section>
+      </main>
+    </div>
+    <script src="./custom-package.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

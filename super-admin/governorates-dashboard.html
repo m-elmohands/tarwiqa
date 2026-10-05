@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Governorates Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./governorates-dashboard.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Operational Architecture</p>
+          <h1>Governorates Dashboard</h1>
+          <p class="subtitle">
+            The core application layer for organizing governorates, widgets, categories, and packages in one scalable interface.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn primary" data-create-entity="governorate" type="button">Add Governorate</button>
+          <button class="action-btn ghost" type="button">Sync Structure</button>
+        </div>
+      </header>
+
+      <main class="dashboard-layout">
+        <section class="summary-grid">
+          <article class="metric-card">
+            <span>Total Governorates</span>
+            <strong>27</strong>
+            <small>4 currently highlighted for rollout</small>
+          </article>
+          <article class="metric-card">
+            <span>Active Widgets</span>
+            <strong>132</strong>
+            <small>Across all governorates</small>
+          </article>
+          <article class="metric-card">
+            <span>Categories</span>
+            <strong>418</strong>
+            <small>Distributed by widget type</small>
+          </article>
+          <article class="metric-card">
+            <span>Packages</span>
+            <strong>1,946</strong>
+            <small>Eligible for assignment</small>
+          </article>
+        </section>
+
+        <section class="hero-card">
+          <div class="hero-content">
+            <p class="eyebrow">Selected Governorate</p>
+            <div class="hero-row">
+              <div>
+                <h2 id="governorateName">Cairo</h2>
+                <p class="hero-meta">
+                  High density market
+                  <span class="dot"></span>
+                  42 widgets live
+                  <span class="dot"></span>
+                  Last sync 22 Apr 2026
+                </p>
+              </div>
+
+              <div class="hero-pills">
+                <span class="pill success">Operational</span>
+                <span class="pill subtle">Coverage 96%</span>
+              </div>
+            </div>
+
+            <div class="hero-actions">
+              <button class="inline-btn" data-create-entity="widget" type="button">Create Widget</button>
+              <button class="inline-btn secondary" data-create-entity="category" type="button">Create Category</button>
+              <button class="inline-btn secondary" data-create-entity="package" type="button">Create Package</button>
+            </div>
+          </div>
+
+          <aside class="hero-aside">
+            <div class="mini-stat">
+              <span>Widgets in Cairo</span>
+              <strong id="widgetCount">3</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Categories in Focus</span>
+              <strong id="categoryCount">4</strong>
+            </div>
+            <div class="mini-stat">
+              <span>Packages in Focus</span>
+              <strong id="packageCount">3</strong>
+            </div>
+          </aside>
+        </section>
+
+        <section class="workspace-grid">
+          <article class="panel-card">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Governorates</p>
+                <h3>Application Regions</h3>
+              </div>
+              <button class="small-btn" data-create-entity="governorate" type="button">New</button>
+            </div>
+            <div class="stack-list" id="governorateList"></div>
+          </article>
+
+          <article class="panel-card">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Widgets</p>
+                <h3>Functional Modules</h3>
+              </div>
+              <button class="small-btn" data-create-entity="widget" type="button">Add Widget</button>
+            </div>
+            <div class="stack-list" id="widgetList"></div>
+          </article>
+
+          <article class="panel-card">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Categories</p>
+                <h3>Widget Categories</h3>
+              </div>
+              <button class="small-btn" data-create-entity="category" type="button">Add Category</button>
+            </div>
+            <div class="stack-list" id="categoryList"></div>
+          </article>
+        </section>
+
+        <section class="bottom-grid">
+          <article class="packages-card">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Packages</p>
+                <h3 id="packagesTitle">Packages under Quick Services</h3>
+              </div>
+              <button class="small-btn" data-create-entity="package" type="button">Add Package</button>
+            </div>
+
+            <div class="packages-grid" id="packageGrid"></div>
+          </article>
+
+          <article class="structure-card">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Structure Preview</p>
+                <h3>Current Hierarchy</h3>
+              </div>
+            </div>
+
+            <div class="structure-tree" id="structureTree"></div>
+          </article>
+        </section>
+      </main>
+
+      <div class="modal-backdrop hidden" id="creationModal">
+        <div class="creation-modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+          <div class="modal-head">
+            <div>
+              <p class="eyebrow" id="modalEyebrow">Create</p>
+              <h3 id="modalTitle">Create Entity</h3>
+              <p class="modal-subtitle" id="modalSubtitle"></p>
+            </div>
+            <button class="close-btn" id="closeModalBtn" type="button" aria-label="Close">
+              Close
+            </button>
+          </div>
+
+          <div class="modal-grid">
+            <div class="modal-form-panel">
+              <div class="form-grid" id="modalFields"></div>
+            </div>
+
+            <aside class="modal-context-panel">
+              <div class="context-card">
+                <span class="context-label">Placement Context</span>
+                <strong id="contextChain"></strong>
+                <p id="contextHint"></p>
+              </div>
+
+              <div class="context-card">
+                <span class="context-label">Creation Goals</span>
+                <ul class="goal-list" id="goalList"></ul>
+              </div>
+            </aside>
+          </div>
+
+          <div class="modal-footer">
+            <button class="footer-btn ghost" id="cancelModalBtn" type="button">Cancel</button>
+            <button class="footer-btn primary" id="submitModalBtn" type="button">Create</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      </main>
+    </div>
+    <script src="./governorates-dashboard.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+

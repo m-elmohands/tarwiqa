@@ -1,0 +1,22 @@
+<!doctype html><meta charset="utf-8"><div id="result">RUNNING</div><iframe id="app" src="under-review-orders.html"></iframe><script>
+const out=document.getElementById('result'), frame=document.getElementById('app');
+frame.onload=()=>setTimeout(()=>{
+ try {
+  const d=frame.contentDocument;
+  d.querySelector('[data-action="view"]').click();
+  setTimeout(()=>{
+   const form=d.querySelector('#editOrderForm');
+   const fields=[...form.querySelectorAll('input, select')];
+   const save=form.querySelector('button[type="submit"]');
+   const viewOk=fields.every(x=>x.disabled)&&save.style.display==='none';
+   d.querySelector('#cancelEditBtn').click();
+   d.querySelector('[data-action="edit"]').click();
+   setTimeout(()=>{
+    const editable=[...form.querySelectorAll('input:not([readonly]), select')];
+    const editOk=editable.every(x=>!x.disabled)&&save.style.display!=='none';
+    out.textContent=(viewOk&&editOk)?'PASS: View is read-only; Edit remains editable.':'FAIL: view='+viewOk+', edit='+editOk;
+   },200);
+  },200);
+ } catch(e){ out.textContent='FAIL: '+e.message; }
+},800);
+</script>

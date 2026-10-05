@@ -1,0 +1,249 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Logs Inquiries</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./logs-inquiries.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Behavior Tracking</p>
+          <h1>Logs Inquiries</h1>
+          <p class="subtitle">
+            Session-level activity log for customers who entered the app, viewed offers, or submitted requests, with a full path showing the governorate, widget, category, and exact offer they reached.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn primary" type="button">Export Sessions</button>
+          <button class="action-btn ghost" id="openFunnelBtn" type="button">Open Funnel View</button>
+        </div>
+      </header>
+
+      <main class="logs-layout">
+        <section class="summary-grid">
+          <article class="metric-card">
+            <span>Total Sessions</span>
+            <strong>2,148</strong>
+            <small>Tracked during the current period</small>
+          </article>
+          <article class="metric-card">
+            <span>Viewed Only</span>
+            <strong>612</strong>
+            <small>Browsed offers without placing requests</small>
+          </article>
+          <article class="metric-card">
+            <span>Converted Requests</span>
+            <strong>1,536</strong>
+            <small>Sessions that ended with a request</small>
+          </article>
+          <article class="metric-card">
+            <span>Top Exit Category</span>
+            <strong>Quick Services</strong>
+            <small>Most viewed without request completion</small>
+          </article>
+        </section>
+
+        <section class="logs-card">
+          <div class="card-head">
+            <div>
+              <p class="eyebrow">Session Records</p>
+              <h2>Customer Inquiry Logs</h2>
+            </div>
+            <div class="table-note">Showing the exact navigation path each customer followed</div>
+          </div>
+
+          <div class="search-toolbar">
+            <label class="search-field">
+              <span>Search By User ID</span>
+              <input id="userIdSearchInput" type="text" placeholder="Example: #USR-102938" />
+            </label>
+
+            <label class="search-field">
+              <span>Search By Session Date</span>
+              <input id="sessionDateSearchInput" type="date" />
+            </label>
+
+            <button class="clear-search-btn" id="clearSearchBtn" type="button">Clear Filters</button>
+          </div>
+
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>User ID</th>
+                  <th>Session Date</th>
+                  <th>Session Time</th>
+                  <th>Governorate</th>
+                  <th>Widget</th>
+                  <th>Category</th>
+                  <th>Offer</th>
+                  <th>Session Result</th>
+                </tr>
+              </thead>
+              <tbody id="logsTableBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <div class="funnel-overlay hidden" id="funnelOverlay">
+        <section class="funnel-panel" role="dialog" aria-modal="true" aria-labelledby="funnelTitle">
+          <div class="funnel-head">
+            <div>
+              <p class="eyebrow">Conversion Journey</p>
+              <h2 id="funnelTitle">Inquiry Funnel View</h2>
+              <p class="funnel-subtitle">
+                A visual breakdown of how customers move from entering the app to viewing offers, showing intent, and finally submitting a request.
+              </p>
+            </div>
+            <button class="close-btn" id="closeFunnelBtn" type="button">Close</button>
+          </div>
+
+          <div class="funnel-grid">
+            <article class="funnel-stage">
+              <span>Stage 1</span>
+              <strong>App Session Started</strong>
+              <div class="stage-metric">2,148</div>
+              <p>All tracked customer sessions that reached the discovery layer inside the app.</p>
+            </article>
+
+            <article class="funnel-stage">
+              <span>Stage 2</span>
+              <strong>Offer Viewed</strong>
+              <div class="stage-metric">1,964</div>
+              <p>Customers who opened an offer under a specific governorate, widget, and category path.</p>
+            </article>
+
+            <article class="funnel-stage">
+              <span>Stage 3</span>
+              <strong>Intent Shown</strong>
+              <div class="stage-metric">1,702</div>
+              <p>Customers who explored deeper, checked details, or interacted with package information.</p>
+            </article>
+
+            <article class="funnel-stage highlight">
+              <span>Stage 4</span>
+              <strong>Request Submitted</strong>
+              <div class="stage-metric">1,536</div>
+              <p>The converting group that finished the journey with a real request.</p>
+            </article>
+
+            <article class="insight-card wide">
+              <div class="panel-top">
+                <h3>Drop-off Analysis</h3>
+                <small>Where sessions are leaking most</small>
+              </div>
+              <div class="drop-list">
+                <div class="drop-row">
+                  <span>Session -> Offer View</span>
+                  <div class="bar-track"><div class="bar-fill fill-a"></div></div>
+                  <strong>184 lost</strong>
+                </div>
+                <div class="drop-row">
+                  <span>Offer View -> Intent</span>
+                  <div class="bar-track warning"><div class="bar-fill fill-b"></div></div>
+                  <strong>262 lost</strong>
+                </div>
+                <div class="drop-row">
+                  <span>Intent -> Request</span>
+                  <div class="bar-track danger"><div class="bar-fill fill-c"></div></div>
+                  <strong>166 lost</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="insight-card">
+              <div class="panel-top">
+                <h3>Top Exit Paths</h3>
+                <small>Highest viewed-only flows</small>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item">
+                  <strong>Cairo -> Services Hub -> Quick Services -> Priority Pack</strong>
+                  <p>Strong traffic with hesitation after price and detail review.</p>
+                </div>
+                <div class="stack-item">
+                  <strong>Alexandria -> City Services -> Port Services -> Port Basic</strong>
+                  <p>Viewed repeatedly but no request in the same session.</p>
+                </div>
+                <div class="stack-item">
+                  <strong>Cairo -> Commerce Layer -> Marketplace -> Merchant Basic</strong>
+                  <p>Comparison behavior is high, but conversion confidence is low.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="insight-card">
+              <div class="panel-top">
+                <h3>Best Converting Areas</h3>
+                <small>Highest request completion</small>
+              </div>
+              <div class="stack-list">
+                <div class="stack-item good">
+                  <strong>Giza -> Discovery Module -> Onboarding</strong>
+                  <p>Shorter path and clearer value lead to better request completion.</p>
+                </div>
+                <div class="stack-item good">
+                  <strong>Cairo -> Services Hub -> Special Services</strong>
+                  <p>Lower traffic than Quick Services, but stronger completion quality.</p>
+                </div>
+              </div>
+            </article>
+
+            <article class="insight-card wide">
+              <div class="panel-top">
+                <h3>Recommended Actions</h3>
+                <small>Built from the current funnel behavior</small>
+              </div>
+              <div class="action-lanes">
+                <div class="lane-card">
+                  <span>Product</span>
+                  <strong>Simplify the move from offer detail to request form</strong>
+                  <p>The biggest drop-off happens after interest is already formed, which usually signals friction in the next step.</p>
+                </div>
+                <div class="lane-card">
+                  <span>Growth</span>
+                  <strong>Retarget viewed-only sessions in Quick Services</strong>
+                  <p>These sessions are warm and can be recovered with follow-up messaging or reminders.</p>
+                </div>
+                <div class="lane-card">
+                  <span>Operations</span>
+                  <strong>Audit high-traffic offers with weak conversion</strong>
+                  <p>Some offers attract attention but lose users before request submission, which suggests trust or clarity issues.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+      </div>
+    </div>
+      </main>
+    </div>
+    <script src="./logs-inquiries.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+

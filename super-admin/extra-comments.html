@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extra Comments</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./extra-comments.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Internal Order Notes</p>
+          <h1>Extra</h1>
+          <p class="subtitle">
+            Create lightweight internal comments for orders. These notes are visible only inside the dashboard, while the order itself shows only the short two-word note.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn primary" id="createExtraBtn" type="button">Create Extra</button>
+          <button class="action-btn ghost" id="exportExtrasBtn" type="button">Export Extras</button>
+        </div>
+      </header>
+
+      <main class="extra-layout">
+        <section class="summary-grid">
+          <article class="metric-card">
+            <span>Total Extras</span>
+            <strong>186</strong>
+            <small>Internal order comments created</small>
+          </article>
+          <article class="metric-card">
+            <span>Created Today</span>
+            <strong>14</strong>
+            <small>Added during current shift</small>
+          </article>
+          <article class="metric-card">
+            <span>Top Reason</span>
+            <strong>Arrival Issue</strong>
+            <small>Most common internal explanation</small>
+          </article>
+          <article class="metric-card">
+            <span>Used In Confirmations</span>
+            <strong>71%</strong>
+            <small>Of recent accepted orders</small>
+          </article>
+        </section>
+
+        <section class="creation-grid">
+          <article class="form-card" id="extraFormCard">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Create Note</p>
+                <h2>New Extra Comment</h2>
+              </div>
+            </div>
+
+            <div class="form-grid">
+              <label class="field">
+                <span>Extra ID</span>
+                <input id="extraIdInput" type="text" value="#EXT-2048" readonly />
+              </label>
+
+              <label class="field">
+                <span>Created Date</span>
+                <input id="extraCreatedDateInput" type="text" value="23 Apr 2026, 02:15 PM" readonly />
+              </label>
+
+              <label class="field wide">
+                <span>Created For Why</span>
+                <input id="extraReasonInput" type="text" value="Technician arrival clarification before confirming order" />
+              </label>
+
+              <label class="field wide">
+                <span>Internal Description</span>
+                <textarea id="extraDescriptionInput">This order needs a small internal note for the operations team because the confirmation was delayed due to arrival timing.</textarea>
+              </label>
+
+              <label class="field">
+                <span>Order Visible Short Note</span>
+                <input id="shortNoteInput" type="text" maxlength="24" value="Late arrival" />
+              </label>
+
+              <div class="field preview-field">
+                <span>What Appears On Order</span>
+                <div class="order-preview">
+                  <span class="preview-pill" id="orderPreviewPill">Late arrival</span>
+                </div>
+              </div>
+            </div>
+                      <div class="form-actions">
+              <button class="save-extra-btn" id="saveExtraBtn" type="button">Save Extra</button>
+              <button class="reset-extra-btn" id="resetExtraBtn" type="button">Reset</button>
+            </div>
+          </article>
+
+          <article class="guide-card">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Usage Rule</p>
+                <h2>How Extra Works</h2>
+              </div>
+            </div>
+
+            <div class="guide-list">
+              <div class="guide-item">
+                <strong>ID</strong>
+                <p>Every extra has a dedicated internal identifier for dashboard tracking.</p>
+              </div>
+              <div class="guide-item">
+                <strong>Created Date</strong>
+                <p>The system keeps the creation time for audit and workflow follow-up.</p>
+              </div>
+              <div class="guide-item">
+                <strong>Created For Why</strong>
+                <p>This explains why the note was added while confirming or reviewing the order.</p>
+              </div>
+              <div class="guide-item">
+                <strong>Visible On Order</strong>
+                <p>Only the short two-word style note is shown with the order inside the dashboard.</p>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <section class="table-card">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">History</p>
+              <h2>Available Extras List</h2>
+            </div>
+            <div class="table-note">Manage active extras and temporarily remove them from order selection</div>
+          </div>
+
+          <div class="table-shell">
+            <table>
+              <thead>
+                <tr>
+                  <th>Extra ID</th>
+                  <th>Created Date</th>
+                  <th>Extra Name</th>
+                  <th>Description</th>
+                  <th>Status</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody id="extrasListBody"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+    </div>
+      </main>
+    </div>
+    <script src="./extra-comments.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

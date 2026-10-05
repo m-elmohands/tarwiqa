@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Supporter</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="../supporter/supporters.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Website Support Team</p>
+              <h1>Add Supporter</h1>
+              <p class="subtitle">Create a supporter account and choose the governorates whose orders and partners this account can access.</p>
+            </div>
+            <div class="top-actions">
+              <a class="action-btn ghost" href="./supporters-list.html">Supporter List</a>
+              <button class="action-btn warning" id="resetSupporterBtn" type="button">Reset</button>
+              <button class="action-btn primary" id="createSupporterBtn" type="button">Create Supporter</button>
+            </div>
+          </header>
+
+          <div class="form-layout">
+            <section class="form-card">
+              <div class="section-head">
+                <div><p class="eyebrow">Account Setup</p><h2>Supporter Information</h2></div>
+              </div>
+              <form class="form-grid" id="supporterForm">
+                <label class="field"><span>Full Name</span><input id="supporterName" type="text" required /></label>
+                <label class="field"><span>Username</span><input id="supporterUsername" type="text" required /></label>
+                <label class="field"><span>Password</span><div class="password-field"><input id="supporterPassword" type="password" required /><button class="password-toggle-btn" id="toggleSupporterPassword" type="button" aria-pressed="false">Show</button></div></label>
+                <label class="field"><span>Phone</span><input id="supporterPhone" type="tel" required /></label>
+                <label class="field"><span>Email</span><input id="supporterEmail" type="email" required /></label>
+                <label class="field"><span>Status</span><select id="supporterStatus"><option>Active</option><option>Paused</option><option>Inactive</option></select></label>
+                <label class="field"><span>Role</span><select id="supporterRole"><option value="viewer">Viewer</option><option value="editor">Editor</option></select></label>
+
+                <div class="field wide">
+                  <span>Assigned Governorates</span>
+                  <p class="section-note">The supporter will only see orders and partners belonging to selected governorates.</p>
+                  <div class="governorate-grid" id="governorateGrid"></div>
+                </div>
+
+                <div class="field wide">
+                  <span>Access Scope</span>
+                  <div class="access-grid">
+                    <label class="access-row"><div><strong>View Orders</strong><p class="section-note">See all orders inside assigned governorates.</p></div><input id="canViewOrders" type="checkbox" checked /></label>
+                    <label class="access-row"><div><strong>View Partners</strong><p class="section-note">See partners and their performance inside assigned governorates.</p></div><input id="canViewPartners" type="checkbox" checked /></label>
+                    <label class="access-row"><div><strong>Export Reports</strong><p class="section-note">Export scoped orders and partners reports.</p></div><input id="canExportReports" type="checkbox" /></label>
+                  </div>
+                </div>
+                                <div class="field wide permission-matrix-field">
+                  <div class="section-head">
+                    <div>
+                      <span>Detailed Permissions</span>
+                      <p class="section-note">Choose View or Edit permission for each dashboard page and function. Governorate scope still applies.</p>
+                    </div>
+                    <div class="permission-counts"><b><span id="supporterViewCount">0</span> View</b><b><span id="supporterEditCount">0</span> Edit</b></div>
+                  </div>
+                  <div class="supporter-permissions" id="supporterPermissions"></div>
+                </div>
+                <label class="field wide"><span>Admin Notes</span><textarea id="supporterNotes" rows="4" placeholder="Assignment notes or support responsibilities"></textarea></label>
+              </form>
+            </section>
+
+            <aside class="summary-card">
+              <p class="eyebrow">Access Preview</p>
+              <h2>Supporter Scope</h2>
+              <div class="summary-list">
+                <div><span>Name</span><strong id="previewName">New Supporter</strong></div>
+                <div><span>Status</span><strong id="previewStatus">Active</strong></div>
+                <div><span>Role</span><strong id="previewRole">Viewer</strong></div>
+                <div><span>Permissions</span><strong id="previewPermissions">0 selected</strong></div>
+                <div><span>Governorates</span><strong id="previewGovernorates">None selected</strong></div>
+                <div><span>Orders Access</span><strong id="previewOrders">Allowed</strong></div>
+                <div><span>Partners Access</span><strong id="previewPartners">Allowed</strong></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+      </main>
+    </div>
+    <div class="toast hidden" id="supporterToast" role="status" aria-live="polite"></div>
+    <script src="./add-supporter-v2.js"></script>
+    <script src="./sidebar.js"></script>
+  </body>
+</html>
+
+
+

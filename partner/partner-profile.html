@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Partner Profile</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./partner-profile.css" />
+    </head>
+    <body>
+        <main class="profile-shell">
+            <aside class="partner-sidebar">
+                <div class="brand-block">
+                    <p class="eyebrow" data-i18n="partnerWorkspace">
+                        Partner Workspace
+                    </p>
+                    <h1>TARWIQA</h1>
+                    <span id="partnerRoleLabel">Partner Account</span>
+                    <button
+                        class="language-toggle"
+                        id="profileLanguageToggleBtn"
+                        type="button"
+                    >
+                        Arabic
+                    </button>
+                </div>
+                <nav
+                    class="workspace-nav"
+                    aria-label="Partner workspace navigation"
+                >
+                    <a
+                        href="./partner-dashboard.html#todaySection"
+                        data-i18n="navToday"
+                        >Today Schedule</a
+                    >
+                    <a
+                        href="./partner-dashboard.html#ordersSection"
+                        data-i18n="navOrders"
+                        >Orders</a
+                    >
+                    <a
+                        href="./partner-done-orders.html"
+                        data-i18n="navDoneOrders"
+                        >Done Orders</a
+                    >
+                    <a
+                        href="./partner-dashboard.html#maidsSection"
+                        data-i18n="navAvailability"
+                        >Availability</a
+                    >
+                    <div
+                        class="nav-group"
+                        aria-label="Partner messages navigation"
+                    >
+                        <span class="nav-group-title" data-i18n="navMessages"
+                            >Messages</span
+                        >
+                        <a
+                            class="nav-sub-link"
+                            href="./partner-dashboard.html?message=super-admin#messagesSection"
+                            data-i18n="navSuperAdminMessages"
+                            >Super Admin Messages</a
+                        >
+                        <a
+                            class="nav-sub-link"
+                            href="./partner-dashboard.html?message=supporter#messagesSection"
+                            data-i18n="navSupporterMessages"
+                            >Supporter Messages</a
+                        >
+                    </div>
+                    <a
+                        class="active"
+                        id="profileLink"
+                        href="./partner-profile.html"
+                        data-i18n="navProfile"
+                        >My Profile</a
+                    >
+                </nav>
+                <button
+                    class="logout-btn"
+                    id="logoutPartnerBtn"
+                    type="button"
+                    data-i18n="logout"
+                >
+                    Logout
+                </button>
+            </aside>
+
+            <section class="profile-content">
+                <header class="topbar">
+                    <div>
+                        <p class="eyebrow" data-i18n="partnerProfile">
+                            Partner Profile
+                        </p>
+                        <h2 id="partnerPageTitle">Partner Profile</h2>
+                        <p class="subtitle" id="partnerPageSubtitle">
+                            Account, financial performance, workforce profits,
+                            and upcoming order exposure.
+                        </p>
+                    </div>
+                    <div class="top-actions">
+                        <a
+                            class="action-btn ghost"
+                            href="./partner-dashboard.html"
+                            data-i18n="backWorkspace"
+                            >Back To Workspace</a
+                        >
+                        <button
+                            class="action-btn primary"
+                            id="openPartnerChatBtn"
+                            type="button"
+                            data-i18n="chatAdmin"
+                        >
+                            Chat With Admin
+                        </button>
+                    </div>
+                </header>
+
+                <section class="profile-hero">
+                    <div class="identity">
+                        <div class="avatar" id="partnerAvatar">PA</div>
+                        <div>
+                            <div class="identity-title">
+                                <h2 id="partnerName">Partner Name</h2>
+                                <span class="status-pill" id="partnerStatus"
+                                    >Active</span
+                                >
+                            </div>
+                            <p id="partnerMeta">OP-0000 / username</p>
+                        </div>
+                    </div>
+                    <div class="hero-metrics">
+                        <article>
+                            <span data-i18n="workZone">Work Zone</span
+                            ><strong id="zoneMetric">-</strong>
+                        </article>
+                        <article>
+                            <span data-i18n="completedOrders"
+                                >Completed Orders</span
+                            ><strong id="ordersMetric">0</strong>
+                        </article>
+                        <article>
+                            <span data-i18n="upcomingOrders"
+                                >Upcoming Orders</span
+                            ><strong id="upcomingOrdersMetric">0</strong>
+                        </article>
+                        <article>
+                            <span data-i18n="upcomingAmount"
+                                >Upcoming Amount</span
+                            ><strong id="upcomingAmountMetric">EGP 0</strong>
+                        </article>
+                    </div>
+                </section>
+
+                <section
+                    class="summary-grid"
+                    aria-label="Partner financial summary"
+                >
+                    <article class="summary-card">
+                        <span data-i18n="partnerProfit">Partner Profit</span
+                        ><strong id="partnerProfitMetric">EGP 0</strong
+                        ><small>18% from active scoped orders</small>
+                    </article>
+                    <article class="summary-card">
+                        <span data-i18n="paidToPartner">Paid To Partner</span
+                        ><strong id="paidPartnerMetric">EGP 0</strong
+                        ><small>Demo paid amount</small>
+                    </article>
+                    <article class="summary-card">
+                        <span data-i18n="remainingPartnerProfit"
+                            >Remaining Partner Profit</span
+                        ><strong id="remainingPartnerMetric">EGP 0</strong
+                        ><small>Pending settlement</small>
+                    </article>
+                    <article class="summary-card">
+                        <span data-i18n="totalMaidProfit"
+                            >Total Maid Profit</span
+                        ><strong id="maidProfitMetric">EGP 0</strong
+                        ><small>Calculated from assigned maids</small>
+                    </article>
+                </section>
+
+                <section class="profile-card" id="financialDetailsSection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow" data-i18n="financialDetails">
+                                Financial Details
+                            </p>
+                            <h2 data-i18n="partnerOrderProfitBreakdown">
+                                Partner Order Profit Breakdown
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th data-i18n="order">Order</th>
+                                    <th data-i18n="amount">Amount</th>
+                                    <th data-i18n="partnerProfit">
+                                        Partner Profit
+                                    </th>
+                                    <th data-i18n="maidProfit">Maid Profit</th>
+                                    <th data-i18n="paymentMethod">
+                                        Payment Method
+                                    </th>
+                                    <th data-i18n="settlementStatus">
+                                        Settlement Status
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody id="financialDetailsTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+                <div class="profile-grid">
+                    <section class="profile-card">
+                        <div class="section-head">
+                            <div>
+                                <p class="eyebrow" data-i18n="accountDetails">
+                                    Account Details
+                                </p>
+                                <h2 data-i18n="accountInformation">
+                                    Account Information
+                                </h2>
+                            </div>
+                        </div>
+                        <div class="details-grid" id="partnerDetailsGrid"></div>
+                    </section>
+
+                    <section class="profile-card">
+                        <div class="section-head">
+                            <div>
+                                <p class="eyebrow" data-i18n="newMaidRequest">
+                                    New Maid Request
+                                </p>
+                                <h2 data-i18n="sendNewMaidData">
+                                    Send New Maid Data
+                                </h2>
+                            </div>
+                        </div>
+                        <form class="maid-request-form" id="maidRequestForm">
+                            <label
+                                ><span data-i18n="maidName">Maid Name</span
+                                ><input
+                                    id="newMaidName"
+                                    type="text"
+                                    placeholder="Full name"
+                                    required
+                            /></label>
+                            <label
+                                ><span data-i18n="phone">Phone</span
+                                ><input
+                                    id="newMaidPhone"
+                                    type="tel"
+                                    placeholder="Phone number"
+                                    required
+                            /></label>
+                            <label
+                                ><span data-i18n="expectedSalary"
+                                    >Expected Salary</span
+                                ><input
+                                    id="newMaidSalary"
+                                    type="number"
+                                    min="0"
+                                    step="50"
+                                    placeholder="EGP"
+                                    required
+                            /></label>
+                            <label
+                                ><span data-i18n="notes">Notes</span
+                                ><textarea
+                                    id="newMaidNotes"
+                                    rows="4"
+                                    placeholder="Experience, documents, or availability"
+                                ></textarea>
+                            </label>
+                            <button
+                                class="action-btn primary"
+                                type="submit"
+                                data-i18n="sendMaidData"
+                            >
+                                Send Maid Data
+                            </button>
+                        </form>
+                    </section>
+                </div>
+
+                <section class="profile-card">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow" data-i18n="upcomingOrders">
+                                Upcoming Orders
+                            </p>
+                            <h2 data-i18n="ordersComing">
+                                Orders Coming To This Partner
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Arrival Date</th>
+                                    <th>Arrival Time</th>
+                                    <th>Offer</th>
+                                    <th>Amount</th>
+                                    <th>Maid</th>
+                                </tr>
+                            </thead>
+                            <tbody id="upcomingOrdersTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="profile-card">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow" data-i18n="maidProfits">
+                                Maid Profits
+                            </p>
+                            <h2 data-i18n="profitsForMaids">
+                                Profits For Maids Under This Partner
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Maid</th>
+                                    <th>Status</th>
+                                    <th>Salary</th>
+                                    <th>Done Orders</th>
+                                    <th>Estimated Profit</th>
+                                    <th>Profile</th>
+                                </tr>
+                            </thead>
+                            <tbody id="partnerMaidsTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </main>
+
+        <div
+            class="chat-overlay hidden"
+            id="partnerChatModal"
+            aria-hidden="true"
+        >
+            <div
+                class="chat-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="partnerChatTitle"
+            >
+                <button
+                    class="close-btn"
+                    id="closePartnerChatBtn"
+                    type="button"
+                    aria-label="Close partner chat"
+                >
+                    x
+                </button>
+                <p class="eyebrow" data-i18n="directChat">Direct Chat</p>
+                <h2 id="partnerChatTitle">Chat With Admin</h2>
+                <div class="chat-thread" id="partnerChatThread"></div>
+                <form class="chat-form" id="partnerChatForm">
+                    <input
+                        id="partnerChatInput"
+                        type="text"
+                        placeholder="Write a message"
+                        data-i18n-placeholder="writeMessage"
+                    />
+                    <button
+                        class="action-btn primary"
+                        type="submit"
+                        data-i18n="send"
+                    >
+                        Send
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div
+            class="toast hidden"
+            id="partnerProfileToast"
+            role="status"
+            aria-live="polite"
+        ></div>
+        <script src="./partner-profile.js"></script>
+    </body>
+</html>

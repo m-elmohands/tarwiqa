@@ -1,0 +1,56 @@
+openapi: 3.1.0
+info:
+  title: TARWIQA API
+  version: 1.0.0
+servers:
+  - url: /api/v1
+paths:
+  /auth/social-login:
+    post:
+      summary: Authenticate using Google, Apple, or Facebook
+      operationId: socialLogin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SocialLoginRequest'
+      responses:
+        '200':
+          description: Authentication succeeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResponse'
+        '422':
+          description: Validation failed or provider token is invalid
+components:
+  schemas:
+    SocialLoginRequest:
+      type: object
+      required: [provider, token]
+      properties:
+        provider:
+          type: string
+          enum: [google, apple, facebook]
+        token:
+          type: string
+          description: Google or Apple identity token, or Facebook user access token.
+        name:
+          type: [string, 'null']
+          description: Name supplied by the client on Apple's first authorization.
+    AuthResponse:
+      type: object
+      required: [success, message, data, status_code]
+      properties:
+        success: { type: boolean, const: true }
+        message: { type: string }
+        data:
+          type: object
+          required: [user, token, token_type, expires_in]
+          properties:
+            user: { type: object }
+            token: { type: string }
+            token_type: { type: string, const: Bearer }
+            expires_in: { type: integer }
+        status_code: { type: integer, const: 200 }

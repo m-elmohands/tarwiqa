@@ -1,0 +1,95 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ads History</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./ads-history.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Campaign Archive</p>
+              <h1>Ads History</h1>
+              <p class="subtitle">Review every published slider ad, its publishing window, and campaign performance.</p>
+            </div>
+
+            <div class="top-actions">
+              <a class="action-link" href="./ads-spaces.html">Back to Slider Ads</a>
+            </div>
+          </header>
+
+          <main class="history-layout">
+            <section class="summary-grid">
+              <article class="metric-card">
+                <span>Published Ads</span>
+                <strong id="publishedAdsMetric">0</strong>
+                <small>All campaigns in history</small>
+              </article>
+              <article class="metric-card">
+                <span>Total Impressions</span>
+                <strong id="impressionsMetric">0</strong>
+                <small>Across published ads</small>
+              </article>
+              <article class="metric-card">
+                <span>Total Clicks</span>
+                <strong id="clicksMetric">0</strong>
+                <small>Across published ads</small>
+              </article>
+              <article class="metric-card">
+                <span>Best CTR</span>
+                <strong id="bestCtrMetric">0%</strong>
+                <small>Top performing published ad</small>
+              </article>
+            </section>
+
+            <section class="history-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Published Campaigns</p>
+                  <h2>Ads Published History</h2>
+                </div>
+              </div>
+
+              <div class="table-shell">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Ad</th>
+                      <th>Slot</th>
+                      <th>Status</th>
+                      <th>Created Date</th>
+                      <th>End Date</th>
+                      <th>Impressions</th>
+                      <th>Clicks</th>
+                      <th>CTR</th>
+                      <th>Link</th>
+                    </tr>
+                  </thead>
+                  <tbody id="adsHistoryTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </main>
+        </div>
+      </main>
+    </div>
+
+    <script src="./ads-history.js"></script>
+    <script src="./sidebar.js"></script>
+  </body>
+</html>

@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Send Customer Message</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./send-message.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Customer Communication</p>
+              <h1>Send Message</h1>
+              <p class="subtitle">Send a direct message to the selected customer only.</p>
+            </div>
+
+            <div class="top-actions">
+              <a class="ghost-link" href="./user-list.html">Back to User List</a>
+            </div>
+          </header>
+
+          <main class="message-layout">
+            <section class="customer-card">
+              <div class="avatar" id="customerAvatar">--</div>
+              <div>
+                <p class="eyebrow">Selected Customer</p>
+                <h2 id="customerName">Customer not found</h2>
+                <div class="customer-meta">
+                  <span id="customerId">-</span>
+                  <span class="dot"></span>
+                  <span id="customerPhone">-</span>
+                  <span class="dot"></span>
+                  <span id="customerEmail">-</span>
+                </div>
+              </div>
+            </section>
+
+            <section class="message-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Compose</p>
+                  <h2>Direct Customer Message</h2>
+                </div>
+                <span class="channel-pill" id="channelPreview">Push Notification</span>
+              </div>
+
+              <form id="sendMessageForm" class="message-form">
+                <label class="field">
+                  <span>Channel</span>
+                  <select id="messageChannel">
+                    <option value="push" selected>Push Notification</option>
+                    <option value="sms">SMS</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="email">Email</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Subject / Label</span>
+                  <input id="messageSubject" type="text" placeholder="Example: Order update" required />
+                </label>
+
+                <label class="field wide">
+                  <span>Message</span>
+                  <textarea id="messageBody" rows="7" placeholder="Write the message for this customer only" required></textarea>
+                </label>
+
+                <div class="delivery-preview">
+                  <p><strong>Recipient:</strong> <span id="recipientPreview">-</span></p>
+                  <p><strong>Send Date & Time:</strong> <span id="sendTimePreview">Generated automatically on send</span></p>
+                </div>
+
+                <div class="form-actions">
+                  <button class="ghost-btn" type="reset">Clear</button>
+                  <button class="primary-btn" type="submit">Send Message</button>
+                </div>
+              </form>
+            </section>
+          </main>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast hidden" id="messageToast" role="status" aria-live="polite">
+      <strong>Message Sent</strong>
+      <span id="messageToastText">The direct message was sent successfully.</span>
+    </div>
+
+    <script src="./send-message.js"></script>
+    <script src="./sidebar.js"></script>
+  </body>
+</html>

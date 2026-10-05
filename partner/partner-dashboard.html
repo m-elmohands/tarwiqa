@@ -1,0 +1,514 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Partner Workspace</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./partner-dashboard.css" />
+    </head>
+    <body>
+        <main class="workspace-shell">
+            <aside class="partner-sidebar">
+                <div class="brand-block">
+                    <p class="eyebrow" data-i18n="partnerWorkspace">
+                        Partner Workspace
+                    </p>
+                    <h1>TARWIQA</h1>
+                    <span id="partnerRoleLabel">Partner Account</span>
+                    <button
+                        class="language-toggle"
+                        id="languageToggleBtn"
+                        type="button"
+                    >
+                        Arabic
+                    </button>
+                </div>
+                <nav
+                    class="workspace-nav"
+                    aria-label="Partner workspace navigation"
+                >
+                    <a href="#todaySection" class="active" data-i18n="navToday"
+                        >Today Schedule</a
+                    >
+                    <a href="#ordersSection" data-i18n="navOrders">Orders</a>
+                    <a
+                        href="./partner-done-orders.html"
+                        data-i18n="navDoneOrders"
+                        >Done Orders</a
+                    >
+                    <a href="#maidsSection" data-i18n="navAvailability"
+                        >Availability</a
+                    >
+                    <div
+                        class="nav-group"
+                        aria-label="Partner messages navigation"
+                    >
+                        <span class="nav-group-title" data-i18n="navMessages"
+                            >Messages</span
+                        >
+                        <button
+                            class="nav-sub-link"
+                            type="button"
+                            data-message-target="super-admin"
+                            data-i18n="navSuperAdminMessages"
+                        >
+                            Super Admin Messages
+                        </button>
+                        <button
+                            class="nav-sub-link"
+                            type="button"
+                            data-message-target="supporter"
+                            data-i18n="navSupporterMessages"
+                        >
+                            Supporter Messages
+                        </button>
+                    </div>
+                    <a
+                        id="profileLink"
+                        href="./partner-profile.html"
+                        data-i18n="navProfile"
+                        >My Profile</a
+                    >
+                </nav>
+                <button
+                    class="logout-btn"
+                    id="logoutPartnerBtn"
+                    type="button"
+                    data-i18n="logout"
+                >
+                    Logout
+                </button>
+            </aside>
+
+            <section class="workspace-content">
+                <header class="topbar">
+                    <div>
+                        <p class="eyebrow" data-i18n="dailyOperations">
+                            Daily Operations
+                        </p>
+                        <h2 id="partnerName">Partner Name</h2>
+                        <p class="subtitle" id="partnerScope">
+                            Assigned governorate and work zone are loading.
+                        </p>
+                    </div>
+                    <div class="session-card">
+                        <span data-i18n="currentSession">Current Session</span
+                        ><strong data-i18n="onlineNow">Online Now</strong
+                        ><small id="sessionStarted">-</small>
+                    </div>
+                </header>
+
+                <section
+                    class="metrics-grid"
+                    aria-label="Partner workspace metrics"
+                >
+                    <article class="metric-card">
+                        <span data-i18n="allOrders">All Orders</span
+                        ><strong id="todayOrdersMetric">0</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span data-i18n="needsAction">Needs Action</span
+                        ><strong id="needsActionMetric">0</strong>
+                    </article>
+                    <article class="metric-card">
+                        <span data-i18n="availableMaids">Available Maids</span
+                        ><strong id="availableMaidsMetric">0</strong>
+                    </article>
+                </section>
+
+                <section
+                    class="workspace-card alert-card"
+                    id="notificationsSection"
+                >
+                    <div class="section-head compact">
+                        <div>
+                            <p class="eyebrow" data-i18n="notifications">
+                                Notifications
+                            </p>
+                            <h3 data-i18n="whatNeedsAttention">
+                                What Needs Attention
+                            </h3>
+                        </div>
+                        <button
+                            class="action-btn ghost"
+                            id="clearNotificationsBtn"
+                            type="button"
+                            data-i18n="clearRead"
+                        >
+                            Clear Read
+                        </button>
+                    </div>
+                    <div
+                        class="notification-summary-grid"
+                        id="notificationSummaryGrid"
+                    >
+                        <article>
+                            <span data-i18n="unreadAlerts">Unread Alerts</span
+                            ><strong id="unreadAlertsMetric">0</strong>
+                        </article>
+                        <article>
+                            <span data-i18n="lockedOrders">Locked Orders</span
+                            ><strong id="lockedOrdersMetric">0</strong>
+                        </article>
+                        <article>
+                            <span data-i18n="maidIssues">Maid Issues</span
+                            ><strong id="maidIssuesMetric">0</strong>
+                        </article>
+                    </div>
+                    <div class="notification-list" id="notificationList"></div>
+                </section>
+
+                <section class="workspace-card" id="todaySection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow" data-i18n="ordersSchedule">
+                                Orders Schedule
+                            </p>
+                            <h3 data-i18n="allAvailableDates">
+                                All Available Dates
+                            </h3>
+                        </div>
+                        <div class="toolbar">
+                            <select id="scheduleFilter">
+                                <option value="all" data-i18n="allOrdersOption">
+                                    All Orders
+                                </option>
+                                <option
+                                    value="assigned"
+                                    data-i18n="assignedOrdersOption"
+                                >
+                                    Assigned Orders
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="schedule-list" id="scheduleList"></div>
+                </section>
+
+                <section class="workspace-card" id="ordersSection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow" data-i18n="orders">Orders</p>
+                            <h3 data-i18n="ordersAssignedToZone">
+                                Orders Assigned To My Zone
+                            </h3>
+                        </div>
+                        <div class="toolbar">
+                            <input
+                                id="orderSearch"
+                                type="search"
+                                placeholder="Search order or customer"
+                                data-i18n-placeholder="searchOrder"
+                            /><select id="orderDateFilter">
+                                <option value="all" data-i18n="all">All</option>
+                                <option value="today" data-i18n="today">
+                                    Today
+                                </option>
+                                <option value="tomorrow" data-i18n="tomorrow">
+                                    Tomorrow
+                                </option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Customer Name</th>
+                                    <th>Order Number</th>
+                                    <th>Address</th>
+                                    <th>Arrival Time</th>
+                                    <th>Offer Name</th>
+                                    <th>Arrival Date</th>
+                                    <th>Order Amount</th>
+                                    <th>Maid</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="ordersTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="workspace-card" id="maidsSection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow" data-i18n="availabilityBoard">
+                                Availability Board
+                            </p>
+                            <h3 data-i18n="maidsManagedByMe">
+                                Maids Managed By Me
+                            </h3>
+                        </div>
+                        <input
+                            id="maidSearch"
+                            type="search"
+                            placeholder="Search maid"
+                            data-i18n-placeholder="searchMaid"
+                        />
+                    </div>
+                    <div class="availability-grid" id="availabilityGrid"></div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Maid</th>
+                                    <th>Status</th>
+                                    <th>Area</th>
+                                    <th>Rating</th>
+                                    <th>Salary</th>
+                                    <th>Done Orders</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="maidsTableBody"></tbody>
+                        </table>
+                    </div>
+                </section>
+
+                <section class="workspace-card" id="messagesSection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow" data-i18n="messages">Messages</p>
+                            <h3 id="messageAudienceTitle">
+                                Super Admin Messages
+                            </h3>
+                        </div>
+                        <div
+                            class="message-audience-tabs"
+                            aria-label="Message audience filter"
+                            data-i18n-aria-label="messageAudienceFilter"
+                        >
+                            <button
+                                class="audience-btn active"
+                                type="button"
+                                data-message-target="super-admin"
+                                data-i18n="superAdmin"
+                            >
+                                Super Admin
+                            </button>
+                            <button
+                                class="audience-btn"
+                                type="button"
+                                data-message-target="supporter"
+                                data-i18n="supporter"
+                            >
+                                Supporter
+                            </button>
+                            <button
+                                class="action-btn"
+                                id="clearMessageBtn"
+                                type="button"
+                                data-i18n="markAllRead"
+                            >
+                                Mark All Read
+                            </button>
+                        </div>
+                    </div>
+                    <div class="message-thread" id="messageThread"></div>
+                    <form class="reply-form" id="replyForm">
+                        <input
+                            id="replyInput"
+                            type="text"
+                            placeholder="Write a reply"
+                            data-i18n-placeholder="writeReply"
+                        /><button
+                            class="action-btn"
+                            type="submit"
+                            data-i18n="send"
+                        >
+                            Send
+                        </button>
+                    </form>
+                </section>
+            </section>
+        </main>
+
+        <div class="modal-overlay hidden" id="detailsModal" aria-hidden="true">
+            <div
+                class="modal-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="detailsTitle"
+            >
+                <button
+                    class="modal-close"
+                    id="closeDetailsModal"
+                    type="button"
+                    aria-label="Close details"
+                >
+                    x
+                </button>
+                <p class="eyebrow" id="detailsEyebrow">Details</p>
+                <h2 id="detailsTitle">Details</h2>
+                <div class="details-grid" id="detailsContent"></div>
+            </div>
+        </div>
+
+        <div class="modal-overlay hidden" id="issueModal" aria-hidden="true">
+            <div
+                class="modal-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="issueTitle"
+            >
+                <button
+                    class="modal-close"
+                    id="closeIssueModal"
+                    type="button"
+                    aria-label="Close issue report"
+                >
+                    x
+                </button>
+                <p class="eyebrow">Issue Reporting</p>
+                <h2 id="issueTitle">Report Order Issue</h2>
+                <form class="issue-form" id="issueForm">
+                    <input id="issueOrderId" type="hidden" /><label
+                        ><span>Issue Type</span
+                        ><select id="issueType" required>
+                            <option value="Customer not available">
+                                Customer not available
+                            </option>
+                            <option value="Wrong address">Wrong address</option>
+                            <option value="Maid late">Maid late</option>
+                            <option value="Customer cancelled">
+                                Customer cancelled
+                            </option>
+                            <option value="Need extra maid">
+                                Need extra maid
+                            </option>
+                            <option value="Payment issue">Payment issue</option>
+                        </select></label
+                    ><label
+                        ><span>Details</span
+                        ><textarea
+                            id="issueDetails"
+                            rows="4"
+                            placeholder="Write issue details"
+                            required
+                        ></textarea>
+                    </label>
+                    <div class="modal-actions">
+                        <button
+                            class="action-btn ghost"
+                            id="cancelIssueBtn"
+                            type="button"
+                        >
+                            Cancel</button
+                        ><button class="action-btn" type="submit">
+                            Send Issue
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="modal-overlay hidden" id="assignModal" aria-hidden="true">
+            <div
+                class="modal-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="assignTitle"
+            >
+                <button
+                    class="modal-close"
+                    id="closeAssignModal"
+                    type="button"
+                    aria-label="Close assign maid"
+                >
+                    x
+                </button>
+                <p class="eyebrow">Assign Maid</p>
+                <h2 id="assignTitle">Assign Maid To Order</h2>
+                <form class="assign-form" id="assignForm">
+                    <input id="assignOrderId" type="hidden" />
+                    <div
+                        class="assign-order-summary"
+                        id="assignOrderSummary"
+                    ></div>
+                    <div class="handover-checklist" id="handoverChecklist">
+                        <strong data-i18n="handoverChecklist"
+                            >Order Handover Checklist</strong
+                        ><label
+                            ><input
+                                id="checkMaidConfirmed"
+                                type="checkbox"
+                            /><span data-i18n="checkMaidConfirmed"
+                                >Maid assignment confirmed</span
+                            ></label
+                        ><label
+                            ><input
+                                id="checkArrivalConfirmed"
+                                type="checkbox"
+                            /><span data-i18n="checkArrivalConfirmed"
+                                >Arrival date and time reviewed</span
+                            ></label
+                        ><label
+                            ><input
+                                id="checkPaymentReviewed"
+                                type="checkbox"
+                            /><span data-i18n="checkPaymentReviewed"
+                                >Payment method reviewed</span
+                            ></label
+                        ><label
+                            ><input id="checkDataReady" type="checkbox" /><span
+                                data-i18n="checkDataReady"
+                                >Allowed order data ready to send</span
+                            ></label
+                        >
+                    </div>
+                    <label
+                        ><span data-i18n="availableMaidsLabel"
+                            >Available Maids</span
+                        ><select
+                            id="assignMaidSelect"
+                            multiple
+                            required
+                        ></select
+                        ><small data-i18n="selectMaidsHelp"
+                            >Select one or more maids. Hold Ctrl to choose more
+                            than one.</small
+                        ></label
+                    ><label class="checkbox-row"
+                        ><input
+                            id="sendOrderDataCheck"
+                            type="checkbox"
+                            checked
+                        /><span data-i18n="sendOrderDataCheck"
+                            >Send order data to selected maid(s)</span
+                        ></label
+                    >
+                    <div class="modal-actions">
+                        <button
+                            class="action-btn ghost"
+                            id="cancelAssignBtn"
+                            type="button"
+                            data-i18n="cancel"
+                        >
+                            Cancel</button
+                        ><button
+                            class="action-btn"
+                            type="submit"
+                            data-i18n="saveAssignment"
+                        >
+                            Save Assignment
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div
+            class="toast hidden"
+            id="partnerWorkspaceToast"
+            role="status"
+            aria-live="polite"
+        ></div>
+        <script src="./partner-dashboard.js"></script>
+    </body>
+</html>

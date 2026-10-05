@@ -1,0 +1,350 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wallet Ledger</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./wallet-ledger.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <a class="back-link" href="./index.html">Back To User Profile</a>
+          <p class="eyebrow">Wallet Intelligence</p>
+          <h1>Wallet Ledger</h1>
+          <p class="subtitle">
+            Full administrative ledger for the customer wallet with balance flow, BANK TANSFER activity, E-wallet movements, refunds, manual adjustments, and transaction-level review.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn success" id="openAddBalanceBtn" type="button">Add Balance</button>
+          <button class="action-btn primary" type="button">Export Ledger</button>
+          <button class="action-btn ghost" type="button">Download Statement</button>
+        </div>
+      </header>
+
+      <main class="ledger-layout">
+        <section class="hero-card">
+          <div class="hero-copy">
+            <div class="identity-row">
+              <div class="avatar">MA</div>
+              <div>
+                <p class="eyebrow">Customer Wallet</p>
+                <h2>mariam ashraf awad</h2>
+                <p class="hero-meta">
+                  User ID #USR-102938
+                  <span class="dot"></span>
+                  VIP Tier
+                  <span class="dot"></span>
+                  Cairo, Egypt
+                </p>
+              </div>
+            </div>
+
+            <div class="hero-balance">
+              <span>Current Wallet Balance</span>
+              <strong id="currentWalletBalance">EGP 24,380</strong>
+              <small>Last synchronized on 23 Apr 2026 at 09:15 AM</small>
+            </div>
+          </div>
+
+          <div class="hero-aside">
+            <div class="status-card success">
+              <span>Wallet Status</span>
+              <strong>Healthy</strong>
+              <small>No blocked transactions or failed settlements</small>
+            </div>
+            <div class="status-card">
+              <span>Risk Flag</span>
+              <strong>Low</strong>
+              <small>Manual review not required</small>
+            </div>
+          </div>
+        </section>
+
+        <section class="summary-grid">
+          <article class="metric-card income">
+            <span>Total BANK TANSFER</span>
+            <strong id="totalBankTransferValue">EGP 61,220</strong>
+            <small>Across cards, bank transfer entries, refunds, and manual top-ups</small>
+          </article>
+          <article class="metric-card expense">
+            <span>Total E-wallet</span>
+            <strong id="totalEwalletValue">EGP 36,840</strong>
+            <small>Orders, fees, and service allocations</small>
+          </article>
+          <article class="metric-card neutral">
+            <span>Total Refunds</span>
+            <strong id="totalRefundsValue">EGP 4,740</strong>
+            <small>Returned after cancellations and adjustments</small>
+          </article>
+          <article class="metric-card highlight">
+            <span>Ledger Entries</span>
+            <strong id="ledgerEntriesCount">148</strong>
+            <small>Tracked with source and admin traceability</small>
+          </article>
+        </section>
+
+        <section class="workspace-grid">
+          <article class="ledger-card">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Ledger Stream</p>
+                <h3>Wallet Transactions</h3>
+              </div>
+
+              <div class="filter-tabs" id="filterTabs">
+                <button class="filter-tab active" type="button" data-filter="all">All</button>
+                <button class="filter-tab" type="button" data-filter="credit">BANK TANSFER</button>
+                <button class="filter-tab" type="button" data-filter="debit">E-wallet</button>
+                <button class="filter-tab" type="button" data-filter="refund">Refund</button>
+              </div>
+            </div>
+
+            <div class="toolbar">
+              <label class="search-field">
+                <span>Search Reference</span>
+                <input id="ledgerSearchInput" type="text" placeholder="Search by transaction ID, source, or note" />
+              </label>
+
+              <div class="toolbar-actions">
+                <button class="ghost-btn" type="button">Sync Wallet</button>
+                <button class="ghost-btn" type="button">Print View</button>
+              </div>
+            </div>
+
+            <div class="table-shell">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Transaction ID</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Source</th>
+                    <th>Reference</th>
+                    <th>Amount</th>
+                    <th>Balance After</th>
+                    <th>Status</th>
+                    <th>Notes</th>
+                  </tr>
+                </thead>
+                <tbody id="ledgerTableBody"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <aside class="insights-column">
+            <article class="insight-card">
+              <div class="section-head compact">
+                <div>
+                  <p class="eyebrow">Breakdown</p>
+                  <h3>Entry Composition</h3>
+                </div>
+              </div>
+
+              <div class="breakdown-list">
+                <div class="breakdown-item">
+                  <span>BANK TANSFER via Card</span>
+                  <strong>47%</strong>
+                </div>
+                <div class="breakdown-item">
+                  <span>E-wallet Movements</span>
+                  <strong>31%</strong>
+                </div>
+                <div class="breakdown-item">
+                  <span>Refunds</span>
+                  <strong>14%</strong>
+                </div>
+                <div class="breakdown-item">
+                  <span>Manual Adjustments</span>
+                  <strong>8%</strong>
+                </div>
+              </div>
+            </article>
+
+            <article class="insight-card">
+              <div class="section-head compact">
+                <div>
+                  <p class="eyebrow">Recent Flags</p>
+                  <h3>Compliance Notes</h3>
+                </div>
+              </div>
+
+              <div class="note-stack">
+                <article class="note-card">
+                  <strong>Refund Pattern Reviewed</strong>
+                  <p>Two refunds were issued this month. Both were tied to customer-requested cancellations and approved by operations.</p>
+                </article>
+                <article class="note-card">
+                  <strong>Manual Adjustment Logged</strong>
+                  <p>Promotional BANK TANSFER amount added by admin.nada after loyalty campaign approval.</p>
+                </article>
+                <article class="note-card">
+                  <strong>Gateway Match Confirmed</strong>
+                  <p>Latest BANK TANSFER entry settled successfully and balance matched the internal wallet snapshot.</p>
+                </article>
+              </div>
+            </article>
+
+            <article class="insight-card">
+              <div class="section-head compact">
+                <div>
+                  <p class="eyebrow">Running Snapshot</p>
+                  <h3>Today Overview</h3>
+                </div>
+              </div>
+
+              <div class="snapshot-list">
+                <div class="snapshot-item">
+                  <span>BANK TANSFER Today</span>
+                  <strong>EGP 5,000</strong>
+                </div>
+                <div class="snapshot-item">
+                  <span>E-wallet Today</span>
+                  <strong>EGP 1,260</strong>
+                </div>
+                <div class="snapshot-item">
+                  <span>Net Movement</span>
+                  <strong class="positive">+ EGP 3,740</strong>
+                </div>
+              </div>
+            </article>
+          </aside>
+        </section>
+      </main>
+    </div>
+
+    <div class="modal-overlay hidden" id="addBalanceModal">
+      <div class="modal-card">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">Balance Action</p>
+            <h2>Add Balance To Wallet</h2>
+            <p class="modal-subtitle">
+              Create a clean admin balance entry with amount, source, reference, and note before it gets added to the wallet ledger.
+            </p>
+          </div>
+          <button class="icon-btn" id="closeAddBalanceBtn" type="button" aria-label="Close add balance dialog">x</button>
+        </div>
+
+        <form class="balance-form" id="addBalanceForm">
+          <div class="balance-layout">
+            <div class="balance-fields">
+              <div class="balance-grid">
+                <label class="form-field">
+                  <span>Customer Name</span>
+                  <input type="text" value="mariam ashraf awad" readonly />
+                </label>
+
+                <label class="form-field">
+                  <span>Source Type</span>
+                  <select id="balanceSourceType">
+                    <option value="BANK TANSFER" selected>BANK TANSFER</option>
+                    <option value="BANK TANSFER Adjustment">BANK TANSFER Adjustment</option>
+                    <option value="Refund">Refund</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Amount (EGP)</span>
+                  <input id="balanceAmountInput" type="number" min="1" step="1" placeholder="Example: 2500" required />
+                </label>
+
+                <label class="form-field">
+                  <span>Reference</span>
+                  <input id="balanceReferenceInput" type="text" placeholder="Example: Card ending 2234 or batch number" required />
+                </label>
+
+                <label class="form-field">
+                  <span>Reason Code</span>
+                  <select id="balanceReasonCode" required>
+                    <option value="Manual Top-Up" selected>Manual Top-Up</option>
+                    <option value="Loyalty Reward">Loyalty Reward</option>
+                    <option value="Recovery Adjustment">Recovery Adjustment</option>
+                    <option value="Refund Correction">Refund Correction</option>
+                  </select>
+                </label>
+
+                <label class="form-field">
+                  <span>Approved By</span>
+                  <select id="balanceApprovedByInput" required>
+                    <option value="admin.nada" selected>admin.nada</option>
+                    <option value="admin.sara">admin.sara</option>
+                    <option value="admin.ahmed">admin.ahmed</option>
+                    <option value="admin.mona">admin.mona</option>
+                    <option value="finance.hossam">finance.hossam</option>
+                  </select>
+                </label>
+
+                <label class="form-field wide">
+                  <span>Admin Note</span>
+                  <input id="balanceNoteInput" type="text" placeholder="Example: Added after bank confirmation and operations approval" required />
+                </label>
+              </div>
+            </div>
+
+            <aside class="balance-preview-card">
+              <p class="eyebrow">Preview</p>
+              <h3>Balance Impact</h3>
+
+              <div class="preview-stack">
+                <div class="preview-item">
+                  <span>Current Balance</span>
+                  <strong id="previewCurrentBalance">EGP 24,380</strong>
+                </div>
+                <div class="preview-item">
+                  <span>Added Amount</span>
+                  <strong class="positive" id="previewAddedAmount">+ EGP 0</strong>
+                </div>
+                <div class="preview-item emphasis">
+                  <span>Balance After Save</span>
+                  <strong id="previewNextBalance">EGP 24,380</strong>
+                </div>
+              </div>
+
+              <div class="preview-note">
+                <strong>Design Intent</strong>
+                <p>The add balance action feels deliberate and trustworthy, so the admin sees the exact wallet effect before committing the entry.</p>
+              </div>
+            </aside>
+          </div>
+
+          <div class="modal-actions">
+            <button class="ghost-btn" id="cancelAddBalanceBtn" type="button">Cancel</button>
+            <button class="action-btn success" type="submit">Save Balance Entry</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="toast hidden" id="successToast" role="status" aria-live="polite">
+      <strong>Balance Added</strong>
+      <span id="successToastMessage">The wallet ledger has been updated successfully.</span>
+    </div>
+      </main>
+    </div>
+    <script src="./wallet-ledger.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+

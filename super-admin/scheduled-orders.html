@@ -1,0 +1,158 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scheduled Orders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./scheduled-orders.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Booking Availability</p>
+              <h1>Scheduled Orders</h1>
+              <p class="subtitle">
+                Control whether customers can book today, tomorrow, weekdays, or specific calendar dates.
+              </p>
+            </div>
+
+            <div class="top-actions">
+              <button class="action-btn ghost" id="resetScheduleBtn" type="button">Reset</button>
+              <button class="action-btn primary" id="saveScheduleBtn" type="button">Save Schedule</button>
+            </div>
+          </header>
+
+          <main class="schedule-layout">
+            <section class="summary-grid">
+              <article class="metric-card">
+                <span>Open Dates</span>
+                <strong id="openDatesMetric">0</strong>
+                <small>Available booking days this month</small>
+              </article>
+              <article class="metric-card">
+                <span>Closed Dates</span>
+                <strong id="closedDatesMetric">0</strong>
+                <small>Blocked dates this month</small>
+              </article>
+              <article class="metric-card">
+                <span>Today Booking</span>
+                <strong id="todayMetric">Open</strong>
+                <small>Customer can book today</small>
+              </article>
+              <article class="metric-card">
+                <span>Tomorrow Booking</span>
+                <strong id="tomorrowMetric">Open</strong>
+                <small>Customer can book tomorrow</small>
+              </article>
+            </section>
+
+            <section class="control-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Quick Controls</p>
+                  <h2>Booking Door Status</h2>
+                </div>
+              </div>
+
+              <div class="quick-grid">
+                <article class="toggle-card">
+                  <div>
+                    <span>Today</span>
+                    <strong id="todayLabel">Open for booking</strong>
+                  </div>
+                  <button class="status-toggle open" id="todayToggle" type="button" aria-pressed="true">Open</button>
+                </article>
+
+                <article class="toggle-card">
+                  <div>
+                    <span>Tomorrow</span>
+                    <strong id="tomorrowLabel">Open for booking</strong>
+                  </div>
+                  <button class="status-toggle open" id="tomorrowToggle" type="button" aria-pressed="true">Open</button>
+                </article>
+              </div>
+            </section>
+
+
+            <section class="control-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Arrival Hours</p>
+                  <h2>Allowed order arrival times</h2>
+                  <p class="section-note">Control which arrival slots customers can choose while booking.</p>
+                </div>
+                <div class="hours-summary">
+                  <span><strong id="openHoursMetric">0</strong> open</span>
+                  <span><strong id="closedHoursMetric">0</strong> closed</span>
+                </div>
+              </div>
+
+              <div class="hours-grid" id="hoursGrid"></div>
+
+              <div class="hours-closure-panel" id="hoursClosurePanel">
+                <div class="closure-copy">
+                  <span>Temporary hours closure</span>
+                  <strong id="closedHoursSelection">Select one or more hours to close</strong>
+                  <small>Each newly selected group keeps its own unavailable-until date.</small>
+                </div>
+                <label class="closure-date-field">
+                  <span>Closed Until</span>
+                  <input id="hoursClosedUntilInput" type="date" disabled />
+                </label>
+                <button class="action-btn primary" id="saveClosedHoursBtn" type="button" disabled>Save Closed Hours</button>
+              </div>
+              <div class="closure-status hidden" id="hoursClosureStatus"></div>
+            </section>
+
+            <section class="control-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Monthly Calendar</p>
+                  <h2 id="calendarTitle">June 2026</h2>
+                </div>
+                <div class="calendar-actions">
+                  <button class="mini-btn" id="prevMonthBtn" type="button">Previous</button>
+                  <button class="mini-btn" id="nextMonthBtn" type="button">Next</button>
+                </div>
+              </div>
+
+              <div class="calendar-legend">
+                <span><i class="legend-dot open"></i> Open</span>
+                <span><i class="legend-dot closed"></i> Closed</span>
+                <span><i class="legend-dot custom"></i> Custom date override</span>
+              </div>
+
+              <div class="calendar-grid" id="calendarGrid"></div>
+            </section>
+          </main>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast hidden" id="scheduleToast" role="status" aria-live="polite">
+      <strong>Schedule Updated</strong>
+      <span id="scheduleToastText">Booking schedule updated successfully.</span>
+    </div>
+
+    <script src="./scheduled-orders.js"></script>
+    <script src="./sidebar.js"></script>
+  </body>
+</html>
+
+
+
+

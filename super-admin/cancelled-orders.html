@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cancelled Orders</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./accepted-orders.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+
+      <main class="main-content">
+        <div class="page-shell">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Orders Archive</p>
+              <h2>Cancelled Orders</h2>
+              <p class="subtitle">
+                Review cancelled orders with the cancellation reason, affected customer, and last operational status before the order was closed.
+              </p>
+            </div>
+
+            <div class="top-actions">
+              <button class="action-btn primary" type="button">Export Cancelled</button>
+              <button class="action-btn ghost" type="button" onclick="location.href='./under-review-orders.html'">Back To Under Review</button>
+            </div>
+          </header>
+
+          <main class="orders-layout">
+            <section class="summary-grid">
+              <article class="metric-card">
+                <span>Cancelled Orders</span>
+                <strong id="cancelledCountMetric">31</strong>
+                <small>Closed without fulfillment</small>
+              </article>
+              <article class="metric-card">
+                <span>Customer Cancellations</span>
+                <strong id="customerCancelledMetric">18</strong>
+                <small>Requested directly by customers</small>
+              </article>
+              <article class="metric-card">
+                <span>Ops Rejections</span>
+                <strong id="opsRejectedMetric">9</strong>
+                <small>Failed to meet booking conditions</small>
+              </article>
+              <article class="metric-card">
+                <span>Refunded Value</span>
+                <strong id="refundValueMetric">EGP 42K</strong>
+                <small>Returned to wallets and cards</small>
+              </article>
+            </section>
+
+            <section class="orders-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Cancellation Log</p>
+                  <h3>Cancelled Orders List</h3>
+                </div>
+                <div class="filter-grid">
+                  <label class="filter-field">
+                    <span>Search By</span>
+                    <select id="cancelledSearchTypeSelect">
+                      <option value="orderId">Order ID</option>
+                      <option value="userName">User Name</option>
+                      <option value="reason">Reason</option>
+                    </select>
+                  </label>
+
+                  <label class="filter-field search-field">
+                    <span>Search Value</span>
+                    <input id="cancelledSearchInput" type="text" placeholder="Search cancelled orders" />
+                  </label>
+
+                  <label class="filter-field">
+                    <span>Sort Orders</span>
+                    <select id="cancelledSortSelect">
+                      <option value="dateDesc">Cancelled Date (Latest)</option>
+                      <option value="priceDesc">Highest Price</option>
+                      <option value="reasonAsc">Reason A-Z</option>
+                    </select>
+                  </label>
+                </div>
+              </div>
+
+              <div class="table-shell">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Name User</th>
+                      <th>City</th>
+                      <th>Widget</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Order Date</th>
+                      <th>Cancelled Date</th>
+                      <th>Reason</th>
+                      <th>Status</th>
+                      <th>Action</th>
+                    </tr>
+                  </thead>
+                  <tbody id="cancelledOrdersTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </main>
+        </div>
+      </main>
+    </div>
+
+    <div class="modal-overlay hidden" id="cancelledOrderModal">
+      <section class="modal-panel" role="dialog" aria-modal="true" aria-labelledby="cancelledOrderTitle">
+        <div class="modal-head">
+          <div>
+            <p class="eyebrow">Cancelled Order Details</p>
+            <h3 id="cancelledOrderTitle">Order Details</h3>
+            <p class="modal-subtitle">Review the cancellation reason, refund status, and last known operational context.</p>
+          </div>
+          <button class="close-btn" id="closeCancelledOrderModalBtn" type="button">Close</button>
+        </div>
+
+        <div class="modal-grid" id="cancelledOrderModalContent"></div>
+
+        <div class="modal-actions">
+          <button class="action-btn ghost" id="closeCancelledOrderFooterBtn" type="button">Close</button>
+        </div>
+      </section>
+    </div>
+    <script src="./cancelled-orders.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+

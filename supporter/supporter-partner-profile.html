@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Partner Profile - Supporter Workspace</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./supporter-sidebar.css" />
+        <link rel="stylesheet" href="../partner/partner-profile.css" />
+        <link rel="stylesheet" href="./supporter-partner-profile.css" />
+    </head>
+    <body>
+        <main class="workspace-shell">
+            <aside
+                class="supporter-sidebar"
+                data-supporter-sidebar
+                data-active-section="partners"
+            ></aside>
+            <section class="workspace-content profile-content">
+                <header class="topbar">
+                    <div>
+                        <p class="eyebrow">Supporter / Partner Profile</p>
+                        <h2 id="partnerPageTitle">Partner Profile</h2>
+                        <p class="subtitle" id="partnerPageSubtitle">
+                            Account, financial performance, workforce, and
+                            upcoming orders.
+                        </p>
+                    </div>
+                    <div class="top-actions">
+                        <a
+                            class="action-btn ghost"
+                            href="./supporter-dashboard.html#partnersSection"
+                            >Back To Partners</a
+                        ><button
+                            class="action-btn primary"
+                            id="openPartnerChatBtn"
+                            type="button"
+                        >
+                            Chat With Partner
+                        </button>
+                    </div>
+                </header>
+                <section class="profile-hero">
+                    <div class="identity">
+                        <div class="avatar" id="partnerAvatar">PA</div>
+                        <div>
+                            <div class="identity-title">
+                                <h2 id="partnerName">Partner Name</h2>
+                                <span class="status-pill" id="partnerStatus"
+                                    >Active</span
+                                >
+                            </div>
+                            <p id="partnerMeta">OP-0000 / username</p>
+                        </div>
+                    </div>
+                    <div class="hero-metrics">
+                        <article>
+                            <span>Work Zone</span
+                            ><strong id="zoneMetric">-</strong>
+                        </article>
+                        <article>
+                            <span>Completed Orders</span
+                            ><strong id="ordersMetric">0</strong>
+                        </article>
+                        <article>
+                            <span>Upcoming Orders</span
+                            ><strong id="upcomingOrdersMetric">0</strong>
+                        </article>
+                        <article>
+                            <span>Upcoming Amount</span
+                            ><strong id="upcomingAmountMetric">EGP 0</strong>
+                        </article>
+                    </div>
+                </section>
+                <section
+                    class="summary-grid"
+                    aria-label="Partner financial summary"
+                >
+                    <article class="summary-card">
+                        <span>Partner Profit</span
+                        ><strong id="partnerProfitMetric">EGP 0</strong
+                        ><small>18% from scoped orders</small>
+                    </article>
+                    <article class="summary-card">
+                        <span>Paid To Partner</span
+                        ><strong id="paidPartnerMetric">EGP 0</strong
+                        ><small>Demo paid amount</small>
+                    </article>
+                    <article class="summary-card">
+                        <span>Remaining Partner Profit</span
+                        ><strong id="remainingPartnerMetric">EGP 0</strong
+                        ><small>Pending settlement</small>
+                    </article>
+                    <article class="summary-card">
+                        <span>Total Maid Profit</span
+                        ><strong id="maidProfitMetric">EGP 0</strong
+                        ><small>Calculated from assigned maids</small>
+                    </article>
+                </section>
+                <section class="profile-card">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Financial Details</p>
+                            <h2>Partner Order Profit Breakdown</h2>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Amount</th>
+                                    <th>Partner Profit</th>
+                                    <th>Maid Profit</th>
+                                    <th>Payment Method</th>
+                                    <th>Settlement Status</th>
+                                </tr>
+                            </thead>
+                            <tbody id="financialDetailsTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="profile-card">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Account Details</p>
+                            <h2>Partner Account Information</h2>
+                        </div>
+                    </div>
+                    <div class="details-grid" id="partnerDetailsGrid"></div>
+                </section>
+                <section class="profile-card">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Upcoming Orders</p>
+                            <h2>Orders Coming To This Partner</h2>
+                        </div>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Arrival Date</th>
+                                    <th>Arrival Time</th>
+                                    <th>Offer</th>
+                                    <th>Amount</th>
+                                    <th>Maid</th>
+                                </tr>
+                            </thead>
+                            <tbody id="upcomingOrdersTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+                <section class="profile-card" id="partnerMaidsSection">
+                    <div class="section-head">
+                        <div>
+                            <p class="eyebrow">Partner Workforce</p>
+                            <h2>Maids Under This Partner</h2>
+                        </div>
+                        <button
+                            class="action-btn primary"
+                            id="addMaidBtn"
+                            type="button"
+                        >
+                            Add Maid
+                        </button>
+                    </div>
+                    <div class="table-wrap">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Maid</th>
+                                    <th>Phone</th>
+                                    <th>Status</th>
+                                    <th>Salary</th>
+                                    <th>Done Orders</th>
+                                    <th>Estimated Profit</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="partnerMaidsTable"></tbody>
+                        </table>
+                    </div>
+                </section>
+            </section>
+        </main>
+        <div class="chat-overlay hidden" id="maidModal" aria-hidden="true">
+            <div
+                class="chat-card maid-editor-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="maidModalTitle"
+            >
+                <button
+                    class="close-btn"
+                    id="closeMaidModalBtn"
+                    type="button"
+                    aria-label="Close maid form"
+                >
+                    x
+                </button>
+                <p class="eyebrow">Partner Workforce</p>
+                <h2 id="maidModalTitle">Add Maid</h2>
+                <form class="maid-editor-form" id="maidForm">
+                    <input id="maidId" type="hidden" /><label
+                        ><span>Partner</span
+                        ><input id="maidPartner" type="text" readonly /></label
+                    ><label
+                        ><span>Full Name</span
+                        ><input id="maidName" type="text" required /></label
+                    ><label
+                        ><span>Phone</span
+                        ><input id="maidPhone" type="tel" required /></label
+                    ><label
+                        ><span>Personal ID</span
+                        ><input
+                            id="maidPersonalId"
+                            type="text"
+                            required /></label
+                    ><label
+                        ><span>Status</span
+                        ><select id="maidStatus">
+                            <option value="available">Available</option>
+                            <option value="busy">Busy</option>
+                            <option value="paused">Paused</option>
+                            <option value="expired">Expired</option>
+                        </select></label
+                    ><label
+                        ><span>Salary (EGP)</span
+                        ><input
+                            id="maidSalary"
+                            type="number"
+                            min="0"
+                            step="100"
+                            required /></label
+                    ><label
+                        ><span>Done Orders</span
+                        ><input
+                            id="maidDoneOrders"
+                            type="number"
+                            min="0"
+                            step="1" /></label
+                    ><label
+                        ><span>Off Day</span
+                        ><select id="maidOffDay">
+                            <option>Friday</option>
+                            <option>Saturday</option>
+                            <option>Sunday</option>
+                            <option>Monday</option>
+                            <option>Tuesday</option>
+                            <option>Wednesday</option>
+                            <option>Thursday</option>
+                        </select></label
+                    ><label class="wide"
+                        ><span>Address</span
+                        ><input id="maidAddress" type="text" required /></label
+                    ><label class="wide"
+                        ><span>Notes</span
+                        ><textarea id="maidNotes" rows="3"></textarea></label
+                    ><label class="wide"
+                        ><span>Upload Document</span
+                        ><input
+                            id="maidDocument"
+                            type="file"
+                            accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+                        /><small
+                            >Optional. The file name is stored with the maid
+                            profile.</small
+                        ></label
+                    >
+                    <div class="modal-actions wide">
+                        <button
+                            class="action-btn ghost"
+                            id="cancelMaidBtn"
+                            type="button"
+                        >
+                            Cancel</button
+                        ><button class="action-btn primary" type="submit">
+                            Save Maid
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div
+            class="toast hidden"
+            id="partnerProfileToast"
+            role="status"
+            aria-live="polite"
+        ></div>
+        <script src="./supporter-sidebar.js"></script>
+        <script src="./supporter-partner-profile.js"></script>
+    </body>
+</html>

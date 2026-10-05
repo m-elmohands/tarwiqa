@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Add Partner</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./sidebar.css"><link rel="stylesheet" href="./add-operators.css">
+</head>
+<body>
+<div class="app-shell"><aside class="sidebar" data-sidebar-mount></aside><main class="main-content"><div class="page-shell">
+<header class="topbar"><div><p class="eyebrow">Partner Management</p><h1>Add Partner</h1><p class="subtitle">Create a complete partner account, define its operating scope, financial settlement, assigned maids, and Partner Workspace permissions.</p></div><div class="top-actions"><button class="action-btn primary" id="createPartnerBtn" type="button">Create Partner</button><button class="action-btn ghost" id="operatorsListBtn" type="button">Partners List</button><button class="action-btn ghost" id="exportPermissionsBtn" type="button">Permission Preview</button></div></header>
+<main class="operators-layout">
+<section class="section-card"><div class="section-head"><div><p class="eyebrow">Identity</p><h2>Account & Contact Details</h2></div><span class="required-note">* Required fields</span></div><div class="form-grid">
+<label class="field"><span>Account Type *</span><select id="partnerAccountType"><option value="individual">Individual</option><option value="company">Company</option></select></label>
+<label class="field"><span>Full / Company Name *</span><input id="partnerName" type="text" placeholder="Partner legal name"></label>
+<label class="field"><span>Username *</span><input id="operatorUsername" type="text" placeholder="partner.username" autocomplete="off"></label>
+<label class="field"><span>Email *</span><input id="partnerEmail" type="email" placeholder="partner@tarwiqa.com"></label>
+<label class="field"><span>Phone *</span><input id="partnerPhone" type="tel" placeholder="+20 100 000 0000"></label>
+<label class="field"><span>Account Status *</span><select id="partnerStatus"><option value="Active">Active</option><option value="Paused">Paused</option></select></label>
+<label class="field"><span>Governorate *</span><select id="partnerGovernorate"><option value="">Select governorate</option><option>Cairo</option><option>Giza</option><option>Alexandria</option><option>Qalyubia</option><option>Dakahlia</option><option>Sharqia</option></select></label>
+<label class="field"><span>Primary Work Zone *</span><select id="partnerPrimaryZone"><option value="">Select work zone</option><option>New Cairo</option><option>Nasr City</option><option>Maadi</option><option>Heliopolis</option><option>6th October</option><option>Dokki</option><option>Mohandessin</option></select></label>
+<fieldset class="field wide choice-field"><legend>Additional Work Zones</legend><div class="choice-grid" id="workZonesList"></div></fieldset>
+<label class="field wide"><span>Registered Address *</span><textarea id="partnerAddress" rows="3" placeholder="Full registered address"></textarea></label>
+<label class="field"><span>Emergency Contact Name *</span><input id="emergencyName" type="text"></label><label class="field"><span>Emergency Contact Phone *</span><input id="emergencyPhone" type="tel"></label>
+</div></section>
+<section class="section-card"><div class="section-head"><div><p class="eyebrow">Security</p><h2>Credentials & Account Protection</h2></div></div><div class="form-grid">
+<label class="field"><span>Password *</span><div class="password-control"><input id="operatorPassword" type="password" autocomplete="new-password"><button class="password-toggle" id="togglePartnerPassword" type="button">Show</button></div><small class="field-hint">At least 8 characters with uppercase, lowercase, and a number.</small></label>
+<label class="field"><span>Confirm Password *</span><div class="password-control"><input id="confirmPartnerPassword" type="password" autocomplete="new-password"><button class="password-toggle" id="toggleConfirmPassword" type="button">Show</button></div></label>
+<label class="field"><span>Account Expiry</span><input id="accountExpiry" type="date"></label>
+<div class="field"><span>Security Rules</span><div class="stacked-checks"><label><input id="forcePasswordChange" type="checkbox" checked> Force password change on first login</label><label><input id="twoFactorEnabled" type="checkbox"> Enable two-factor authentication</label></div></div>
+</div></section>
+<section class="section-card"><div class="section-head"><div><p class="eyebrow">Operations</p><h2>Coverage, Capacity & Services</h2></div></div><div class="form-grid">
+<fieldset class="field wide choice-field"><legend>Working Days *</legend><div class="choice-grid" id="workingDaysList"></div></fieldset>
+<label class="field"><span>Working From *</span><input id="workStart" type="time" value="08:00"></label><label class="field"><span>Working Until *</span><input id="workEnd" type="time" value="20:00"></label>
+<label class="field"><span>Maximum Daily Orders *</span><input id="maxDailyOrders" type="number" min="1" max="100" value="12"></label>
+<label class="field"><span>Assigned Maids</span><select id="assignedMaids" multiple size="5"></select><small class="field-hint">Use Ctrl/Cmd to select more than one maid.</small></label>
+<fieldset class="field wide choice-field"><legend>Supported Services / Offers *</legend><div class="choice-grid" id="servicesList"></div></fieldset>
+</div></section>
+<section class="section-card"><div class="section-head"><div><p class="eyebrow">Finance</p><h2>Commission & Settlement</h2></div></div><div class="form-grid">
+<label class="field"><span>Partner Commission % *</span><input id="commissionPercent" type="number" min="0" max="100" step="0.1" value="18"></label>
+<label class="field"><span>Settlement Method *</span><select id="settlementMethod"><option value="bank">Bank Transfer</option><option value="wallet">E-Wallet</option><option value="cash">Cash Settlement</option></select></label>
+<label class="field financial-field" data-method="bank"><span>Bank Name *</span><input id="bankName" type="text"></label><label class="field financial-field" data-method="bank"><span>Account Holder *</span><input id="accountHolder" type="text"></label><label class="field financial-field" data-method="bank"><span>IBAN / Account Number *</span><input id="bankAccount" type="text"></label>
+<label class="field financial-field hidden" data-method="wallet"><span>Wallet Phone *</span><input id="walletPhone" type="tel"></label>
+</div></section>
+<section class="section-card"><div class="section-head"><div><p class="eyebrow">Compliance</p><h2>Legal Data & Documents</h2></div></div><div class="form-grid">
+<label class="field legal-individual"><span>National ID *</span><input id="nationalId" type="text" maxlength="14"></label><label class="field legal-company hidden"><span>Commercial Registration *</span><input id="commercialRegistration" type="text"></label><label class="field legal-company hidden"><span>Tax Number *</span><input id="taxNumber" type="text"></label>
+<label class="field"><span>Document Expiry *</span><input id="documentExpiry" type="date"></label><label class="field"><span>ID / Registration File *</span><input id="identityFile" type="file" accept=".pdf,.png,.jpg,.jpeg"></label><label class="field"><span>Signed Contract *</span><input id="contractFile" type="file" accept=".pdf,.png,.jpg,.jpeg"></label><label class="field"><span>Bank / Wallet Proof *</span><input id="paymentProofFile" type="file" accept=".pdf,.png,.jpg,.jpeg"></label>
+<label class="field wide"><span>Internal Notes</span><textarea id="internalNotes" rows="4" placeholder="Visible to Super Admin only"></textarea></label>
+</div></section>
+<section class="account-grid"><article class="section-card"><div class="section-head"><div><p class="eyebrow">Workspace Role</p><h2>Partner Access Level</h2></div></div><div class="role-switcher"><label class="role-option active" id="viewerRoleOption"><input type="radio" name="operatorRole" value="viewer" checked><strong>Viewer</strong><small>Can only view the enabled Partner Workspace functions.</small></label><label class="role-option" id="editorRoleOption"><input type="radio" name="operatorRole" value="editor"><strong>Operational Editor</strong><small>Can assign maids and complete enabled operational actions.</small></label></div></article>
+<article class="summary-card"><p class="eyebrow">Access Summary</p><h2>Permission Snapshot</h2><div class="summary-metrics"><div class="summary-item"><span>Selected Role</span><strong id="selectedRoleLabel">Viewer</strong></div><div class="summary-item"><span>View Permissions</span><strong id="viewPermissionsCount">0</strong></div><div class="summary-item"><span>Edit Permissions</span><strong id="editPermissionsCount">0</strong></div></div><div class="summary-note"><strong>Protected Scope</strong><p>Permissions only apply to the Partner Workspace. Super Admin, Supporter, users, ads, finance administration, and global order status controls are never exposed.</p></div></article></section>
+<section class="permissions-card"><div class="section-head"><div><p class="eyebrow">Least Privilege</p><h2>Partner Workspace Permission Matrix</h2></div><div class="table-note">Partner order status remains In Progress; only Supporters can change it.</div></div><div class="permissions-sections" id="permissionsSections"></div></section>
+</main></div></main></div>
+<div class="modal-overlay hidden" id="operatorModal" aria-hidden="true"><div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="operatorModalTitle"><button class="modal-close" id="operatorModalClose" type="button">x</button><p class="eyebrow" id="operatorModalEyebrow">Partner</p><h2 id="operatorModalTitle">Partner Summary</h2><div class="modal-body" id="operatorModalBody"></div><div class="modal-actions"><button class="action-btn ghost" id="operatorModalSecondary" type="button">Close</button><button class="action-btn primary" id="operatorModalPrimary" type="button">Confirm</button></div></div></div>
+<div class="toast hidden" id="operatorToast" role="status" aria-live="polite"></div><script src="./add-operators.js"></script><script src="./sidebar.js"></script>
+</body></html>

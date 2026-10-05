@@ -1,0 +1,179 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Maid</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./add-maid.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Workforce Onboarding</p>
+          <h1>Add Maid</h1>
+          <p class="subtitle">
+            Create a new maid profile with identity details, schedule defaults, notes, and attachment document setup.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <a class="action-btn ghost link-btn" href="./maids.html">Back To Maids</a>
+          <button class="action-btn warning" type="button" id="resetFormBtn">Reset</button>
+          <button class="action-btn primary" id="createMaidBtn" type="button">Create Maid</button>
+        </div>
+      </header>
+
+      <main class="profile-layout">
+        <section class="hero-card">
+          <div class="hero-main">
+            <div class="identity-block">
+              <div class="avatar" id="avatarPreview">NM</div>
+              <div>
+                <div class="status-row">
+                  <span class="pill online">New Maid</span>
+                  <span class="pill subtle">Pending Activation</span>
+                </div>
+                <h2 id="maidDisplayName">New Maid</h2>
+                <p class="hero-meta">
+                  <span id="statusPreview">Active</span>
+                  <span class="dot"></span>
+                  <span id="genderPreview">Female</span>
+                  <span class="dot"></span>
+                  <span id="offDayPreview">Friday</span>
+                  <span class="dot"></span>
+                  <span id="operatorPreview">Mona Adel</span>
+                </p>
+              </div>
+            </div>
+
+            <div class="hero-stats">
+              <article class="stat-card">
+                <span>Profile Completion</span>
+                <strong id="completionScore">33%</strong>
+                <small>Required onboarding fields still missing</small>
+              </article>
+              <article class="stat-card">
+                <span>Done Orders</span>
+                <strong>0</strong>
+                <small>Will be synced from service orders after activation</small>
+              </article>
+              <article class="stat-card">
+                <span>Start Date</span>
+                <strong id="startDatePreview">2026-04-23</strong>
+                <small>Visible in workforce planning</small>
+              </article>
+            </div>
+          </div>
+
+          <aside class="side-panel">
+            <div class="panel-header">
+              <p>Assignment Setup</p>
+              <span>Launch defaults</span>
+            </div>
+
+            <div class="state-grid">
+              <label class="select-field">
+                <span>Status</span>
+                <select id="statusInput">
+                  <option selected>Active</option>
+                  <option>Paused</option>
+                  <option>Expired</option>
+                </select>
+              </label>
+
+              <label class="select-field">
+                <span>Off Day</span>
+                <select id="offDayInput">
+                  <option>Saturday</option>
+                  <option selected>Friday</option>
+                  <option>Thursday</option>
+                  <option>Wednesday</option>
+                  <option>Tuesday</option>
+                  <option>Monday</option>
+                  <option>Sunday</option>
+                </select>
+              </label>
+
+              <label class="select-field">
+                <span>Gender</span>
+                <select id="genderInput">
+                  <option selected>Female</option>
+                  <option>Male</option>
+                </select>
+              </label>
+
+              <label class="select-field">
+                <span>Assigned Partner</span>
+                <select id="operatorInput"></select>
+              </label>
+
+              <div class="permission-field">
+                <div class="permission-copy">
+                  <span>Attachment Document</span>
+                  <small>Upload the identity or onboarding document linked to this maid profile.</small>
+                </div>
+                <label class="select-field"><span>Document Type</span><select id="documentTypeInput"><option>Personal ID</option><option>Contract</option><option>Medical Report</option><option>Police Clearance</option><option>Training Certificate</option><option>Profile Photo</option><option>Other</option></select></label><input id="attachmentInput" type="file" multiple accept="image/*,.pdf,.doc,.docx" /><div class="selected-files" id="selectedFilesPreview">No files selected</div>
+              </div>
+            </div>
+          </aside>
+        </section>
+
+        <section class="details-card">
+          <div class="section-head">
+            <div>
+              <p class="eyebrow">Maid Details</p>
+              <h3>Identity, Contact & Work Information</h3>
+            </div>
+            <button class="save-btn" id="saveDraftBtn" type="button">Save Draft</button>
+          </div>
+
+          <form class="details-grid" id="addMaidForm">
+            <label class="field readonly"><span>ID</span><input id="maidIdInput" type="text" value="MD-1421" readonly /></label>
+            <label class="field"><span>Name</span><input id="nameInput" type="text" data-required="true" placeholder="Enter full name" /></label>
+            <label class="field"><span>Phone</span><input id="phoneInput" type="text" data-required="true" placeholder="+20 10x xxx xxxx" /></label>
+            <label class="field"><span>Availability</span><input id="statusReadonlyInput" type="text" value="Active" readonly /></label>
+            <label class="field"><span>Start Date</span><input id="startDateInput" type="date" data-required="true" value="2026-04-23" /></label>
+            <label class="field"><span>Age</span><input id="ageInput" type="number" data-required="true" min="18" max="65" placeholder="Age" /></label>
+            <label class="field wide"><span>Address</span><input id="addressInput" type="text" data-required="true" placeholder="Governorate, district, street details" /></label>
+            <label class="field wide"><span>Notes</span><textarea id="notesInput" rows="4" placeholder="Operations notes, training context, or assignment remarks"></textarea></label>
+            <label class="field"><span>Off Day</span><input id="offDayReadonlyInput" type="text" value="Friday" readonly /></label>
+            <label class="field readonly"><span>Done Orders</span><input id="doneOrdersInput" type="text" value="0" readonly /></label>
+            <label class="field"><span>Personal ID</span><input id="personalIdInput" type="text" data-required="true" placeholder="14-digit personal ID" /></label>
+            <label class="field"><span>Gender</span><input id="genderReadonlyInput" type="text" value="Female" readonly /></label>
+            <label class="field"><span>Salary (EGP)</span><input id="salaryInput" type="number" min="0" step="100" data-required="true" placeholder="Monthly salary" /></label>
+            <label class="field"><span>Assigned Partner</span><input id="operatorReadonlyInput" type="text" value="Auto-synced from selector" readonly /></label>
+          </form>
+        </section>
+      </main>
+      </main>
+    </div>
+    <div class="toast hidden" id="addMaidToast" role="status" aria-live="polite"></div>
+    <script src="./add-maid-v2.js"></script>
+    </div>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,398 @@
+﻿:root {
+    --navy: #071f3a;
+    --bg: #f5efe4;
+}
+.workspace-shell {
+    display: grid;
+    grid-template-columns: 300px minmax(0, 1fr);
+    min-height: 100vh;
+}
+.supporter-sidebar {
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    padding: 24px;
+    color: #fff;
+    background: linear-gradient(180deg, #071f3a 0%, #041427 100%);
+}
+.brand-block {
+    padding: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.06);
+}
+.brand-block h1 {
+    margin: 0;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: -0.03em;
+}
+.brand-block span {
+    display: block;
+    color: rgba(255, 255, 255, 0.72);
+    font-weight: 800;
+}
+.workspace-nav {
+    display: grid;
+    gap: 10px;
+    margin-top: 24px;
+}
+.workspace-nav a,
+.logout-btn {
+    border: 0;
+    border-radius: 8px;
+    padding: 14px 16px;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.07);
+    font-weight: 900;
+    text-align: left;
+    text-decoration: none;
+    cursor: pointer;
+}
+.workspace-nav a.active,
+.workspace-nav a:hover {
+    background: rgba(15, 118, 110, 0.42);
+}
+.logout-btn {
+    margin-top: auto;
+    background: rgba(180, 35, 24, 0.88);
+    text-align: center;
+}
+.workspace-content {
+    min-width: 0;
+}
+@media (max-width: 980px) {
+    .workspace-shell {
+        grid-template-columns: 1fr;
+    }
+    .supporter-sidebar {
+        position: static;
+        height: auto;
+    }
+}
+.supporter-hero,
+.profile-panel {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
+}
+.supporter-hero {
+    padding: 24px;
+    display: grid;
+    grid-template-columns: minmax(300px, 0.75fr) minmax(0, 1.25fr);
+    gap: 24px;
+    align-items: center;
+}
+.profile-identity {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+.profile-avatar {
+    width: 78px;
+    height: 78px;
+    flex: 0 0 auto;
+    display: grid;
+    place-items: center;
+    border-radius: 20px;
+    background: var(--dark);
+    color: white;
+    font-family: "Space Grotesk", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.profile-title-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+.profile-identity p {
+    margin: 8px 0 0;
+    color: var(--muted);
+}
+.profile-metrics {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(120px, 1fr));
+    gap: 12px;
+}
+.profile-metrics article,
+.profile-details div,
+.access-summary div {
+    padding: 15px;
+    border-radius: 18px;
+    background: var(--strong);
+    border: 1px solid var(--border);
+}
+.profile-metrics span,
+.profile-details span,
+.access-summary span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+.profile-metrics strong,
+.profile-details strong,
+.access-summary strong {
+    display: block;
+    margin-top: 6px;
+}
+.profile-layout {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 20px;
+    align-items: start;
+}
+.profile-panel {
+    padding: 24px;
+}
+.profile-details {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+.security-box {
+    margin-top: 18px;
+    display: grid;
+    gap: 14px;
+}
+.access-summary {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+.section-spacing {
+    margin-top: 20px;
+}
+.scope-table-wrap {
+    margin-top: 18px;
+    overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+.scope-table-wrap table {
+    min-width: 720px;
+}
+.profile-permissions {
+    margin-top: 18px;
+    display: grid;
+    gap: 14px;
+}
+.profile-permission-group {
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--strong);
+    border: 1px solid var(--border);
+}
+.profile-permission-group h3 {
+    margin-bottom: 12px;
+    font-size: 1.05rem;
+}
+.profile-permission-list {
+    display: grid;
+    gap: 8px;
+}
+.profile-permission-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 14px;
+    align-items: center;
+    padding: 11px 12px;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    background: white;
+}
+.profile-permission-row strong {
+    line-height: 1.4;
+}
+.permission-badges {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+.permission-badge {
+    display: inline-flex;
+    padding: 7px 9px;
+    border-radius: 999px;
+    background: rgba(19, 42, 36, 0.08);
+    color: var(--muted);
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+.permission-badge.allowed {
+    background: rgba(24, 121, 78, 0.12);
+    color: var(--success);
+}
+.permission-badge.edit {
+    background: rgba(183, 121, 31, 0.13);
+    color: var(--warning);
+}
+@media (max-width: 1050px) {
+    .supporter-hero,
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+    .profile-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+@media (max-width: 720px) {
+    .profile-metrics,
+    .profile-details,
+    .access-summary {
+        grid-template-columns: 1fr;
+    }
+    .profile-permission-row {
+        flex-direction: column;
+        align-items: stretch;
+    }
+}
+
+.live-activity-card {
+    margin-top: 20px;
+    padding: 24px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    backdrop-filter: blur(18px);
+}
+
+.live-state {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 9px 12px;
+    border-radius: 999px;
+    background: rgba(24, 121, 78, 0.12);
+    color: var(--success);
+}
+
+.live-state i {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: currentColor;
+    box-shadow: 0 0 0 5px rgba(24, 121, 78, 0.12);
+}
+
+.live-state.offline {
+    background: rgba(180, 35, 24, 0.1);
+    color: var(--danger);
+}
+
+.live-state.offline i {
+    box-shadow: 0 0 0 5px rgba(180, 35, 24, 0.1);
+}
+
+.activity-metrics {
+    margin-top: 18px;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(140px, 1fr));
+    gap: 12px;
+}
+
+.activity-metrics article {
+    padding: 15px;
+    border-radius: 18px;
+    background: var(--strong);
+    border: 1px solid var(--border);
+}
+
+.activity-metrics span {
+    display: block;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 800;
+}
+
+.activity-metrics strong {
+    display: block;
+    margin-top: 7px;
+}
+
+.history-search {
+    display: grid;
+    gap: 7px;
+    min-width: min(100%, 320px);
+}
+
+.history-search span {
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-weight: 900;
+}
+
+.history-search input {
+    width: 100%;
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 11px 13px;
+    background: white;
+    outline: none;
+}
+
+.history-search input:focus {
+    border-color: rgba(15, 118, 110, 0.5);
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.12);
+}
+
+.history-table-wrap {
+    margin-top: 18px;
+    overflow: auto;
+    border: 1px solid var(--border);
+    border-radius: 18px;
+}
+
+.history-table-wrap table {
+    min-width: 900px;
+}
+
+.action-status {
+    display: inline-flex;
+    padding: 7px 9px;
+    border-radius: 999px;
+    background: rgba(24, 121, 78, 0.12);
+    color: var(--success);
+    font-size: 0.78rem;
+    font-weight: 900;
+}
+
+.action-status.failed {
+    background: rgba(180, 35, 24, 0.1);
+    color: var(--danger);
+}
+
+@media (max-width: 1050px) {
+    .activity-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 720px) {
+    .activity-metrics {
+        grid-template-columns: 1fr;
+    }
+    .history-search {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
+#profilePassword[readonly] {
+    background: #eef1ed;
+    color: #52635e;
+    cursor: default;
+    user-select: text;
+}
+#profilePassword[readonly]:focus {
+    border-color: rgba(15, 118, 110, 0.35);
+    box-shadow: 0 0 0 4px rgba(15, 118, 110, 0.08);
+}

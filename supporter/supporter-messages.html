@@ -1,0 +1,142 @@
+﻿<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Supporter Messages</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+            rel="stylesheet"
+        />
+        <link rel="stylesheet" href="./supporter-sidebar.css" />
+        <link rel="stylesheet" href="./supporter-messages.css" />
+    </head>
+    <body>
+        <main class="workspace-shell">
+            <aside
+                class="supporter-sidebar"
+                data-supporter-sidebar
+                data-active-section="messages"
+            ></aside>
+            <section class="workspace-content">
+                <div class="page-shell">
+                    <header class="topbar">
+                        <div>
+                            <p class="eyebrow">Support Team Messaging</p>
+                            <h1>Supporter Messages</h1>
+                            <p class="subtitle">
+                                Mailbox for supporter conversations, scoped
+                                governorate follow-ups, partner escalations, and
+                                admin replies.
+                            </p>
+                        </div>
+                        <div class="top-actions">
+                            <button
+                                class="action-btn primary"
+                                id="composeSupporterBtn"
+                                type="button"
+                            >
+                                Compose To Supporter
+                            </button>
+                            <button
+                                class="action-btn ghost"
+                                id="markAllReadBtn"
+                                type="button"
+                            >
+                                Mark All Read
+                            </button>
+                        </div>
+                    </header>
+
+                    <section class="metrics-grid">
+                        <article class="metric-card">
+                            <span>Unread Supporter Messages</span
+                            ><strong id="unreadMetric">0</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Active Supporters</span><strong>3</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Partner Escalations</span
+                            ><strong id="escalationMetric">0</strong>
+                        </article>
+                        <article class="metric-card">
+                            <span>Governorates Covered</span><strong>6</strong>
+                        </article>
+                    </section>
+
+                    <section class="messages-card">
+                        <div class="toolbar">
+                            <label
+                                ><span>Search</span
+                                ><input
+                                    id="supporterMessageSearch"
+                                    type="search"
+                                    placeholder="Search supporter, subject, governorate"
+                            /></label>
+                            <label
+                                ><span>Supporter</span
+                                ><select id="supporterFilter">
+                                    <option value="all">All Supporters</option>
+                                </select></label
+                            >
+                            <label
+                                ><span>Status</span
+                                ><select id="statusFilter">
+                                    <option value="all">All</option>
+                                    <option value="unread">Unread</option>
+                                    <option value="read">Read</option>
+                                </select></label
+                            >
+                        </div>
+                        <div
+                            class="message-list"
+                            id="supporterMessageList"
+                        ></div>
+                    </section>
+                </div>
+            </section>
+        </main>
+
+        <div class="modal-overlay hidden" id="messageModal" aria-hidden="true">
+            <div
+                class="modal-card"
+                role="dialog"
+                aria-modal="true"
+                aria-labelledby="messageModalTitle"
+            >
+                <button
+                    class="modal-close"
+                    id="closeMessageModal"
+                    type="button"
+                    aria-label="Close message"
+                >
+                    x
+                </button>
+                <p class="eyebrow" id="messageModalEyebrow">Message</p>
+                <h2 id="messageModalTitle">Message Details</h2>
+                <div class="details-grid" id="messageDetails"></div>
+                <form class="reply-form" id="supporterReplyForm">
+                    <input
+                        id="replyInput"
+                        type="text"
+                        placeholder="Write reply to supporter"
+                    />
+                    <button class="action-btn primary" type="submit">
+                        Send Reply
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div
+            class="toast hidden"
+            id="supporterMessagesToast"
+            role="status"
+            aria-live="polite"
+        ></div>
+        <script src="./supporter-sidebar.js"></script>
+        <script src="./supporter-messages.js"></script>
+    </body>
+</html>

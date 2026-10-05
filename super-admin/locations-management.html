@@ -1,0 +1,150 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Locations Management</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./locations-management.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+      <div class="ambient ambient-left"></div>
+      <div class="ambient ambient-right"></div>
+
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Coverage Control</p>
+          <h1>Locations</h1>
+          <p class="subtitle">
+            Manage locations manually for each governorate so the app can lock the governorate as read only for the customer and load only the matching area list inside the location dropdown.
+          </p>
+        </div>
+
+        <div class="top-actions">
+          <button class="action-btn primary" type="button">Add Location</button>
+          <button class="action-btn ghost" type="button">Sync App Coverage</button>
+        </div>
+      </header>
+
+      <main class="locations-layout">
+        <section class="summary-grid">
+          <article class="metric-card">
+            <span>Total Governorates</span>
+            <strong>27</strong>
+            <small>Coverage-ready governorates</small>
+          </article>
+          <article class="metric-card">
+            <span>Total Locations</span>
+            <strong>418</strong>
+            <small>Inserted manually by operations</small>
+          </article>
+          <article class="metric-card">
+            <span>Most Covered Governorate</span>
+            <strong>Cairo</strong>
+            <small>Highest number of active locations</small>
+          </article>
+          <article class="metric-card">
+            <span>App Sync Status</span>
+            <strong>Live</strong>
+            <small>Dropdown lists are ready for the app</small>
+          </article>
+        </section>
+
+        <section class="workspace-grid">
+          <article class="manager-card">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">Admin Setup</p>
+                <h2>Governorates & Locations</h2>
+              </div>
+              <span class="section-note">Manual control for coverage lists</span>
+            </div>
+
+            <div class="governorate-tabs" id="governorateTabs"></div>
+
+            <div class="manager-grid">
+              <div class="create-panel">
+                <label class="field">
+                  <span>Selected Governorate</span>
+                  <input id="selectedGovernorateInput" type="text" value="Cairo" readonly />
+                </label>
+
+                <label class="field">
+                  <span>New Location Name</span>
+                  <input id="newLocationInput" type="text" placeholder="Example: Maadi" />
+                </label>
+
+                <button class="save-btn" id="addLocationBtn" type="button">Add To Governorate</button>
+              </div>
+
+              <div class="locations-panel">
+                <div class="panel-title">
+                  <h3>Locations Under <span id="panelGovernorateName">Cairo</span></h3>
+                  <span id="locationsCount">0 locations</span>
+                </div>
+                <div class="location-list" id="locationsList"></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="preview-card">
+            <div class="section-head">
+              <div>
+                <p class="eyebrow">App Preview</p>
+                <h2>Customer Address Flow</h2>
+              </div>
+              <span class="section-note">How it behaves in the application</span>
+            </div>
+
+            <div class="app-mock">
+              <div class="mock-header">
+                <span class="mock-dot"></span>
+                <span class="mock-dot"></span>
+                <span class="mock-dot"></span>
+              </div>
+
+              <div class="mock-body">
+                <label class="field">
+                  <span>Governorate</span>
+                  <input id="appGovernorateReadonly" type="text" value="Cairo" readonly />
+                </label>
+
+                <label class="field">
+                  <span>Location</span>
+                  <select id="appLocationSelect"></select>
+                </label>
+
+                <div class="flow-note">
+                  <strong>Flow Behavior</strong>
+                  <p>
+                    The customer cannot change the governorate here. The application uses the selected governorate to switch the app state and loads only its saved locations inside the dropdown.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </section>
+      </main>
+    </div>
+      </main>
+    </div>
+    <script src="./locations-management.js"></script>
+      <script src="./sidebar.js"></script>
+</body>
+</html>
+
+
+
+
+
+

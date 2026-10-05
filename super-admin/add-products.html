@@ -1,0 +1,162 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add Products</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./add-products.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+          <div class="ambient ambient-left"></div>
+          <div class="ambient ambient-right"></div>
+
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Commerce Control</p>
+              <h1>Add Products</h1>
+              <p class="subtitle">
+                Create products for sale inside the app with pricing, stock, publishing status, and a live product preview.
+              </p>
+            </div>
+
+            <div class="top-actions">
+              <button class="action-btn ghost" id="resetProductBtn" type="button">Reset</button>
+              <button class="action-btn primary" id="saveProductTopBtn" type="button">Save Product</button>
+            </div>
+          </header>
+
+          <main class="products-layout">
+            <section class="product-form-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Product Details</p>
+                  <h2>Create Sale Product</h2>
+                </div>
+              </div>
+
+              <form class="product-form" id="productForm">
+                <label class="field">
+                  <span>Product Name</span>
+                  <input id="productName" type="text" placeholder="Example: Premium Cleaning Kit" required />
+                </label>
+
+                <label class="field">
+                  <span>Category</span>
+                  <select id="productCategory">
+                    <option>Cleaning Supplies</option>
+                    <option>Home Care</option>
+                    <option>Subscription Add-on</option>
+                    <option>Gift Cards</option>
+                    <option>Bundles</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>Price (EGP)</span>
+                  <input id="productPrice" type="number" min="0" step="0.01" placeholder="0.00" required />
+                </label>
+
+                <label class="field">
+                  <span>Stock Quantity</span>
+                  <input id="productStock" type="number" min="0" step="1" placeholder="0" required />
+                </label>
+
+                <label class="field">
+                  <span>Publish Status</span>
+                  <select id="productStatus">
+                    <option>Draft</option>
+                    <option selected>Published</option>
+                    <option>Out of Stock</option>
+                  </select>
+                </label>
+
+                <label class="field">
+                  <span>SKU</span>
+                  <input id="productSku" type="text" placeholder="Auto generated if empty" />
+                </label>
+
+                <label class="field wide">
+                  <span>Description</span>
+                  <textarea id="productDescription" rows="5" placeholder="Describe the product benefits, usage, and what customers will receive." required></textarea>
+                </label>
+
+                <label class="field wide image-upload-field">
+                  <span>Product Image</span>
+                  <input id="productImage" type="file" accept="image/*" />
+                  <small id="productImageName">No image selected</small>
+                </label>
+
+                <div class="form-actions wide">
+                  <button class="action-btn ghost" type="reset">Clear</button>
+                  <button class="action-btn primary" type="submit">Add Product</button>
+                </div>
+              </form>
+            </section>
+
+            <aside class="preview-card">
+              <p class="eyebrow">Live Preview</p>
+              <div class="product-preview-image" id="productPreviewImage">
+                <span>Product image preview</span>
+              </div>
+              <div class="preview-content">
+                <span class="status-pill" id="previewStatus">Published</span>
+                <h2 id="previewName">Product Name</h2>
+                <p id="previewDescription">Product description will appear here.</p>
+                <div class="preview-meta">
+                  <span id="previewCategory">Cleaning Supplies</span>
+                  <strong id="previewPrice">EGP 0.00</strong>
+                </div>
+                <small id="previewStock">0 items in stock</small>
+              </div>
+            </aside>
+
+            <section class="products-table-card">
+              <div class="card-head">
+                <div>
+                  <p class="eyebrow">Recently Added</p>
+                  <h2>Products List</h2>
+                </div>
+                <span class="count-pill" id="productsCount">0 products</span>
+              </div>
+
+              <div class="table-shell">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>SKU</th>
+                      <th>Product</th>
+                      <th>Category</th>
+                      <th>Price</th>
+                      <th>Stock</th>
+                      <th>Status</th>
+                    </tr>
+                  </thead>
+                  <tbody id="productsTableBody"></tbody>
+                </table>
+              </div>
+            </section>
+          </main>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast hidden" id="productToast" role="status" aria-live="polite">
+      <strong>Product Updated</strong>
+      <span id="productToastText">Product saved successfully.</span>
+    </div>
+
+    <script src="./add-products.js"></script>
+    <script src="./sidebar.js"></script>
+  </body>
+</html>

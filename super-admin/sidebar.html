@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sidebar Navigation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+  </head>
+  <body class="sidebar-document">
+    <div class="sidebar-content">
+      <div class="brand-block">
+        <p class="brand-label">Admin System</p>
+        <h1><a href="./admin-dashboard.html" target="_top">TARWIQA</a></h1>
+        <span class="brand-sub">Control Center</span>
+      </div>
+
+      <nav class="sidebar-nav" aria-label="Dashboard navigation">
+        <button class="nav-link" type="button" data-sidebar-page="admin-dashboard.html" onclick="window.top.location.href='./admin-dashboard.html'">Dashboard</button>
+        <button class="nav-link with-badge" type="button" data-sidebar-page="approval-center.html" onclick="window.top.location.href='./approval-center.html'"><span>Approval Center</span><span class="sidebar-badge" data-approvals-pending>0</span></button>
+
+        <div class="dropdown-block" data-sidebar-group="users">
+          <button class="nav-link dropdown-toggle" type="button" data-sidebar-toggle>
+            Users
+            <span class="caret">+</span>
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-link" type="button" data-sidebar-page="user-list.html" onclick="window.top.location.href='./user-list.html'">User List</button>
+            <button class="dropdown-link" type="button" data-sidebar-page="add-user.html" onclick="window.top.location.href='./add-user.html'">Add User</button>
+          </div>
+        </div>
+
+        <div class="dropdown-block" data-sidebar-group="maids">
+          <button class="nav-link dropdown-toggle" type="button" data-sidebar-toggle>
+            Maids
+            <span class="caret">+</span>
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-link" type="button" data-sidebar-page="maids.html" onclick="window.top.location.href='./maids.html'">Maids List</button>
+            <button class="dropdown-link" type="button" data-sidebar-page="add-maid.html" onclick="window.top.location.href='./add-maid.html'">Add Maid</button>
+          </div>
+        </div>
+
+        <button class="nav-link" type="button" data-sidebar-page="extra-comments.html" onclick="window.top.location.href='./extra-comments.html'">Extra</button>
+        <button class="nav-link" type="button" data-sidebar-page="locations-management.html" onclick="window.top.location.href='./locations-management.html'">Locations</button>
+        <button class="nav-link" type="button" data-sidebar-page="governorates-dashboard.html" onclick="window.top.location.href='./governorates-dashboard.html'">Full Con</button>
+        <button class="nav-link" type="button" data-sidebar-page="logs-inquiries.html" onclick="window.top.location.href='./logs-inquiries.html'">Logs Inquiries</button>
+
+        <div class="dropdown-block" data-sidebar-group="orders">
+          <button class="nav-link dropdown-toggle" type="button" data-sidebar-toggle>
+            Orders
+            <span class="caret">+</span>
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-link" type="button" data-sidebar-page="under-review-orders.html" onclick="window.top.location.href='./under-review-orders.html'">Under Review Orders</button>
+            <button class="dropdown-link" type="button" data-sidebar-page="waiting-list.html" onclick="window.top.location.href='./waiting-list.html'">Waiting List</button>
+            <button class="dropdown-link" type="button" data-sidebar-page="scheduled-orders.html" onclick="window.top.location.href='./scheduled-orders.html'">Scheduled Orders</button>
+            <button class="dropdown-link" type="button" data-sidebar-page="accepted-orders.html" onclick="window.top.location.href='./accepted-orders.html'">Accepted Orders</button>
+            <button class="dropdown-link" type="button" data-sidebar-page="done-orders.html" onclick="window.top.location.href='./done-orders.html'">Done Orders</button>
+            <button class="dropdown-link" type="button" data-sidebar-page="cancelled-orders.html" onclick="window.top.location.href='./cancelled-orders.html'">Cancelled Orders</button>
+          </div>
+        </div>
+
+        <button class="nav-link" type="button" data-sidebar-page="custom-package.html" onclick="window.top.location.href='./custom-package.html'">Custom Package</button>
+        <button class="nav-link" type="button" data-sidebar-page="add-products.html" onclick="window.top.location.href='./add-products.html'">Add Products</button>
+        <button class="nav-link" type="button" data-sidebar-page="order-reviews.html" onclick="window.top.location.href='./order-reviews.html'">Reviews</button>
+        <button class="nav-link" type="button" data-sidebar-page="messages-inbox.html" onclick="window.top.location.href='./messages-inbox.html'">Inbox</button>
+<button class="nav-link" type="button" data-sidebar-page="app-shares.html" onclick="window.top.location.href='./app-shares.html'">Shares</button>
+                <div class="dropdown-block" data-sidebar-group="operators">
+          <button class="nav-link dropdown-toggle" type="button" data-sidebar-toggle>
+            Partners
+            <span class="caret">+</span>
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-link" type="button" data-sidebar-page="operators-list.html" onclick="window.top.location.href='./operators-list.html'">Partners List</button>
+            <button class="dropdown-link with-badge" type="button" data-sidebar-page="operators-msgs.html" onclick="window.top.location.href='./operators-msgs.html'"><span>Partners Msgs</span><span class="sidebar-badge" data-operators-unread>0</span></button>
+            <button class="dropdown-link" type="button" data-sidebar-page="add-operators.html" onclick="window.top.location.href='./add-operators.html'">Add Partners</button>
+          </div>
+        </div>
+        <div class="dropdown-block" data-sidebar-group="supporters">
+          <button class="nav-link dropdown-toggle" type="button" data-sidebar-toggle>
+            Supporters
+            <span class="caret">+</span>
+          </button>
+          <div class="dropdown-menu">
+            <button class="dropdown-link" type="button" data-sidebar-page="supporters-list.html" onclick="window.top.location.href='./supporters-list.html'">Supporter List</button>
+            <button class="dropdown-link" type="button" data-sidebar-page="add-supporter.html" onclick="window.top.location.href='./add-supporter.html'">Add Supporter</button>
+          </div>
+        </div>
+        <button class="nav-link" type="button" data-sidebar-page="ads-spaces.html" onclick="window.top.location.href='./ads-spaces.html'">Slider Ads</button>
+      </nav>
+    </div>
+
+    <script src="./sidebar.js"></script>
+  </body>
+</html>
+
+
+
+
+
+
+

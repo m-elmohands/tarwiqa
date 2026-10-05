@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Partners Msgs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./sidebar.css" />
+    <link rel="stylesheet" href="./operators-msgs.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" data-sidebar-mount></aside>
+      <main class="main-content">
+        <div class="page-shell">
+          <header class="topbar">
+            <div>
+              <p class="eyebrow">Partner Communications</p>
+              <h1>Partners Msgs</h1>
+              <p class="subtitle">Review partners messages, track unread requests, open message details, and reply from one place.</p>
+            </div>
+            <div class="top-actions">
+              <button class="action-btn ghost" id="markAllReadBtn" type="button">Mark All Read</button>
+              <button class="action-btn primary" id="exportMsgsBtn" type="button">Export Messages</button>
+            </div>
+          </header>
+
+          <section class="metrics-grid">
+            <article class="metric-card"><span>Total Messages</span><strong id="totalMessagesCount">0</strong></article>
+            <article class="metric-card accent"><span>Unread</span><strong id="unreadMessagesCount">0</strong></article>
+            <article class="metric-card"><span>Open Requests</span><strong id="openRequestsCount">0</strong></article>
+            <article class="metric-card"><span>Partners</span><strong id="operatorsCount">0</strong></article>
+          </section>
+
+          <section class="msgs-card">
+            <div class="toolbar">
+              <label class="search-field">
+                <span>Search</span>
+                <input id="messageSearch" type="search" placeholder="Search by partner, zone, subject, or message" />
+              </label>
+              <label class="filter-field">
+                <span>Status</span>
+                <select id="messageStatusFilter">
+                  <option value="all">All Messages</option>
+                  <option value="unread">Unread</option>
+                  <option value="read">Read</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="messages-layout">
+              <div class="messages-list" id="messagesList" aria-label="Partners messages list"></div>
+              <article class="message-panel" id="messagePanel">
+                <div class="empty-panel">
+                  <strong>Select a message</strong>
+                  <span>Message details and reply tools will appear here.</span>
+                </div>
+              </article>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+
+    <div class="toast hidden" id="msgsToast" role="status" aria-live="polite"></div>
+
+    <script src="./operators-msgs.js"></script>
+    <script src="./sidebar.js"></script>
+  </body>
+</html>
+
+
