@@ -12,6 +12,7 @@ use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
@@ -210,6 +211,7 @@ class AdminOperationsController extends Controller
             'end_date' => ['nullable', 'date', 'after_or_equal:starts_at'],
             'sort_order' => ['nullable', 'integer', 'min:0'],
         ]) + ['status' => 'active']);
+        Cache::forget('api:banners:active');
 
         return back()->with('status', 'Ad created successfully.');
     }
@@ -217,6 +219,7 @@ class AdminOperationsController extends Controller
     public function toggleAd(Ad $ad): RedirectResponse
     {
         $ad->update(['status' => $ad->status === 'active' ? 'pause' : 'active']);
+        Cache::forget('api:banners:active');
 
         return back()->with('status', 'Ad status updated.');
     }
