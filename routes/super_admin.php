@@ -101,7 +101,8 @@ Route::name('admin.')
             Route::get('/cancelled/data', [OrderViewController::class, 'cancelledData'])->name('cancelled.data');
             Route::get('/reviews', [OrderViewController::class, 'reviews'])->name('reviews');
             Route::get('/reviews/data', [OrderViewController::class, 'reviewsData'])->name('reviews.data');
-            Route::get('/{status}', [AdminOperationsController::class, 'orders'])->whereIn('status', ['under_review', 'waiting', 'scheduled', 'completed', 'cancelled'])->name('lifecycle');
+            Route::patch('/reviews/{review}/status', [OrderViewController::class, 'updateReviewStatus'])->name('reviews.status')->whereNumber('review');
+            Route::get('/{status}', [AdminOperationsController::class, 'orders'])->whereIn('status', ['under_review', 'waiting', 'completed', 'cancelled'])->name('lifecycle');
             Route::patch('/{order}/workflow', [AdminOperationsController::class, 'updateOrder'])->name('workflow.update')->whereNumber('order');
         });
 

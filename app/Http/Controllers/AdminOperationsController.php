@@ -19,12 +19,11 @@ class AdminOperationsController extends Controller
 {
     public function orders(string $status): View
     {
-        abort_unless(in_array($status, ['under_review', 'waiting', 'scheduled', 'accepted', 'completed', 'cancelled'], true), 404);
+        abort_unless(in_array($status, ['under_review', 'waiting', 'accepted', 'completed', 'cancelled'], true), 404);
 
         $statusMap = [
             'under_review' => ['under_review'],
             'waiting' => ['waiting', 'waiting_list'],
-            'scheduled' => ['scheduled'],
             'accepted' => ['accepted', 'accepted_orders'],
             'completed' => ['completed', 'done', 'done_orders'],
             'cancelled' => ['cancelled', 'canceled'],
@@ -48,7 +47,7 @@ class AdminOperationsController extends Controller
     public function updateOrder(Request $request, Order $order): RedirectResponse
     {
         $data = $request->validate([
-            'status' => ['required', 'in:under_review,waiting,scheduled,accepted,completed,cancelled'],
+            'status' => ['required', 'in:under_review,waiting,accepted,completed,cancelled'],
             'partner_id' => ['nullable', 'integer', 'exists:users,id'],
             'internal_notes' => ['nullable', 'string', 'max:5000'],
         ]);

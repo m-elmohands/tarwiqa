@@ -41,6 +41,40 @@ const activePill = (label, isActive) =>
         isActive ? "active" : "inactive"
     );
 
+const reviewStatusCell = (row) => {
+    const form = document.createElement("form");
+    form.method = "POST";
+    form.action = row.status_update_url || "#";
+    form.className = "inline-form";
+
+    const token = document.createElement("input");
+    token.type = "hidden";
+    token.name = "_token";
+    token.value = csrfToken;
+
+    const method = document.createElement("input");
+    method.type = "hidden";
+    method.name = "_method";
+    method.value = "PATCH";
+
+    const select = document.createElement("select");
+    select.name = "status";
+    select.setAttribute("aria-label", "Review status");
+
+    for (const status of ["pending", "published", "rejected"]) {
+        const option = document.createElement("option");
+        option.value = status;
+        option.textContent = status.replace(/^./, (letter) => letter.toUpperCase());
+        option.selected = row.status === status;
+        select.append(option);
+    }
+
+    select.addEventListener("change", () => form.submit());
+    form.append(token, method, select);
+
+    return form;
+};
+
 const identityCell = (title, subtitle, logoUrl, href) => {
     const wrap = document.createElement("div");
     wrap.className = "service-name-cell";
@@ -1230,13 +1264,7 @@ const TABLES = {
 
             {
                 key: "status",
-                render: (r) =>
-                    statusPill(
-                        r.status,
-                        r.status === "published"
-                            ? "active"
-                            : "inactive"
-                    )
+                render: (r) => reviewStatusCell(r)
             },
         ],
     },

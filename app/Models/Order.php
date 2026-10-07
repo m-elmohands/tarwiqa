@@ -53,6 +53,8 @@ class Order extends Model
     {
         return [
             'service_date' => 'date',
+            'accepted_at' => 'datetime',
+            'started_at' => 'datetime',
             'completed_at' => 'datetime',
             'cancelled_at' => 'datetime',
             'total' => 'decimal:2',

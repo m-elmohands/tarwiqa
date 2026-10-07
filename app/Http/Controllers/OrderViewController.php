@@ -6,6 +6,8 @@ use App\Models\Order;
 use App\Models\OrderReview;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 use Yajra\DataTables\Facades\DataTables;
 
@@ -75,6 +77,7 @@ class OrderViewController extends Controller
     public function reviewsData(): JsonResponse
     {
         return DataTables::eloquent(OrderReview::query()->with(['customer:id,name,email', 'order:id,service_date,total,status']))
+            ->addColumn('status_update_url', fn (OrderReview $review): string => route('admin.orders.reviews.status', $review))
             ->addColumn('order_reference', fn (OrderReview $review): string => '#ORD-'.str_pad((string) $review->order_id, 6, '0', STR_PAD_LEFT))
             ->addColumn('customer_name', fn (OrderReview $review): string => $review->customer?->name ?? 'Deleted customer')
             ->addColumn('service_date', fn (OrderReview $review): string => $review->order?->service_date?->format('d M Y') ?? '—')
@@ -87,6 +90,21 @@ class OrderViewController extends Controller
                     ->orWhereHas('customer', fn (Builder $customer) => $customer->where('name', 'like', "%{$search}%"))));
             }, true)
             ->toJson();
+    }
+
+    public function updateReviewStatus(Request $request, OrderReview $review): RedirectResponse
+    {
+        $data = $request->validate([
+            'status' => ['required', 'in:pending,published,rejected'],
+        ]);
+
+        $review->update([
+            'status' => $data['status'],
+            'moderated_at' => $data['status'] === 'pending' ? null : now(),
+            'moderated_by' => $data['status'] === 'pending' ? null : $request->user()->id,
+        ]);
+
+        return back()->with('status', 'Review status updated.');
     }
 
     private function ordersData(Builder $query): JsonResponse

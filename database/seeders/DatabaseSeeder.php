@@ -136,5 +136,7 @@ class DatabaseSeeder extends Seeder
         $this->call(AdSeeder::class);
 
         $this->call(CatalogSeeder::class);
+        $this->call(OrderSeeder::class);
+        $this->call(OrderReviewSeeder::class);
     }
 }

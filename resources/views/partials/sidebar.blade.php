@@ -28,11 +28,6 @@
                             'route' => 'admin.orders.lifecycle',
                             'params' => ['status' => 'waiting'],
                         ],
-                        [
-                            'label' => 'Scheduled',
-                            'route' => 'admin.orders.lifecycle',
-                            'params' => ['status' => 'scheduled'],
-                        ],
                         ['label' => 'Accepted', 'route' => 'admin.orders.accepted'],
                         ['label' => 'Done', 'route' => 'admin.orders.done'],
                         ['label' => 'Cancelled', 'route' => 'admin.orders.cancelled'],

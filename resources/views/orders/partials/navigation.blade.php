@@ -2,7 +2,6 @@
     $orderTabs = [
         ['label' => 'Under review', 'route' => 'admin.orders.lifecycle', 'params' => ['status' => 'under_review'], 'status' => 'under_review'],
         ['label' => 'Waiting list', 'route' => 'admin.orders.lifecycle', 'params' => ['status' => 'waiting'], 'status' => 'waiting'],
-        ['label' => 'Scheduled', 'route' => 'admin.orders.lifecycle', 'params' => ['status' => 'scheduled'], 'status' => 'scheduled'],
         ['label' => 'Accepted', 'route' => 'admin.orders.accepted'],
         ['label' => 'Done', 'route' => 'admin.orders.done'],
         ['label' => 'Cancelled', 'route' => 'admin.orders.cancelled'],
